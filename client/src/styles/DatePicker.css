@@ -1,0 +1,21 @@
+/* Your existing styles */
+.date-pickers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.custom-datepicker .react-datepicker__day--selected {
+  background-color: blue;
+  color: white;
+}

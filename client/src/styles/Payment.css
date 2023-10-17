@@ -1,0 +1,458 @@
+#flousi_icon {
+  width: 17px;
+}
+
+.payment_main_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 7rem;
+}
+
+.payment_main_container p {
+  margin: 0;
+}
+
+.payment_container {
+  width: inherit;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.payment_methods {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.payment_method_title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.payment_method_title p:nth-child(1) {
+  color: var(--Purple-Blue, #605dec);
+  font-family: Nunito Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.payment_method_title p:nth-child(2) {
+  color: var(--grey-400, #7c8db0);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  /* width: 640px; */
+  width: 80%;
+  text-wrap: wrap;
+  padding-bottom: 0.5rem;
+}
+
+.payment_methods_creditCard {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+  border-radius: 6px;
+  border: 2px solid var(--Purple-Blue, #605dec);
+}
+
+.payment_methods_creditCard > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  padding: 12px 20px;
+  align-items: center;
+  gap: 4px;
+  color: var(--grey-100, #fafafa);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.payment_methods_creditCard > li:nth-child(2) {
+  color: #605dec;
+  border-radius: 3px;
+}
+
+.payment_methods_creditCard > li:nth-child(1) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  height: 48px;
+  padding: 12px 20px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 3px;
+  background: var(--Purple-Blue, #605dec);
+}
+
+.payment_methods_creditCard_details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1.5rem;
+  gap: 1.4rem;
+}
+
+.payment_methods_creditCard_details > p {
+  color: var(--grey-600, #6e7491);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding-bottom: 0.4rem;
+}
+
+.payment_methods_billing_adress_check {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 0.4rem;
+}
+
+.payment_methods_billing_adress_check input[type="checkbox"] {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment_methods_billing_adress_check > p {
+  color: var(--grey-600, #6e7491);
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.payment_methods_creditCard_details > input {
+  display: flex;
+  width: 480px;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--grey-300, #a1b0cc);
+  background: var(--True-White, #fff);
+}
+
+.exp-ccv-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 28px;
+  padding-bottom: 1.7rem;
+}
+
+.exp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.exp input {
+  display: flex;
+  padding: 8px 12px;
+  align-items: flex-end;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 4px;
+  border: 1px solid var(--grey-300, #a1b0cc);
+  background: var(--True-White, #fff);
+}
+
+.exp p {
+  transform: translate(10%);
+  color: var(--grey-400, #7c8db0);
+  font-family: Nunito Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.ccv {
+  padding: 7.2px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--grey-300, #a1b0cc);
+  background: var(--True-White, #fff);
+}
+
+.ccv input {
+  border: none;
+}
+
+.ccv img {
+  height: 25px;
+  width: 25px;
+}
+
+.payment_methods_createAccount {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.payment_methods_createAccount_inputs p:nth-child(1) {
+  color: var(--grey-600, #6e7491);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.payment_methods_createAccount_inputs p:nth-child(2) {
+  color: var(--grey-400, #7c8db0);
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 65%;
+}
+
+.payment_methods_createAccount_check {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.payment_methods_createAccount_inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.payment_methods_createAccount_inputs > input {
+  display: flex;
+  padding: 10px 12px;
+  align-items: flex-end;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 4px;
+  border: 1px solid var(--grey-300, #a1b0cc);
+  background: var(--True-White, #fff);
+  width: 47.7%;
+}
+
+.payment_methods_createAccount_dividers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 47.7%;
+  color: var(--grey-400, #7c8db0);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  gap: 10px;
+  padding-top: 2.7rem;
+  padding-bottom: 1.3rem;
+}
+
+.divider_lines {
+  position: relative;
+  top: 2px;
+  height: 0.9px;
+  width: 13.1rem;
+  background-color: #cbd4e6;
+}
+
+.payment_methods_createAccount_third_party_auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 47.7%;
+  gap: 12px;
+  padding-bottom: 2rem;
+}
+
+.payment_third_party_btn {
+  display: flex;
+  height: 48px;
+  padding: 12px 95px 12px 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  align-self: stretch;
+  border-radius: 4px;
+  width: 100%;
+  border: 1px solid var(--Purple-Blue, #605dec);
+  color: var(--Purple-Blue, #605dec);
+  text-align: center;
+  /* Body Large */
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#firstImg {
+  transform: translate(-350%);
+}
+
+#secondtImg {
+  transform: translate(-343%);
+}
+
+#thirdtImg {
+  transform: translate(-262%);
+}
+
+.payment_methods_privacyPolicy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3.5rem;
+}
+
+.cancellation_policy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  gap: 1rem;
+}
+
+.cancellation_policy > p:nth-child(1) {
+  color: var(--grey-600, #6e7491);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.cancellation_policy > p:nth-child(2) {
+  color: var(--grey-400, #7c8db0);
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 52%;
+}
+
+.cancellation_policy > p:nth-child(2) > span {
+  color: var(--Purple-Blue, #605dec);
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.payment_methods_privacyPolicy_btns {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+}
+
+.payment_methods_privacyPolicy_btns > button:nth-child(1) {
+  display: flex;
+  height: 48px;
+  padding: 12px 20px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--Purple-Blue, #605dec);
+  color: var(--Purple-Blue, #605dec);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.payment_methods_privacyPolicy_btns > button:nth-child(2) {
+  display: flex;
+  height: 48px;
+  padding: 12px 20px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--grey-400, #7c8db0);
+  background: rgba(203, 212, 230, 0.3);
+  color: var(--grey-400, #7c8db0);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.bills-trips {
+  padding-top: 7.7rem;
+}
+
+.trip_seatPricing {
+  color: var(--grey-900, #27273f);
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-bottom: 16px;
+}
+
+@media (max-width: 96rem) {
+  #firstImg {
+    transform: translate(-1.8rem);
+  }
+
+  #secondtImg {
+    transform: translate(-2.15rem);
+  }
+
+  #thirdtImg {
+    transform: translate(-1.24rem);
+  }
+}
+#alert{
+  color: #605dec;
+}
+#goout{
+  color: white;
+  background-color:#605dec ;
+}

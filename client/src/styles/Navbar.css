@@ -1,0 +1,60 @@
+.navigo {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 8px 24px;
+  align-items: center;
+  transition-duration: 0.5s;
+}
+
+.navigo li {
+  margin-left: 30px;
+  cursor: pointer;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.navigo li:hover {
+  color: #605dec;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+  padding: 8px 24px;
+}
+.Sign-up {
+  background-color: #605dec;
+  color: white;
+  border-radius: 4px;
+  transition-duration: 0.3s;
+  border: none;
+  display: flex;
+  padding: 12px 18px;
+  height: 48px;
+  align-items: center;
+  gap: 16px;
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.Sign-up:hover {
+  background-color: #8886ff;
+  color: white!;
+}
+
+.nav_right {
+  display: flex;
+}
+
+#user-avatar{
+  width: 3rem;
+  height: 3rem;
+}

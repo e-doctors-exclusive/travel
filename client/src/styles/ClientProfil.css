@@ -1,0 +1,360 @@
+
+.userProfile_main_container {
+  padding-top: 2rem;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userProfile_container {
+  width: 90%;
+  height: 80vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile_side_nav {
+  height: inherit;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.side_nav_card {
+  height: 7rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-left: 1.8rem;
+  padding-bottom: 0.4rem;
+  width: 80%;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.account_seeting_title {
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
+}
+
+.account_seeting_desc {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.profile_container {
+  height: inherit;
+  width: 67%;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.profile_img {
+  height: 20%;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.profile_img {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 18rem;
+}
+
+.avatar_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  gap: 1.5rem;
+}
+
+.avatar_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.avatar_info > p {
+  margin: 0;
+}
+
+#avatar_title {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+#avatar {
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+}
+
+.profile_img > button {
+  background-color: transparent;
+  color: blue;
+  padding: 0.4rem 2rem;
+  border-radius: 8px;
+  border: 2px solid rgb(137, 137, 255);
+  font-size: 18px;
+}
+
+.profile_information {
+  height: 76%;
+  border-radius: 6px;
+  width: 100%;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.profile_information p {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.username_email {
+  display: flex;
+  gap: 2rem;
+}
+
+.username_email input {
+  width: 100%;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 2px solid rgb(210, 210, 255);
+  transition: 0.3s;
+}
+
+.username_email input:focus {
+  border: 2px solid rgb(137, 137, 255);
+}
+
+.profile_information > input {
+  width: 100%;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 2px solid rgb(210, 210, 255);
+  transition: 0.3s;
+}
+
+.profile_information > input:focus {
+  border: 2px solid rgb(137, 137, 255);
+}
+
+.user_info {
+  display: grid;
+  grid-template-columns: auto auto;  
+  width: 100%;
+  gap: 1rem 2rem;
+}
+
+.user_info input {
+  width: 100%;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 2px solid rgb(210, 210, 255);
+  transition: 0.3s;
+}
+
+.user_info input:focus {
+  border: 2px solid rgb(137, 137, 255);
+}
+
+.profile_information > button {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  background-color: rgb(0, 0, 255);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+.profile_information > button:hover {
+  background-color: rgba(0, 0, 255, 0.753);
+}
+
+@media (min-width:  106rem) {
+  .profile_img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 23rem;
+  }
+
+  #avatar_title {
+    font-size: 26px;
+    font-weight: 800;
+  }
+  
+  #avatar {
+    height: 85px;
+    width: 85px;
+    border-radius: 50%;
+  }
+
+  .profile_information {
+    height: 76%;
+    border-radius: 6px;
+    width: 100%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.65rem;
+  }
+
+  .username_email input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .profile_information > input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .user_info input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .profile_information > button {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    background-color: rgb(0, 0, 255);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media (min-width: 110rem) {
+
+  .profile_img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 27rem;
+  }
+
+  #avatar_title {
+    font-size: 28px;
+    font-weight: 800;
+  }
+  
+  #avatar {
+    height: 95px;
+    width: 95px;
+    border-radius: 50%;
+  }
+
+  .profile_information {
+    height: 76%;
+    border-radius: 6px;
+    width: 100%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.1rem;
+  }
+
+  .username_email input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .profile_information > input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .user_info input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .profile_information > button {
+    width: 100%;
+    padding: 18px 20px;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    background-color: rgb(0, 0, 255);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+}
+
+#logout{
+  width: 80%;
+  border: none;
+  height: 5rem;
+  border-radius: 6px;
+  background-color: red;
+  color: white;
+  font-weight: 500;
+  font-size: 22px;
+  /* display: flex;
+  align-items: center;
+  padding-left: 2rem; */
+  transition: 0.3s;
+}
+
+
+#logout:hover{
+  color: red;
+  background-color: white;
+  border: red 2px solid;
+}
+
+
+/* {
+  outline: 1px solid red;
+} */
