@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import React, { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
@@ -17,7 +17,7 @@ function LandingPage() {
   return (
     <div>
     <TopHeader />
-      <Navbar /> /
+      <Navbar /> 
       <div className="landing">
         <div className="landing-forall">
           <div className="landing-title">

@@ -1,8 +1,8 @@
+"use client"
 import Image from "next/image";
-import "../styles/PassengerInfo.css";
 import React, { useState, ChangeEvent } from "react";
-import BagIllustration from "../Assets/Illustration.png";
-import logoIllustration from "../Assets/logoIllustration.png";
+// import BagIllustration from "../Assets/Illustration.png";
+// import logoIllustration from "../Assets/logoIllustration.png";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 import { useDispatch, useSelector } from "react-redux";
@@ -262,9 +262,9 @@ const PassengerInfo: React.FC = () => {
               <div className="trip-info">
                 <div className="aller">
                   <div className="aller_container">
-                    <img src={currentFlight.brand.image} alt="" />
+                    <Image src={currentFlight.brand?.image} alt="" />
                     <div className="img_title">
-                      <p>{currentFlight.brand.name}</p>
+                      <p>{currentFlight.brand?.name}</p>
                       <p className="ref">FIG4312</p>
                     </div>
                   </div>
@@ -288,7 +288,7 @@ const PassengerInfo: React.FC = () => {
                 </div>
               </div>
             </div>
-            <Image id="illustration" src={BagIllustration} alt="" />
+            {/* <Image id="illustration" src={BagIllustration} alt="" /> */}
           </div>
         </div>
       </div>

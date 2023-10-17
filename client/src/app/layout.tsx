@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -5,6 +6,7 @@ import "../styles/landing.css";
 import "../styles/Navbar.css";
 import "../styles/SignUp.css";
 import "../styles/header.css";
+import "../styles/PassengerInfo.css";
 import { Provider } from "react-redux";
 import { ReduxProvider } from "@/store/provide";
 import { ToastContainer } from "react-toastify";
