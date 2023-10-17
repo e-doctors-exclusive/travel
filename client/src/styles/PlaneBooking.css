@@ -1,0 +1,638 @@
+.plane-seat-selection-child,
+.plane-seat-selection-item {
+  position: absolute;
+  top: calc(50% - 302.5px);
+  left: calc(50% + 234px);
+  width: 9.38rem;
+  height: 22.5rem;
+}
+.plane-seat-selection-item {
+  left: calc(50% - 234px);
+}
+.plane-seat-selection-inner {
+  position: absolute;
+  top: calc(50% - 1297.5px);
+  left: calc(50% - 695px);
+  width: 170.75rem;
+  height: 162.22rem;
+}
+.plane-seat-selection-child1,
+.vector-icon {
+  position: absolute;
+  top: 25.03rem;
+  left: 71.1rem;
+  width: 4.59rem;
+  height: 2.83rem;
+  opacity: 0.4;
+}
+.plane-seat-selection-child1 {
+  left: 76.03rem;
+  width: 4.53rem;
+}
+.rectangle-icon {
+  position: absolute;
+  top: calc(50% - 1025px);
+  left: calc(50% - 109.5px);
+  width: 13.69rem;
+  height: 118.91rem;
+}
+.seat-icon {
+  position: relative;
+  width: 1.88rem;
+  height: 2.5rem;
+}
+.div {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.row-number {
+  position: relative;
+  width: 1.88rem;
+  height: 2rem;
+}
+.business,
+.seat-row-business {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+.seat-row-business {
+  align-self: stretch;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.25rem 0.5rem;
+}
+.business {
+  position: absolute;
+  top: calc(50% - 900px);
+  left: calc(50% - 80px);
+  border-radius: 8px;
+  width: 10rem;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0.75rem 0;
+  box-sizing: border-box;
+  gap: 0.75rem;
+}
+.exit-row {
+  position: absolute;
+  top: 0.06rem;
+  left: 1.56rem;
+  font-weight: 600;
+}
+.information-icon {
+  position: absolute;
+  top: 0;
+  left: 0.25rem;
+  border-radius: 2.25px;
+  width: 1.13rem;
+  height: 1.13rem;
+  overflow: hidden;
+}
+.seat-row-exit-row {
+  align-self: stretch;
+  position: relative;
+  background-color: #fff;
+  height: 1.13rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+}
+.seat-icon20 {
+  position: relative;
+  width: 1.38rem;
+  height: 2rem;
+}
+.seat-row-economy {
+  align-self: stretch;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.25rem;
+  gap: 0.31rem;
+}
+.economy,
+.plane-seat-selection {
+  position: absolute;
+  overflow: hidden;
+}
+.economy {
+  top: calc(50% - 580.5px);
+  left: calc(50% - 100px);
+  border-radius: 8px;
+  background-color: #fff;
+  width: 12.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem 0;
+  box-sizing: border-box;
+  gap: 0.25rem;
+}
+.plane-seat-selection {
+  top: -9.06rem;
+  left: -53.31rem;
+  width: 151.63rem;
+  height: 185.31rem;
+}
+.border {
+  align-self: stretch;
+  position: relative;
+  background-color: #cbd4e6;
+  width: 0.06rem;
+}
+.code,
+.location {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 5.44rem;
+}
+.code {
+  text-transform: uppercase;
+  font-weight: 800;
+}
+.location {
+  font-size: 0.75rem;
+  color: #e9e8fc;
+}
+.flight-info-information-da {
+  background-color: #27273f;
+  width: 8.06rem;
+  height: 5.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
+}
+.arrowright-icon,
+.arrowright-icon1 {
+  position: relative;
+  border-radius: 4px;
+  width: 2rem;
+  height: 2rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.arrowright-icon1 {
+  display: none;
+}
+.flight-info-information-da2 {
+  background-color: #27273f;
+  width: 8.06rem;
+  height: 5.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
+}
+.flight-information {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flight-info-divider-dark {
+  position: relative;
+  background-color: #27273f;
+  width: 0.06rem;
+  height: 5.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.span {
+  color: #7c8db0;
+}
+.direction,
+.time-data {
+  align-self: stretch;
+  position: relative;
+}
+.direction {
+  font-size: 0.75rem;
+  color: #e9e8fc;
+}
+.flight-info-inactive {
+  background-color: #605dec;
+  width: 13.13rem;
+  height: 5.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
+  gap: 0.25rem;
+}
+.chevron-icon {
+  position: relative;
+  width: 1.25rem;
+  height: 0.5rem;
+}
+.flight-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.flight-info1,
+.progress-step {
+  display: flex;
+  align-items: flex-start;
+}
+.flight-info1 {
+  background-color: #27273f;
+  width: 13.13rem;
+  height: 5.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.25rem 1.5rem;
+  box-sizing: border-box;
+  gap: 0.25rem;
+}
+.progress-step {
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 1rem;
+  color: #fff;
+}
+.progress-step-header-default {
+  align-self: stretch;
+  background-color: #27273f;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+.economy-seats-icon {
+  position: relative;
+  width: 20rem;
+  height: 11.25rem;
+}
+.header,
+.label {
+  position: relative;
+}
+.header {
+  align-self: stretch;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.label {
+  line-height: 1.13rem;
+}
+.badge-selected,
+.header-and-badge {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.badge-selected {
+  border-radius: 4px;
+  background: linear-gradient(180deg, #605dec, #2a26d9);
+  align-items: center;
+  padding: 0.13rem 0.38rem;
+  font-size: 0.88rem;
+  color: #fff;
+}
+.header-and-badge {
+  width: 9.19rem;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.13rem;
+}
+.description {
+  align-self: stretch;
+  position: relative;
+  color: #7c8db0;
+}
+.divider-thick,
+.point-heavy-icon {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.divider-thick {
+  background-color: #605dec;
+  width: 2rem;
+  height: 0.25rem;
+  opacity: 0.5;
+}
+.point-heavy-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.bullets-of-key {
+  flex: 1;
+  position: relative;
+}
+.feature-list-bullet,
+.feature-list-bullet3 {
+  align-self: stretch;
+  overflow: hidden;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0.25rem;
+  gap: 0.75rem;
+}
+.feature-list-bullet {
+  display: flex;
+}
+.feature-list-bullet3 {
+  display: none;
+}
+.feature-list,
+.feature-list-economy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+.feature-list {
+  width: 17rem;
+  align-items: flex-start;
+}
+.feature-list-economy {
+  border-radius: 8px;
+  align-items: center;
+  padding: 2rem 0.5rem;
+}
+.badge-selected1,
+.header-and-badge1 {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.badge-selected1 {
+  border-radius: 4px;
+  background: linear-gradient(180deg, #5cd6c0, #22c3a6);
+  display: none;
+  align-items: center;
+  padding: 0.13rem 0.38rem;
+  font-size: 0.88rem;
+  color: #fff;
+}
+.header-and-badge1 {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.13rem;
+}
+.divider-thick1 {
+  position: relative;
+  background-color: #5cd6c0;
+  width: 2rem;
+  height: 0.25rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+.feature-lists {
+  align-self: stretch;
+  flex: 1;
+  backdrop-filter: blur(24px);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  gap: 0.25rem;
+  color: #6e7491;
+}
+.divider2 {
+  align-self: stretch;
+  position: relative;
+  background-color: #cbd4e6;
+  height: 0.06rem;
+}
+.seat-selection-divider {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.label2,
+.name {
+  position: relative;
+}
+.label2 {
+  display: flex;
+  align-items: center;
+  width: 10rem;
+}
+.name {
+  font-size: 1.13rem;
+  font-weight: 600;
+  color: #6e7491;
+}
+.passenger-data {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  gap: 0.25rem;
+}
+.label3 {
+  position: relative;
+}
+.passenger-data1,
+.user-selections {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.passenger-data1 {
+  overflow: hidden;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 0.25rem;
+}
+.user-selections {
+  flex-direction: row;
+  gap: 1rem;
+}
+.button {
+  border-radius: 4px;
+  border: 1px solid #605dec;
+  box-sizing: border-box;
+  height: 3rem;
+  overflow: hidden;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+}
+.button,
+.button-row,
+.button1,
+.content1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.button1 {
+  border-radius: 4px;
+  background-color: rgba(203, 212, 230, 0.3);
+  border: 1px solid #7c8db0;
+  box-sizing: border-box;
+  height: 3rem;
+  overflow: hidden;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  color: #7c8db0;
+}
+.button-row,
+.content1 {
+  gap: 1rem;
+}
+.button-row {
+  align-items: flex-start;
+  font-size: 1rem;
+  color: #605dec;
+}
+.content1 {
+  align-self: stretch;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+.navigation-footer {
+  align-self: stretch;
+  background-color: #fafafe;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #7c8db0;
+}
+.content,
+.navigation-footer,
+.seat-selector {
+  display: flex;
+  justify-content: flex-start;
+}
+.content {
+  align-self: stretch;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.seat-selector {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(24px);
+  width: 44.5rem;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  color: #fafafa;
+}
+.desktop-basic-icon {
+  position: absolute;
+  width: calc(100% - 720px);
+  top: 0;
+  right: 45rem;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  height: 6rem;
+}
+.tripma {
+  background-color: #fff;
+  width: 100%;
+  height: 56.25rem;
+  overflow-y: auto;
+  text-align: center;
+  font-size: 0.88rem;
+  color: #7c8db0;
+  font-family: "Nunito Sans";
+}
+.tripma_container{
+  position: relative;
+}
+
+.plane_svg {
+  position: relative;
+  width: 67.64076rem;
+  display: flex;
+  justify-content: center;
+  align-self: start;
+  overflow-x: hidden;
+}
+
+.plane_svg img{
+  width: 411.01156249999997rem;
+  height:293.5796875rem;
+  z-index: 0; 
+}
+
+.plane_seats {
+  background-color: transparent;
+  position: absolute;
+  z-index: 5;
+  bottom: 500px;
+  height: 320vh;
+  width: 47vh;
+  bottom: 100vh;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: center ;
+  flex-wrap: wrap;
+
+  /* align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 2rem; */
+}
+
+.seat{
+ 
+  height: 6rem;
+  width: 3rem;
+  margin-top: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 20px;
+  color: white;
+  border-radius: 8px;
+  border: none;
+}
+
+#forclik:focus{
+  background-color: #4ed1ba;
+}

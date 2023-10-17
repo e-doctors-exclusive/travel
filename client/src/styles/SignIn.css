@@ -1,0 +1,71 @@
+/* Styles for the modal container */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Overlay background */
+  }
+  
+  /* Styles for the open modal */
+  .modal.open {
+    display: block;
+  }
+  
+  /* Styles for the modal content */
+  .modal-content {
+    position: relative;
+    transform: translate(190%, 50%);
+    background-color: #fff; /* Background color */ /* 15% from the top and centered horizontally */
+    padding: 20px;
+    border: 1px solid #888;
+    width:500; /* Set width of the modal content */
+    max-width: 400px;
+    height: 500px; /* Maximum width for smaller screens */
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* Styles for the modal title */
+  .modal-content h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for the modal description */
+  .modal-content p {
+    font-size: 1em;
+    margin-bottom: 20px;
+  }
+  
+  /* Styles for the input fields */
+  .input-fields input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Styles for the buttons */
+  .signInbtn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+  }
+  
+  /* Styles for the close button */
+  .signInbtn .close {
+    background-color: #ccc;
+  }
+  
