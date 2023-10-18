@@ -1,12 +1,14 @@
 import { configureStore} from "@reduxjs/toolkit"
 import tokenReducer from "./tokenSlicer"
+import adminReducer from "./adminSlicer"
 import FlightsSlice from "./flights"
 
 
 export const store = configureStore({
     reducer:{
         token: tokenReducer,
-        flights:FlightsSlice
+        flights:FlightsSlice,
+        admin:adminReducer
     }
 })
 

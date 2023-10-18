@@ -1,30 +1,24 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import icon1 from "../../public/Assets/icons/PaymentPage-icons/credit card.svg";
-import icon5 from "../../public/Assets/icons/PaymentPage-icons/flousi.svg";
-import information from "../../public/Assets/icons/PaymentPage-icons/information.svg";
+import icon1 from "../../../public/Assets/icons/PaymentPage-icons/credit card.svg";
+import icon5 from "../../../public/Assets/icons/PaymentPage-icons/flousi.svg";
+import information from "../../../public/Assets/icons/PaymentPage-icons/information.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
-import Navbar from "../../Components/Navbar";
-import Footer from "../../Components/Footer";
-import axios from "axios";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
-interface PaymentProps {}
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import Navbar from "@/Components/Navbar";
+import Footer from "@/Components/Footer";
 
-const Payment: React.FC<PaymentProps> = () => {
+const Payment = () => {
   const router = useRouter();
   const [can, setCan] = useState(true);
-  const user: any = useSelector((state: RootState) => state.user);
+  const user = useSelector((state: any) => state.user);
   const userid = user.user.id;
-  const currentFlight: any = useSelector(
-    (state: RootState) => state.flights.currentFlight
-  );
-  const currentReservation: any = useSelector(
-    (state: RootState) => state.flights.currentReservation
-  );
+  const currentFlight = useSelector((state:any) => state.flights.currentFlight);
+  const currentReservation = useSelector((state:any) => state.flights.currentReservation);
 
-  const takeAseat = async (id: number) => {
+  const takeAseat = async (id:number) => {
     try {
       const res = await axios.put(`http://localhost:1128/seats/update/${id}`, {
         availble: false,
@@ -34,22 +28,22 @@ const Payment: React.FC<PaymentProps> = () => {
       throw error;
     }
   };
-  const addReservation = async (obj: object) => {
+
+  const addReservation = async (obj:object) => {
     try {
-      const res = await axios.post(
-        `http://localhost:1128/reservation/add`,
-        obj
-      );
+      const res = await axios.post(`http://localhost:1128/reservation/add`, obj);
     } catch (error) {
       throw error;
     }
   };
+
   useEffect(() => {
-    setCan(true)
+    setCan(true);
   }, []);
+
   return (
     <>
-      <Navbar />
+     <Navbar />
       <div className="payment_main_container">
         <div className="payment_container">
           <div className="payment_methods">
@@ -66,7 +60,7 @@ const Payment: React.FC<PaymentProps> = () => {
                 <p>Credit card</p>
               </li>
               <li>
-                <Image id="flousi_icon" src={icon5} alt="" />
+                <Image id="flousi_icon" src={icon5} alt="" className="flousi" />
                 <p>Flousi</p>
               </li>
             </ul>
@@ -148,9 +142,9 @@ const Payment: React.FC<PaymentProps> = () => {
               <div className="trip-info">
                 <div className="aller">
                   <div className="aller_container">
-                    <Image src={currentFlight.brand.image} alt="" />
+                    <Image src={currentFlight.brand?.image} alt="" />
                     <div className="img_title">
-                      <p>{currentFlight.brand.name}</p>
+                      <p>{currentFlight.brand?.name}</p>
                       <p className="ref">FIG4312</p>
                     </div>
                   </div>

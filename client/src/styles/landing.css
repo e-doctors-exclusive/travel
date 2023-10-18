@@ -20,6 +20,7 @@
   box-shadow: 0px 12px 24px 0px rgba(27, 59, 119, 0.05),
     0px 24px 60px 0px rgba(6, 47, 125, 0.05),
     0px 2px 4px 0px rgba(7, 4, 146, 0.1);
+ 
 }
 
 .landing-forall {
@@ -29,9 +30,11 @@
 .landing-input select {
   border: none;
   padding: 8px 12px;
+  
 }
 .landing-input select:focus{
   outline: none;
+  
 }
 .landing-input option{
   font-size: 17px;
@@ -40,12 +43,14 @@
   border: none;
   padding: 8px 12px;
   width: 325px;
+  
 }
 .landing-input {
   display: flex;
   align-items: center;
   padding: 8px 12px;
   border-left: 1px solid #eee;
+  
 }
 
 .landing-input input {
@@ -108,7 +113,7 @@
   /* margin-left: 40px;
     margin-right: 40px; */
 }
-.land-card Image {
+.land-card img {
   width: 100%;
   height: 397px;
   object-fit: cover;
@@ -203,7 +208,7 @@
   width: 410px;
   display: flex;
 }
-.one-rate Image {
+.one-rate img {
   width: 48px;
   height: 48px;
   border-radius: 48px;
@@ -270,7 +275,7 @@
   position: absolute;
   height: 14%;
   width: 37%;
-  top: 14%;
+  top: 67%;
   left: 37%;
   transition: 0.3s;
 }
