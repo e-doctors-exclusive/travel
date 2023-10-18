@@ -32,7 +32,14 @@ export const userSlicer = createSlice({
       state.userToken = token;
       state.loggedIn = loggedIn;
     },
+    
   },
+  // extraReducers(builder) {
+  //   checkToken:(state,action)=>{
+      
+  //   }
+  // }
+
 });
 
 export const { setUser, logout, setLoggedIn } = userSlicer.actions;
