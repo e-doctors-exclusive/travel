@@ -5,13 +5,13 @@ import Navbar from "../../Components/Navbar";
 import Avatar from "../../../public/Assets/avatar.jpeg";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { logout } from "../../store/userSlicer";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { setLogState } from "@/store/tokenSlicer";
 
 const ProfileUser = () => {
-  const { user } = useSelector((state: any) => state.user);
+  const  user  = useSelector((state: any) => state.token);
   const [form, setForm] = useState({
     name: user.name,
     email: user.email,
@@ -50,11 +50,15 @@ const ProfileUser = () => {
 
   const handleUpdate = async (obj: Object) => {
     try {
+      console.log(user);
+      
       const response = await axios.put(
-        `http://localhost:1128/users/update/${user.id}`,
+        `http://localhost:1128/users/update/${user.token.id}`,
         obj
       );
       toast.success("Update Successfully");
+      console.log("");
+      
     } catch (error) {
       console.error(error);
     }
@@ -114,7 +118,8 @@ const ProfileUser = () => {
               </p>
             </div>
             <button id="logout" onClick={() => {
-              dispatch(logout())
+              localStorage.removeItem("token")
+              dispatch(setLogState(false))
               router.push("/")
               toast.info("Goodbye!");
             }}>Logout</button>
