@@ -1,9 +1,9 @@
-import "../styles/DatePickers.css";
-import "../styles/landing.css";
+
 import React, { useState } from "react";
-import CalendarIcon from "../Assets/icons/calendar.svg";
-import DatePicker from "react-datepicker";
+import CalendarIcon from "../../public/Assets/icons/calendar.svg";
+// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Image from "next/image";
 
 interface DatePickersProps {
   handleOpenDateModal: () => void;
@@ -67,7 +67,7 @@ const DatePickers: React.FC<DatePickersProps> = (props: DatePickersProps) => {
         <div className="data_pickerd_date_container">
           <div className="data_pickerd_date">
             <div className="date_data">
-              <img src={CalendarIcon} alt="" />
+              <Image src={CalendarIcon} alt="" />
               <p>{selectedOption === "roundTrip" ? `Depart - Return` : "Depart"}</p>
               {/* <p>Return</p> */}
             </div>
@@ -78,7 +78,7 @@ const DatePickers: React.FC<DatePickersProps> = (props: DatePickersProps) => {
         </div>
       </div>
       <div className="Round_trip">
-      {selectedOption === "roundTrip" ? (
+      {/* {selectedOption === "roundTrip" ? (
           <>
             <DatePicker
             
@@ -101,7 +101,7 @@ const DatePickers: React.FC<DatePickersProps> = (props: DatePickersProps) => {
             dateFormat="MM/dd"
             className="custom-datepicker"
           />
-        )}
+        )} */}
       </div>
       <div className="One_way">
 

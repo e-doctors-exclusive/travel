@@ -1,14 +1,15 @@
-import "../styles/Payment.css";
+"use client"
 import React, { useEffect, useState } from "react";
-import icon1 from "../Assets/icons/PaymentPage-icons/credit card.svg";
-import icon5 from "../Assets/icons/PaymentPage-icons/flousi.svg";
-import information from "../Assets/icons/PaymentPage-icons/information.svg";
+import icon1 from "../../public/Assets/icons/PaymentPage-icons/credit card.svg";
+import icon5 from "../../public/Assets/icons/PaymentPage-icons/flousi.svg";
+import information from "../../public/Assets/icons/PaymentPage-icons/information.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 interface PaymentProps {}
 
 const Payment: React.FC<PaymentProps> = () => {
@@ -61,11 +62,11 @@ const Payment: React.FC<PaymentProps> = () => {
             </div>
             <ul className="payment_methods_creditCard">
               <li>
-                <img src={icon1} alt="" />
+                <Image src={icon1} alt="" />
                 <p>Credit card</p>
               </li>
               <li>
-                <img id="flousi_icon" src={icon5} alt="" />
+                <Image id="flousi_icon" src={icon5} alt="" />
                 <p>Flousi</p>
               </li>
             </ul>
@@ -86,7 +87,7 @@ const Payment: React.FC<PaymentProps> = () => {
                 </div>
                 <div className="ccv">
                   <input type="text" placeholder="CCV" />
-                  <img src={information} alt="" />
+                  <Image src={information} alt="" />
                 </div>
               </div>
             </div>
@@ -147,7 +148,7 @@ const Payment: React.FC<PaymentProps> = () => {
               <div className="trip-info">
                 <div className="aller">
                   <div className="aller_container">
-                    <img src={currentFlight.brand.image} alt="" />
+                    <Image src={currentFlight.brand.image} alt="" />
                     <div className="img_title">
                       <p>{currentFlight.brand.name}</p>
                       <p className="ref">FIG4312</p>

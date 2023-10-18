@@ -1,4 +1,3 @@
-import "../styles/SignIn.css";
 import React, { useState } from "react";
 
 interface SignInModalProps {

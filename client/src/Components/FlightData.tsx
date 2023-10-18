@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/FlightFinder.css";
 import { selected } from "../store/flights";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
-import { useNavigate } from "react-router-dom";
+import {useRouter} from "next/navigation"
+import Image from "next/image";
 interface OneFlightData {
   Reservations: any[];
   Seats: any[];
@@ -26,7 +26,7 @@ interface propsType{
 }
 const FlightData: React.FC <propsType>= (props:any) => {
   const dispatch: AppDispatch = useDispatch();
-  const navigate = useNavigate()
+  const router = useRouter()
  let startTime:any = props.oneFlight.departureTime.split(':').map(Number);
  let endTime:any = props.oneFlight.arrivalTime.split(':').map(Number);
  const hours1 = startTime[0];
@@ -46,7 +46,7 @@ const FlightData: React.FC <propsType>= (props:any) => {
   return (
     <div className="flight-data" onClick={()=>{dispatch(selected(props.oneFlight));}}>
       <div className="logo-sec">
-        <img id="airline_logo" src={props.oneFlight.brand.image} alt="" />
+        <Image id="airline_logo" src={props.oneFlight.brand.image} alt="" />
         <div className="logo-sec-desc">
           <p>{`${hours}:${minutes}m`}</p>
           <p>{props.oneFlight.brand.name}</p>

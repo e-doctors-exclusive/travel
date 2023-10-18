@@ -1,12 +1,11 @@
 import Image from "next/image";
-import "../styles/Footer.css";
 import React from "react";
 import Logo from "./Logo";
-import AppStoreBanner from "../Assets/appstore.png"
-import PlayStoreBanner from "../Assets/playstore.png"
-import twitterIcon from "../Assets/icons/twitter.svg"
-import instagramIcon from "../Assets/icons/instagram.svg"
-import facebookIcon from "../Assets/icons/facebook.svg"
+// import AppStoreBanner from "../../../Assets/appstore.png"
+// import PlayStoreBanner from "../Assets/playstore.png"
+import twitterIcon from "../../public/Assets/icons/twitter.svg"
+import instagramIcon from "../../public/Assets/icons/instagram.svg"
+import facebookIcon from "../../public/Assets/icons/facebook.svg"
 
 function Footer(): JSX.Element {
   return (
@@ -49,16 +48,16 @@ function Footer(): JSX.Element {
             <li>Tripma for iOS</li>
             <li>Mobile site</li>
             <div className="Mobile_app_Links">
-                <Image src={AppStoreBanner} alt="" />
-                <Image src={PlayStoreBanner} alt="" />
+                {/* <Image src={AppStoreBanner} alt="" />
+                <Image src={PlayStoreBanner} alt="" /> */}
             </div>
         </ul>
       </div>
       <div className="footer-bottom">
         <div id="socialIcons">
-            <img src={twitterIcon} alt="" />
-            <img src={instagramIcon} alt="" />
-            <img src={facebookIcon} alt="" />
+            <Image src={twitterIcon} alt="" />
+            <Image src={instagramIcon} alt="" />
+            <Image src={facebookIcon} alt="" />
         </div>
         <p>© 2020 Tripma incorporated</p>
       </div>

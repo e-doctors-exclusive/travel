@@ -1,16 +1,17 @@
-import "../styles/ClientProfil.css";
+"use client"
 import React, { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
-import Avatar from "../Assets/avatar.jpeg";
+import Image from "next/image";
+import Navbar from "../../Components/Navbar";
+import Avatar from "../../public/Assets/avatar.jpeg";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { logout } from "../store/userSlicer";
+import { logout } from "../../store/userSlicer";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const ProfileUser = () => {
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state:any) => state.user);
   const [form, setForm] = useState({
     name: user.name,
     email: user.email,
@@ -23,11 +24,14 @@ const ProfileUser = () => {
     zip: user.zip,
     image: user.image,
   });
-  const [userReservations, setReservation] = useState([]);
+  const [userReservations, setReservation] = useState<Array<Object>>([]);
   const [element, setElement] = useState("userProfile");
   const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const handleFileUpload = async (e) => {
+const router =useRouter()
+  const handleFileUpload = async (e:React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return
+    }
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
@@ -44,7 +48,7 @@ const ProfileUser = () => {
     }
   };
 
-  const handleUpdate = async (obj) => {
+  const handleUpdate = async (obj:Object) => {
     try {
       const response = await axios.put(
         `http://localhost:1128/users/update/${user.id}`,
@@ -56,7 +60,7 @@ const ProfileUser = () => {
     }
   };
 
-  const takeReservation = async (id) => {
+  const takeReservation = async (id:number) => {
     try {
       const response = await axios.get(
         `http://localhost:1128/reservation/getFor/${id}`
@@ -114,7 +118,7 @@ const ProfileUser = () => {
             </div>
             <button id="logout" onClick={()=>{
               dispatch(logout())
-              navigate("/")
+              router.push("/")
               toast.info("Goodbye!");
             }}>Logout</button>
           </div>
@@ -123,7 +127,7 @@ const ProfileUser = () => {
               <>
                 <div className="profile_img">
                   <div className="avatar_container">
-                    <img src={Avatar} id="avatar" />
+                    <Image src={Avatar} alt="" id="avatar" />
                     <div className="avatar_info">
                       <p id="avatar_title">Upload a New Photo</p>
                       <p id="avatar_file_source">Profile-pic.jpg</p>
@@ -212,9 +216,9 @@ const ProfileUser = () => {
                 {userReservations.map((r) => {
                   return (
                     <div className="oneChekout">
-                      <div className="flight-data">
+                      {/* <div className="flight-data">
                         <div className="logo-sec">
-                          <img
+                          <Image
                             id="airline_logo"
                             src={r.Flight.brand.image}
                             alt=""
@@ -233,7 +237,7 @@ const ProfileUser = () => {
                           <p>${r.Flight.price}</p>
                           <p>round trip</p>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   );
                 })}

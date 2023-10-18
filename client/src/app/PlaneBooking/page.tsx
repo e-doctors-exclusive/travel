@@ -1,16 +1,16 @@
+"use client"
 import Image from "next/image";
 import React, { useReducer, useState } from "react";
-import "../styles/PlaneBooking.css";
-import point from "../Assets/tripmaBooking/point heavy.png";
-import check from "../Assets/tripmaBooking/check heavy.png";
-import wordmark from "../Assets/tripmaBooking/Wordmark.png";
-import arrowRight from "../Assets/tripmaBooking/arrowRight.png";
-import ecoSeats from "../Assets/tripmaBooking/Economy Seats.png";
-import bussinesSeats from "../Assets/tripmaBooking/Business Seats.png";
+import point from "../../public/Assets/tripmaBooking/point heavy.png";
+import check from "../../public/Assets/tripmaBooking/check heavy.png";
+import wordmark from "../../public/Assets/tripmaBooking/Wordmark.png";
+import arrowRight from "../../public/Assets/tripmaBooking/arrowRight.png";
+import ecoSeats from "../../public/Assets/tripmaBooking/Economy Seats.png";
+import bussinesSeats from "../../public/Assets/tripmaBooking/Business Seats.png";
 import { useSelector } from "react-redux";
 import { fillForm } from "../../store/flights";
 import { AppDispatch, RootState } from "../../store";
-import plane from "../Assets/plane.svg";
+import plane from "../../public/Assets/plane.svg";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 const PlaneBooking = () => {

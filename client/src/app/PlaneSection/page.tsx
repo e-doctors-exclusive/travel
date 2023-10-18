@@ -1,4 +1,4 @@
-import "../styles/ClientProfil.css";
+"use client"
 import React from "react";
 
 const PlaneSection: React.FC = () => {
