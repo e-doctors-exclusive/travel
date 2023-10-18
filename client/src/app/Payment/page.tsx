@@ -1,8 +1,8 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import icon1 from "../../public/Assets/icons/PaymentPage-icons/credit card.svg";
-import icon5 from "../../public/Assets/icons/PaymentPage-icons/flousi.svg";
-import information from "../../public/Assets/icons/PaymentPage-icons/information.svg";
+import icon1 from "../../../public/Assets/icons/PaymentPage-icons/credit card.svg";
+import icon5 from "../../../public/Assets/icons/PaymentPage-icons/flousi.svg";
+import information from "../../../public/Assets/icons/PaymentPage-icons/information.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import Navbar from "../../Components/Navbar";
