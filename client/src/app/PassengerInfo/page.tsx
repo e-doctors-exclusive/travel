@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import React, { useState, ChangeEvent } from "react";
-// import BagIllustration from "../Assets/Illustration.png";
+import BagIllustration from "../../../public/Assets/Illustration.png";
 // import logoIllustration from "../Assets/logoIllustration.png";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
@@ -288,7 +288,7 @@ const PassengerInfo: React.FC = () => {
                 </div>
               </div>
             </div>
-            {/* <Image id="illustration" src={BagIllustration} alt="" /> */}
+            <Image id="illustration" src={BagIllustration} alt="" />
           </div>
         </div>
       </div>

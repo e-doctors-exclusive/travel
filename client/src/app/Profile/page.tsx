@@ -1,8 +1,8 @@
-import "../styles/ClientProfil.css";
+"use client"
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Navbar from "../../Components/Navbar";
-import Avatar from "../Assets/avatar.jpeg";
+import Avatar from "../../public/Assets/avatar.jpeg";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";

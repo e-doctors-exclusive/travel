@@ -4,9 +4,9 @@ import logo from "./Logo";
 import Logo from "./Logo";
 import SignUp from "./SignUp";
 import SignInModal from "./SignIn";
-import googleIcon from "../Assets/icons/thirdPartyIcons/color.svg";
-import appleIcon from "../Assets/icons/thirdPartyIcons/appleMac.svg";
-import facebookIcon from "../Assets/icons/thirdPartyIcons/facebook.svg";
+import googleIcon from "../../public/Assets/icons/thirdPartyIcons/color.svg";
+import appleIcon from "../../public/Assets/icons/thirdPartyIcons/appleMac.svg";
+import facebookIcon from "../../public/Assets/icons/thirdPartyIcons/facebook.svg";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
@@ -123,7 +123,8 @@ const router = useRouter()
           <li>Flights</li>
           <li>Hotels</li>
           <li>Packages</li>
-          {!loggedIn ? <li onClick={openSignInModal}>Sign in</li> : <li onClick={()=>{router.push("/my-profile")}}><Image id="user-avatar" alt="" src={user.image}/></li>}
+          {!loggedIn ? <li onClick={openSignInModal}>Sign in</li> : <li onClick={()=>{router.push("/my-profile")}}><Image   width={500}
+      height={300} id="user-avatar" alt=""  src={user.image}/></li>}
         </ul>
         {!loggedIn ? <button className="Sign-up" onClick={openSignUpModal}>
           Sign up
@@ -204,15 +205,15 @@ const router = useRouter()
           </div>
           <div className="third_party_auth">
             <div className="third_party_btn">
-              <img src={googleIcon} alt="" />
+              <Image src={googleIcon} alt="" />
               <p>Continue with Google</p>
             </div>
             <div className="third_party_btn">
-              <img src={appleIcon} alt="" />
+              <Image src={appleIcon} alt="" />
               <p>Continue with Apple</p>
             </div>
             <div className="third_party_btn">
-              <img src={facebookIcon} alt="" />
+              <Image src={facebookIcon} alt="" />
               <p>Continue with Facebook</p>
             </div>
           </div>

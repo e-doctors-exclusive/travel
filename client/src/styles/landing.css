@@ -1,5 +1,5 @@
 .landing {
-  background-image: url(../Assets/back2.png);
+  background-image: url(../../public/Assets/back2.png);
   min-height: 90vh;
   background-size: contain;
   display: flex;
@@ -62,9 +62,10 @@
   margin-bottom: 50px;
 }
 .landing-title h1 {
-  background: url(../Assets/Group.png);
+  background: url(../../public/Assets/Group.png);
   background-repeat: repeat;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 100px;
   width: 850px;
@@ -107,7 +108,7 @@
   /* margin-left: 40px;
     margin-right: 40px; */
 }
-.land-card img {
+.land-card Image {
   width: 100%;
   height: 397px;
   object-fit: cover;
@@ -202,7 +203,7 @@
   width: 410px;
   display: flex;
 }
-.one-rate img {
+.one-rate Image {
   width: 48px;
   height: 48px;
   border-radius: 48px;
