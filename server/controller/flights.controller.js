@@ -1,29 +1,34 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-
-
-module.exports.getAllFlights = async (req, res) => {
+module.exports = {
+getAllFlights : async (req, res) => {
   try {
       const getAll = await prisma.flights.findMany() 
       res.status(200).send(getAll)
   } catch (error) {
       throw new Error(error)
   }
-};
+},
 
-module.exports.addFlight = async (req, res) => {
+addFlight : async (req, res) => {
+    try {
+      const flight = await prisma.flights.create({data:req.body})
+      res.json(flight)
+    } catch (error) {
+      throw error 
+    }
 
-  try {
-    const flight = await prisma.flights.create(
-      {data:req.body}
-    );
-    res.status(201).json(flight);
-  } catch (error) {
-    res.json({ message: 'Error adding flight' });
-  }
-};
-
-module.exports.getFlights = async (req, res) => {
+  // try {
+  //   const flight = await prisma.flights.create({
+  //     data:req.body
+  //   });
+  //   res.status(201).json(flight);
+  // } catch (error) {
+  //   // res.json({ message: 'Error adding flight' });
+  //   throw error 
+  // }
+},
+getFlights : async (req, res) => {
     try {
         const getAll = await prisma.flights.findMany(({ 
            include:{all:true},
@@ -35,9 +40,8 @@ module.exports.getFlights = async (req, res) => {
     } catch (error) {
         throw new Error(error)
     }
-};
-
-module.exports.findOneFlight = async (req, res) => {
+},
+findOneFlight : async (req, res) => {
   try {
     const flightId = parseInt(req.params.idFind);
     const flight = await prisma.flights.findUnique(req.params.idFind)
@@ -45,13 +49,9 @@ module.exports.findOneFlight = async (req, res) => {
     const flightInfo = await prisma.flights.findUnique({where:{id:flightId}})
     res.status(200).send({flightInfo:flightInfo,flightSteats:allSeats});
   } catch (error) {
-    throw new Error(error);
-  }
-};
-
-
-
-module.exports.updateFlight = async (req, res) => {
+console.log(error);  }
+},
+updateFlight : async (req, res) => {
   try {
     const flightId = parseInt(req.params.idUpdate);
         const flightData = req.body;
@@ -62,9 +62,9 @@ module.exports.updateFlight = async (req, res) => {
   } catch (error) {
     throw new Error(error);
   }
-};
+},
 
-module.exports.deleteFlight = async (req, res) => {
+deleteFlight : async (req, res) => {
   try {
     flightId = parseInt(req.params.idDelete);
     const del = await prisma.Flights.delete({ where: { id: req.params.idDelete } });
@@ -72,4 +72,5 @@ module.exports.deleteFlight = async (req, res) => {
   } catch (error) {
     throw new Error(error);
   }
-};
+}
+}
