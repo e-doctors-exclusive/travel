@@ -5,7 +5,7 @@ const port = 1128; // You can choose any available port
 app.use(express.json());
 require("./database/index.js")
 
-
+require('dotenv').config()
 const userRoutes = require("./router/user.routes.js")
 const adminRoutes = require("./router/admin.router.js")
 const flightsRoutes = require("./router/flights.router.js")
