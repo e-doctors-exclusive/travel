@@ -148,9 +148,9 @@ const Payment: React.FC<PaymentProps> = () => {
               <div className="trip-info">
                 <div className="aller">
                   <div className="aller_container">
-                    <Image src={currentFlight.brand.image} alt="" />
+                    <Image src="" alt="" />
                     <div className="img_title">
-                      <p>{currentFlight.brand.name}</p>
+                      <p></p>
                       <p className="ref">FIG4312</p>
                     </div>
                   </div>
