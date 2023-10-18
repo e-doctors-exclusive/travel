@@ -7,7 +7,7 @@ function App() {
   const socket = io('http://localhost:3001'); // Connect to the backend server
 
   useEffect(() => {
-    socket.on('message', (data) => {
+    socket.on('message', (data:any) => {
       setMessages([...messages,data]);
     });
   }, [messages]);
