@@ -123,7 +123,7 @@ const router = useRouter()
           <li>Flights</li>
           <li>Hotels</li>
           <li>Packages</li>
-          {!loggedIn ? <li onClick={openSignInModal}>Sign in</li> : <li onClick={()=>{router.push("/my-profile")}}><Image   width={500}
+          {!loggedIn ? <li onClick={openSignInModal}>Sign in</li> : <li onClick={()=>{router.push("/Profile")}}><Image   width={500}
       height={300} id="user-avatar" alt=""  src={user.image}/></li>}
         </ul>
         {!loggedIn ? <button className="Sign-up" onClick={openSignUpModal}>
