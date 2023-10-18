@@ -1,10 +1,10 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-
+import Link from "next/link";
 function Logo() {
   return (
     <div>
-      {/* <Link to='/'> */}
+      <Link href='/'>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="131"
@@ -41,7 +41,7 @@ function Logo() {
             fill="#605DEC"
           />
         </svg>
-      {/* </Link> */}
+      </Link>
     </div>
   );
 }

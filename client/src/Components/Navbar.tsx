@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import Image from 'next/image';
 import logo from "./Logo";
 import Logo from "./Logo";
 import SignUp from "./SignUp";
@@ -7,60 +7,62 @@ import SignInModal from "./SignIn";
 import googleIcon from "../../public/Assets/icons/thirdPartyIcons/color.svg";
 import appleIcon from "../../public/Assets/icons/thirdPartyIcons/appleMac.svg";
 import facebookIcon from "../../public/Assets/icons/thirdPartyIcons/facebook.svg";
+import def from "../../public/Assets/icons/person solid.svg"
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser, logout, setLoggedIn,selectUser,selectLoggedIn } from "../store/userSlicer";
+import { setLogState, selectUser, checkUser, selectLoggedIn, selectUserError } from "../store/tokenSlicer";
 import { toast } from "react-toastify";
+import { AppDispatch } from "@/store";
 
-  const Navbar = () => {
-const router = useRouter()
+const Navbar = () => {
+  const router = useRouter()
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
   const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
-  const dispatch = useDispatch();
-  const  user:any  = useSelector(selectUser);
-  // console.log("imheh",user);
-  
+  const dispatch: AppDispatch = useDispatch();
+  const user = useSelector(selectUser);
   const loggedIn = useSelector(selectLoggedIn)
+  const err = useSelector(selectUserError)
   const [form, setForm] = useState({
     phomail: "",
     password: "",
   });
   const [checks, setChecks] = useState({ c1: false, c2: false });
-  const handleCreate = async (form:any) => {
+
+  const handleCreate = async (form: any) => {
     // conso  le.log(form);
-    if(checks.c1) {
+    if (checks.c1) {
       await axios
-      .post("http://localhost:1128/users/signup", form)
-      .then((result) => {
-        toast.success("Account created successfully", {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
+        .post("http://localhost:1128/users/signup", form)
+        .then((result) => {
+          toast.success("Account created successfully", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          })
+
         })
-        
-      })
-      .catch((err) => {
-        toast.error("User already exists", {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
+        .catch((err) => {
+          toast.error("User already exists", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+          console.log(err);
         });
-        console.log(err);
-      });
     }
-    else{
-      toast.warning("Agree to privacy policy",{
+    else {
+      toast.warning("Agree to privacy policy", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -88,15 +90,18 @@ const router = useRouter()
   const closeSignUpModal = () => {
     setSignUpModalOpen(false);
   };
-
-  const handleSignIn = async (email:string, password:string) => {
+  console.log("this is error", err);
+  const [state, setState] = useState<boolean>(false)
+  const handleSignIn = async (email: string, password: string) => {
     if (Number.isNaN(+email)) {
+      console.log(email);
+
       await axios
         .post("http://localhost:1128/users/login", { email, password })
         .then((res) => {
-          dispatch(setUser({ user: res.data.user.dataValues }));
-          dispatch(setLoggedIn({ loggedIn: true, token: res.data.user.token }))
-          toast.success(`Welcome ${res.data.user.dataValues.email || res.data.user.dataValues.phone}`,{
+          dispatch(setLogState(true))
+          localStorage.setItem("token", res.data.user.token)
+          toast.success(`Welcome ${res.data.user.dataValues.email || res.data.user.dataValues.phone}`, {
             position: "top-center"
           })
         })
@@ -104,7 +109,7 @@ const router = useRouter()
     } else {
       await axios
         .post("http://localhost:1128/users/login", {
-          phone: parseInt(email),
+          phone: email,
           password,
         })
         .then((res) => {
@@ -113,6 +118,16 @@ const router = useRouter()
         .catch((e) => console.log(e));
     }
   };
+  console.log("this is my condition",loggedIn);
+  
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    dispatch(checkUser(JSON.stringify(token)));
+    console.log(token);
+
+    loggedIn ? (dispatch(setLogState(true)), setState(true)) : dispatch(setLogState(false)), setState(false);
+  }, [loggedIn]);
+
   return (
     <div className="navbar">
       <div className="logo">
@@ -123,12 +138,15 @@ const router = useRouter()
           <li>Flights</li>
           <li>Hotels</li>
           <li>Packages</li>
-          {!loggedIn ? <li onClick={openSignInModal}>Sign in</li> : <li onClick={()=>{router.push("/my-profile")}}><Image   width={500}
-      height={300} id="user-avatar" alt=""  src={user.image}/></li>}
+          {loggedIn ? <li onClick={() => { router.push("/Profile") }}><Image width={500}
+            height={300} id="user-avatar" alt="" src={
+              // user?.image
+              // ||
+              def} /></li> : <li onClick={openSignInModal}>Sign in</li>}
         </ul>
-        {!loggedIn ? <button className="Sign-up" onClick={openSignUpModal}>
+        {loggedIn ? null : <button className="Sign-up" onClick={openSignUpModal}>
           Sign up
-        </button> : null}
+        </button>}
       </div>
 
       <SignUp isOpen={isSignUpModalOpen} onClose={closeSignUpModal}>

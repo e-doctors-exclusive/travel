@@ -33,6 +33,11 @@ module.exports.login = async (req, res) => {
     } else {
       res.status(404).json({ message: "user not found" });
     }
+
+    if (!user) {
+      return res.status(404).json({ message: "user not found" });
+    }
+
     bcrypt
       .compare(password, user.password)
       .then((checked) => {
@@ -41,24 +46,27 @@ module.exports.login = async (req, res) => {
             {
               userId: user.id,
             },
-            "secret",
+            process.env.SECRET_KEY,
             { expiresIn: "24h" }
           );
           res.status(200).json({
             message: "login successful",
-            user: { ...user, token: Token },
+            user: { id: user.id, email: user.email, token: Token },
           });
         } else {
           res.status(403).json({ message: "wrong password" });
         }
       })
       .catch((e) => {
-        res.status(404).json({ message: "error comparing password", e });
+        console.error(e);
+        res.status(500).json({ message: "error comparing password", e });
       });
   } catch (e) {
-    res.status(404).json({ message: "cannot login", e });
+    console.error(e);
+    res.status(500).json({ message: "cannot login", e });
   }
 };
+
 
 module.exports.getAll = async (req, res) => {
   try {
@@ -92,14 +100,12 @@ module.exports.deleted = async (req, res) => {
   }
 };
 module.exports.getOne = async (req, res) => {
-  let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith("Bearer")
-  ) {
+  const bearerToken = req.headers.authorization;
+  if (bearerToken && bearerToken.startsWith("Bearer ")) {
+    const token = bearerToken.split(" ")[1];
+    console.log(token);
     try {
-      token = req.headers.authorization.split(" ")[1];
-      const decoded = jwt.verify(token, "secret");
+      const decoded = jwt.verify(token, process.env.SECRET_KEY);
       console.log("hi decoded", decoded);
       const currentuser = await prisma.users.findUnique({
         where: {
@@ -108,12 +114,10 @@ module.exports.getOne = async (req, res) => {
 
       res.json(currentuser);
     } catch (error) {
-      console.log(error);
-      res.status(401).json({ message: "not authorized" });
+      console.error(error);
+      res.status(401).json({ message: "Not authorized" });
     }
-  }
-
-  if (!token) {
-    res.status(401).json({ message: "not authorized" });
+  } else {
+    res.status(401).json({ message: "Not authorized" });
   }
 };

@@ -24,7 +24,6 @@ import { ToastContainer } from "react-toastify";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
-
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -45,6 +44,7 @@ export default function RootLayout({
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           />
       </Head>
+      
       <body className={inter.className}>
         <ReduxProvider>{children}</ReduxProvider>
       </body>

@@ -9,16 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.11.2",
+    "@cloudinary/url-gen": "^1.11.2",
+    "@mui/icons-material": "^5.14.14",
+    "@mui/x-charts": "^6.0.0-alpha.15",
+    "@mui/x-data-grid": "^6.16.2",
+    "axios": "^1.5.1",
+    "cloudinary-react": "^1.8.1",
+    "mdb-react-ui-kit": "^6.3.0",
+    "next": "13.5.5",
     "react": "^18",
     "react-dom": "^18",
-    "next": "13.5.5"
+    "react-pro-sidebar": "^1.1.0-alpha.1"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "13.5.5"
+    "eslint-config-next": "13.5.5",
+    "typescript": "^5"
   }
 }

@@ -1,6 +1,14 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import '../styles/Landing.css'
+import '../styles/SideBar.css'
+import '../styles/Add.css'
+import '../styles/addFlights.css'
+import '../styles/Airlines.css'
+import '../styles/Chat.css'
+
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
 const inter = Inter({ subsets: ['latin'] })
 
