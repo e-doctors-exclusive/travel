@@ -22,6 +22,7 @@ const PlaneBooking = () => {
   const currentFlight: any = useSelector(
     (state: RootState) => state.flights.currentFlight
   );
+ console.log("imhere",currentFlight);
  
   const dispatsh = useDispatch();
   const router = useRouter();
@@ -30,7 +31,7 @@ const PlaneBooking = () => {
       <div className="tripma">
         <div className="the-plane">
           <div className="plane_svg">
-            <Image src={plane} alt="" />
+            <Image src={plane} alt="" width={6576.185} height={4697.275} />
             <div className="plane_seats">
               {currentFlight.Seats?.map((oneSeat: any) => {
                 return (
