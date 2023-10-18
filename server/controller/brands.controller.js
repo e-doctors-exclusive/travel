@@ -1,36 +1,42 @@
-const {Brands}= require("../database/index")
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports = {
     getAll : async (req,res)=> {
         try {
-            const result = await Brands.findAll({})
+            const result = await prisma.brands.findMany()
             res.status(200).json(result)
         } catch (error) {
             throw error
         }
     },
-    add : async (req, res)=> {
+    add: async (req, res) => {
         try {
-            const result = await Brands.create(req.body)
-            res.status(201).json(result)
+            const result = await prisma.brands.create({
+                data: req.body
+            });
+            res.status(201).json(result);
         } catch (error) {
-            throw error
+            throw error;
         }
     },
     deletee : async (req, res) =>{
         try {
-            const result = await Brands.destroy({where : {id: req.params.id}})
+            const result = await prisma.brands.delete({where : { id: parseInt(req.params.id) }})
             res.json(result)
         } catch (error) {
             throw error 
         }
     },
-    updatee : async (req, res) =>{
+    updatee: async (req, res) => {
         try {
-            const result = await Brands .update(req.body, {where : {id: req.params.id}})
-            res.json(result)
+            const result = await prisma.brands.update({
+                where: { id: parseInt(req.params.id) },
+                data: req.body
+            });
+            res.json(result);
         } catch (error) {
-            throw error 
+            throw error;
         }
     }
 }

@@ -1,8 +1,10 @@
-const { Reservation } = require("../database/index.js");
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
 module.exports = {
   getAll: async (req, res) => {
     try {
-      const all = await Reservation.findAll();
+      const all = await prisma.reservations.findMany();
       res.json(all);
     } catch (error) {
       throw error;
@@ -10,7 +12,7 @@ module.exports = {
   },
   getById: async (req, res) => {
     try {
-      const all = await Reservation.findAll({
+      const all = await prisma.reservations.findMany({
         include:{all:true , nested:true},
         where: {
           userId: req.params.userId,
@@ -24,7 +26,7 @@ module.exports = {
 
   updateById: async (req, res) => {
     try {
-      await Reservation.update(req.body, { where: { id: req.params.reser } });
+      await prisma.reservations.update(req.body, { where: { id: req.params.reser } });
       res.json({
         status: "success",
         message: "Reservation updated successfully!!!",
@@ -37,7 +39,7 @@ module.exports = {
 
   deleteById: async (req, res, next) => {
     try {
-      await Reservation.destroy({ where: { id: req.params.reser } });
+      await prisma.reservations.delete({ where: { id: req.params.reser } });
       res.json({
         status: "success",
         message: "Reservation deleted successfully!!!",
@@ -49,7 +51,7 @@ module.exports = {
   },
   add: async (req, res) => {
     try {
-      await Reservation.create(req.body);
+      await prisma. reservations.create(req.body);
       res.json({
         status: "success",
         message: "Reservation added successfully!!!",

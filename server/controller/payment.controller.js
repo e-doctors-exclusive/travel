@@ -1,8 +1,9 @@
-const { Payments } = require("../database/index.js");
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 module.exports = {
   getAll: async (req, res) => {
     try {
-      const all = await Payments.findAll();
+      const all = await prisma.payments.findMany();
       res.json(all);
     } catch (error) {
       throw error;
@@ -10,7 +11,7 @@ module.exports = {
   },
   getById: async (req, res) => {
     try {
-      const all = await Payments.findAll({
+      const all = await prisma.payments.findMany({
         where: {
           userId: req.params.userid,
         },
@@ -22,7 +23,7 @@ module.exports = {
   },
   add: async (req, res) => {
     try {
-      await Product.create(req.body);
+      await prisma.payments.create(req.body);
       res.json({
         status: "success",
         message: "Payment added successfully!!!",

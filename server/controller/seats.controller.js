@@ -1,4 +1,5 @@
-const { Seats } = require("../database/index");
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 const letters = { 1: "A", 2: "B", 3: "C", 4: "D", 5: "E", 6: "F" };
 
@@ -21,7 +22,7 @@ function seatsGenerater(x, flightId) {
 module.exports = {
   getAll: async (req, res) => {
     try {
-      const result = await Seats.findAll({});
+      const result = await prisma.seats.findMany();
       res.json(result);
     } catch (error) {
       throw error;
@@ -34,7 +35,7 @@ module.exports = {
       const numberOfSeats = req.body.numberOfSeats;
       const initialSeats = seatsGenerater(numberOfSeats, flightId);
       console.log(initialSeats);
-      const result = await Seats.bulkCreate(initialSeats);
+      const result = await prisma.seats.create(initialSeats);
       res.json(result);
     } catch (error) {
       throw error;
@@ -43,7 +44,7 @@ module.exports = {
 
   updatee: async (req, res) => {
     try {
-      const result = await Seats.update(req.body, {
+      const result = await prisma.seats.update(req.body, {
         where: { id: req.params.id },
       });
       res.json(result);

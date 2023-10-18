@@ -1,6 +1,7 @@
-const { User } = require("../database/index.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports.signup = async (req, res) => {
   try {
@@ -8,7 +9,7 @@ module.exports.signup = async (req, res) => {
     bcrypt
       .hash(password, 10)
       .then((hashedPassword) => {
-        User.create({
+        prisma.users.create({
           name,
           email: email ? email : null,
           password: hashedPassword,
@@ -36,9 +37,9 @@ module.exports.login = async (req, res) => {
     const { phone, email, password } = req.body;
     let user;
     if (phone) {
-      user = await User.findOne({ where: { phone } });
+      user = await prisma.users.findUnique({ where: { phone } });
     } else if (email) {
-      user = await User.findOne({ where: { email } });
+      user = await prisma.users.findUnique({ where: { email } });
     } else {
       res.status(404).json({ message: "user not found" });
     }
@@ -71,7 +72,7 @@ module.exports.login = async (req, res) => {
 
 module.exports.getAll = async (req, res) => {
   try {
-    const getAll = await User.findAll({});
+    const getAll = await prisma.users.findMany();
     res.status(200).send(getAll);
   } catch (error) {
     throw new Error(error);
@@ -80,7 +81,7 @@ module.exports.getAll = async (req, res) => {
 
 module.exports.update = async (req, res) => {
   try {
-    const user = await User.update(
+    const user = await prisma.users.update(
       { ...req.body },
       { where: { id: req.params.id } }
     );
@@ -100,7 +101,7 @@ module.exports.getOne = async (req, res) => {
       token = req.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, "secret");
       console.log("hi decoded", decoded);
-      const currentuser = await User.findByPk(decoded.userId);
+      const currentuser = await prisma.users.findUnique(decoded.userId);
 
       res.json(currentuser);
     } catch (error) {
@@ -116,7 +117,7 @@ module.exports.getOne = async (req, res) => {
 
 module.exports.deleted = async (req, res) => {
   try {
-    const user = await User.destroy({ where: { id: req.params.id } });
+    const user = await prisma.users.delete({ where: { id: req.params.id } });
     res.json(user);
   } catch (error) {
     res.status(404).json({ message: "error deleting", error });
