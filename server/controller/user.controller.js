@@ -6,29 +6,19 @@ const prisma = new PrismaClient();
 module.exports.signup = async (req, res) => {
   try {
     const { email, password, name, phone } = req.body;
-    bcrypt
-      .hash(password, 10)
-      .then((hashedPassword) => {
-        prisma.users.create({
-          name,
-          email: email ? email : null,
-          password: hashedPassword,
-          phone: phone ? phone : null,
-        })
-          .then((result) => {
-            res
-              .status(201)
-              .json({ message: " user created successfully", result });
-          })
-          .catch((err) => {
-            res.status(404).json({ message: "error creating user", err });
-          });
-      })
-      .catch((e) => {
-        res.status(404).json({ message: "error hashing the password", e });
-      });
-  } catch (e) {
-    throw e;
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const result = await prisma.users.create({
+      data: {
+        name,
+        email: email || null,
+        password: hashedPassword,
+        phone: phone || null,
+      },
+    })
+    res.status(201).json({ message: 'User created successfully', result });
+  } catch (error) {
+    res.status(500).json({ message: 'Error creating user', error });
   }
 };
 
@@ -81,9 +71,9 @@ module.exports.getAll = async (req, res) => {
 
 module.exports.update = async (req, res) => {
   try {
-    const user = await prisma.users.update(
-      { ...req.body },
-      { where: { id: req.params.id } }
+    const user = await prisma.users.update({ where: { id: parseInt(req.params.id) },
+    data: req.body}
+     
     );
     res.json(user);
   } catch (e) {
@@ -91,6 +81,16 @@ module.exports.update = async (req, res) => {
   }
 };
 
+
+
+module.exports.deleted = async (req, res) => {
+  try {
+    const user = await prisma.users.delete({ where: { id:parseInt( req.params.id) } });
+    res.json(user);
+  } catch (error) {
+    res.status(404).json({ message: "error deleting", error });
+  }
+};
 module.exports.getOne = async (req, res) => {
   let token;
   if (
@@ -101,7 +101,10 @@ module.exports.getOne = async (req, res) => {
       token = req.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, "secret");
       console.log("hi decoded", decoded);
-      const currentuser = await prisma.users.findUnique(decoded.userId);
+      const currentuser = await prisma.users.findUnique({
+        where: {
+          id: decoded.userId}
+        });
 
       res.json(currentuser);
     } catch (error) {
@@ -112,14 +115,5 @@ module.exports.getOne = async (req, res) => {
 
   if (!token) {
     res.status(401).json({ message: "not authorized" });
-  }
-};
-
-module.exports.deleted = async (req, res) => {
-  try {
-    const user = await prisma.users.delete({ where: { id: req.params.id } });
-    res.json(user);
-  } catch (error) {
-    res.status(404).json({ message: "error deleting", error });
   }
 };

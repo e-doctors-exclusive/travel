@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 
 const userRoutes = require("./router/user.routes.js")
 const adminRoutes = require("./router/admin.router.js")
-const flightsRoutes = require("./router/flights.router.js")
+const flightsRoutes = require("./router/flights.routes.js")
 const seatsRoutes = require("./router/seats.routes.js")
 const ReservationRoutes = require("./router/reservation.routes.js")
 const brandsRoutes = require("./router/brandes.routes.js")

@@ -31,11 +31,11 @@ module.exports = {
 
   add: async (req, res) => {
     try {
-      const flightId = req.body.FlightId;
-      const numberOfSeats = req.body.numberOfSeats;
+      const flightId = parseInt(req.body.FlightId);
+      const numberOfSeats = parseInt(req.body.numberOfSeats);
       const initialSeats = seatsGenerater(numberOfSeats, flightId);
       console.log(initialSeats);
-      const result = await prisma.seats.create(initialSeats);
+      const result = await prisma.seats.create({data:initialSeats});
       res.json(result);
     } catch (error) {
       throw error;
@@ -44,8 +44,8 @@ module.exports = {
 
   updatee: async (req, res) => {
     try {
-      const result = await prisma.seats.update(req.body, {
-        where: { id: req.params.id },
+      const result = await prisma.seats.update({
+        where: { id: parseInt(req.params.id )},data:req.body
       });
       res.json(result);
     } catch (error) {

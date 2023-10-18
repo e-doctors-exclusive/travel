@@ -11,11 +11,7 @@ module.exports = {
   },
   getById: async (req, res) => {
     try {
-      const all = await prisma.payments.findMany({
-        where: {
-          userId: req.params.userid,
-        },
-      });
+      const all = await prisma.payments.findMany({where : { id: parseInt(req.params.id) }});
       res.json(all);
     } catch (error) {
       throw error;
@@ -23,7 +19,7 @@ module.exports = {
   },
   add: async (req, res) => {
     try {
-      await prisma.payments.create(req.body);
+      await prisma.payments.create({data:req.body});
       res.json({
         status: "success",
         message: "Payment added successfully!!!",
