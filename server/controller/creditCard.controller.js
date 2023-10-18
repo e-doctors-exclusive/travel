@@ -1,10 +1,11 @@
 const bcrypt = require("bcrypt");
-const { CreditCard } = require("../database/index");
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports = {
   getAll: async (req, res) => {
     try {
-      const creditCards = await CreditCard.findAll();
+      const creditCards = await prisma.creditcards.findMany();
       res.status(200).json(creditCards);
     } catch (error) {
       res.status(500).json({ message: "Error fetching credit cards", error });
@@ -28,7 +29,7 @@ module.exports = {
         cvv: hashedCVV,
       };
 
-      const add = await CreditCard.create(creditCardData);
+      const add = await prisma.creditcards.create( {data: creditCardData});
 
       res.status(201).json({ message: "Credit card added successfully", add });
     } catch (error) {

@@ -1,3 +1,5 @@
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 const axios = require("axios");
 // const { Payments } = require("../database/index.js");
 module.exports = {
@@ -14,12 +16,21 @@ module.exports = {
       "developer_tracking_id": "6c67718c-5ebd-4531-aa8f-e123ddee5290"
     }
     try {
-      const data  = await axios.post(url,payload)
-      res.send(data.data)
+      const all = await prisma.payments.findMany();
+      res.json(all);
     } catch (error) {
-      throw error
+      throw error;
     }
   },
+  getById: async (req, res) => {
+    try {
+      const all = await prisma.payments.findMany({where : { id: parseInt(req.params.id) }});
+      res.json(all);
+    } catch (error) {
+      throw error;
+    }
+  },
+ 
   verify : async(req,res)=>{
     const id = req.params.id
     const url = `https://developers.flouci.com/api/verify_payment/${id}`

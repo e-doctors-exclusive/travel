@@ -1,13 +1,14 @@
-const { Admin } = require("../database/index.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 
 module.exports.signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
     let admin;
     if (email) {
-      admin = await Admin.findOne({ where: { email } });
+      admin = await prisma.admins.findUnique({ where: { email } });
     } else {
       res.status(404).json({ message: "admin not found" });
     }
@@ -45,11 +46,11 @@ module.exports.createAdmin = async (req, res) => {
     bcrypt
       .hash(password, 10)
       .then((hashedPassword) => {
-        Admin.create({
+        prisma.admins.create({data:{
           name: name,
           email: email,
           password: hashedPassword,
-        })
+        }})
           .then((result) => {
             res.status(201).send({ message: " admin created successfully", result });
           })
@@ -67,7 +68,7 @@ module.exports.createAdmin = async (req, res) => {
 
 module.exports.getAllAdmins = async (req, res) => {
   try {
-    const admins = await Admin.findAll({});
+    const admins = await prisma.admins.findMany();
     res.status(200).json(admins);
   } catch (error) {
     console.log(error);

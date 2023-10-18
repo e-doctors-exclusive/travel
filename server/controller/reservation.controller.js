@@ -1,22 +1,23 @@
-const { Reservation } = require("../database/index.js");
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
 module.exports = {
   getAll: async (req, res) => {
     try {
-      const all = await Reservation.findAll();
+      const all = await prisma.reservations.findMany();
       res.json(all);
     } catch (error) {
       throw error;
     }
   },
-  getById: async (req, res) => {
+  add: async (req, res) => {
     try {
-      const all = await Reservation.findAll({
-        include:{all:true , nested:true},
-        where: {
-          userId: req.params.userId,
-        },
+      await prisma. reservations.create({data:req.body});
+      res.json({
+        status: "success",
+        message: "Reservation added successfully!!!",
+       
       });
-      res.json(all);
     } catch (error) {
       throw error;
     }
@@ -24,39 +25,42 @@ module.exports = {
 
   updateById: async (req, res) => {
     try {
-      await Reservation.update(req.body, { where: { id: req.params.reser } });
+      await prisma.reservations.update({
+        where: { id: parseInt(req.params.id) },
+        data: req.body
+    });
       res.json({
         status: "success",
         message: "Reservation updated successfully!!!",
-        data: null,
+       
       });
-    } catch (err) {
-      next(err);
+    } catch (error) {
+      throw(error);
     }
   },
 
   deleteById: async (req, res, next) => {
     try {
-      await Reservation.destroy({ where: { id: req.params.reser } });
+      await prisma.reservations.delete({ where: { id: parseInt(req.params.id )} });
       res.json({
         status: "success",
         message: "Reservation deleted successfully!!!",
-        data: null,
+       
       });
-    } catch (err) {
-      next(err);
+    } catch (error) {
+      throw(error);
     }
   },
-  add: async (req, res) => {
+  getById: async (req, res) => {
     try {
-      await Reservation.create(req.body);
-      res.json({
-        status: "success",
-        message: "Reservation added successfully!!!",
-        data: null,
+      const all = await prisma.reservations.findMany({
+        include:{all:true },
+        where: { id: parseInt(req.params.id )} 
+        
       });
-    } catch (err) {
-      throw err;
+      res.status(200).json(all);
+    } catch (error) {
+      throw error;
     }
-  },
-};
+  }
+}
