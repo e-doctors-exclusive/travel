@@ -92,10 +92,10 @@ function LandingPage() {
             <Image
               src="https://s3-alpha-sig.figma.com/img/de2a/7769/f3054fcc629cb3dcb883905e2f636736?Expires=1698019200&Signature=H~MWEu5SARHkTyvBEDH9Yd7sbb7mJoImF02-yenf5ljfWNdBXXesdOloQGwUJ1xwAYkcZ148nPLPfjDKCkUsKfNg4gKF9JTJrWzESsbZwgu1v5fKz1PxgYspMqHqYch0grBgoFMmyFBAvXL3jB4AGYa6fOeC73x-XHybz4NtGsxOBFkdcBmJZ7-dBlF2r1O8Cgyhnq9Nxwvjhhe-P7rQ77cGBbEKFiZQvOaP5U32ufaD3olAWcATtgUChlJK1J5vnLk1A8jCecd64ootyEs-VKT~kl9vDLZdbmdX2JSAxyatP0WUT39jAUoQRHt~QKx88NWy4Bn0KhlYRtMZn~Or1A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
               alt=""
-              width={1099}
-              height={497}
-              border-top-right-radius={7}
-              style={{width:"100%",height:397}}
+              width={1084.3}
+              height={397}
+              // border-top-right-radius={7}
+              // style={{width:"100%",height:397}}
             />
             <div className="card-info">
               <div className="smalltitle">

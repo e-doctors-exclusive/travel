@@ -2,16 +2,16 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Navbar from "../../Components/Navbar";
-import Avatar from "../../public/Assets/avatar.jpeg";
+import Avatar from "../../../public/Assets/avatar.jpeg";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { logout } from "../../store/userSlicer";
 import { useDispatch } from "react-redux";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const ProfileUser = () => {
-  const { user } = useSelector((state:any) => state.user);
+  const { user } = useSelector((state: any) => state.user);
   const [form, setForm] = useState({
     name: user.name,
     email: user.email,
@@ -27,8 +27,8 @@ const ProfileUser = () => {
   const [userReservations, setReservation] = useState<Array<Object>>([]);
   const [element, setElement] = useState("userProfile");
   const dispatch = useDispatch()
-const router =useRouter()
-  const handleFileUpload = async (e:React.ChangeEvent<HTMLInputElement>) => {
+  const router = useRouter()
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       return
     }
@@ -48,7 +48,7 @@ const router =useRouter()
     }
   };
 
-  const handleUpdate = async (obj:Object) => {
+  const handleUpdate = async (obj: Object) => {
     try {
       const response = await axios.put(
         `http://localhost:1128/users/update/${user.id}`,
@@ -60,7 +60,7 @@ const router =useRouter()
     }
   };
 
-  const takeReservation = async (id:number) => {
+  const takeReservation = async (id: number) => {
     try {
       const response = await axios.get(
         `http://localhost:1128/reservation/getFor/${id}`
@@ -81,9 +81,8 @@ const router =useRouter()
         <div className="userProfile_container">
           <div className="profile_side_nav">
             <div
-              className={`side_nav_card ${
-                element === "userProfile" ? "active" : ""
-              }`}
+              className={`side_nav_card ${element === "userProfile" ? "active" : ""
+                }`}
               onClick={() => setElement("userProfile")}
             >
               <p className="account_seeting_title">Account Setting</p>
@@ -92,9 +91,8 @@ const router =useRouter()
               </p>
             </div>
             <div
-              className={`side_nav_card ${
-                element === "userCheckout" ? "active" : ""
-              }`}
+              className={`side_nav_card ${element === "userCheckout" ? "active" : ""
+                }`}
               onClick={() => {
                 setElement("userCheckout");
                 takeReservation(user.id);
@@ -106,9 +104,8 @@ const router =useRouter()
               </p>
             </div>
             <div
-              className={`side_nav_card ${
-                element === "userChat" ? "active" : ""
-              }`}
+              className={`side_nav_card ${element === "userChat" ? "active" : ""
+                }`}
               onClick={() => setElement("userChat")}
             >
               <p className="account_seeting_title">Contact admin</p>
@@ -116,7 +113,7 @@ const router =useRouter()
                 Details about your Personal information
               </p>
             </div>
-            <button id="logout" onClick={()=>{
+            <button id="logout" onClick={() => {
               dispatch(logout())
               router.push("/")
               toast.info("Goodbye!");
@@ -202,7 +199,7 @@ const router =useRouter()
                       }}
                     />
                   </div>
-                  <button onClick={()=>{handleUpdate(form)}}>Update Information</button>
+                  <button onClick={() => { handleUpdate(form) }}>Update Information</button>
                 </div>
               </>
             )}
