@@ -4,7 +4,7 @@ import ArrowDownIcon from "../../public/Assets/icons/chevron down.svg";
 import DatePickers from "../../Components/DatePickers";
 import DepartIcon from "../../public/Assets/icons/departure.svg";
 import ArrivalIcon from "../../public/Assets/icons/arrival.svg";
-import CalendarIcon from "../../public/Assets/icons/calendar.svg";
+import CalendarIcon from "../../../public/Assets/icons/calendar.svg";
 import PersonIcon from "../../public/Assets/icons/person solid.svg";
 import FlightData from "../../Components/FlightData";
 import Navbar from "../../Components/Navbar";
