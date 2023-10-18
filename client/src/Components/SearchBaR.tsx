@@ -66,8 +66,6 @@ const router = useRouter()
   console.log(flight.origin)
 
   return (
-
-
           <div className="landing-inputs">
             <div className="landing-input">
              {planeLanding}

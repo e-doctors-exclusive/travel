@@ -1,16 +1,16 @@
 "use client"
 import Image from "next/image";
 import React, { useReducer, useState } from "react";
-import point from "../../public/Assets/tripmaBooking/point heavy.png";
-import check from "../../public/Assets/tripmaBooking/check heavy.png";
-import wordmark from "../../public/Assets/tripmaBooking/Wordmark.png";
-import arrowRight from "../../public/Assets/tripmaBooking/arrowRight.png";
-import ecoSeats from "../../public/Assets/tripmaBooking/Economy Seats.png";
-import bussinesSeats from "../../public/Assets/tripmaBooking/Business Seats.png";
+import point from "../../../public/Assets/tripmaBooking/pointHeavy.png";
+import check from "../../../public/Assets/tripmaBooking/check heavy.png";
+import wordmark from "../../../public/Assets/tripmaBooking/Wordmark.png";
+import arrowRight from "../../../public/Assets/tripmaBooking/arrowRight.png";
+import ecoSeats from "../../../public/Assets/tripmaBooking/Economy Seats.png";
+import bussinesSeats from "../../../public/Assets/tripmaBooking/Business Seats.png";
 import { useSelector } from "react-redux";
 import { fillForm } from "../../store/flights";
 import { AppDispatch, RootState } from "../../store";
-import plane from "../../public/Assets/plane.svg";
+import plane from "../../../public/Assets/plane.svg";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 const PlaneBooking = () => {
@@ -32,7 +32,7 @@ const PlaneBooking = () => {
           <div className="plane_svg">
             <Image src={plane} alt="" />
             <div className="plane_seats">
-              {currentFlight.Seats.map((oneSeat: any) => {
+              {currentFlight.Seats?.map((oneSeat: any) => {
                 return (
                   <button
                     disabled={!oneSeat.availble}
@@ -113,7 +113,7 @@ const PlaneBooking = () => {
             </div>
             <div className="feature-lists">
               <div className="feature-list-economy">
-                <Image className="economy-seats-icon" alt="" src={ecoSeats} />
+                <Image className="economy-seats-icon" width={320} height={180} alt="" src={ecoSeats} />
                 <div className="feature-list">
                   <div className="header-and-badge">
                     <div className="header">Economy</div>
@@ -149,6 +149,8 @@ const PlaneBooking = () => {
                       className="point-heavy-icon"
                       alt=""
                       src="/rectangle-10.svg"
+                      width={0}
+                      height={0}
                     />
                     <div className="bullets-of-key">
                       Bullets of key value for user
@@ -159,6 +161,8 @@ const PlaneBooking = () => {
                       className="point-heavy-icon"
                       alt=""
                       src="/rectangle-10.svg"
+                      width={0}
+                      height={0}
                     />
                     <div className="bullets-of-key">
                       Bullets of key value for user
@@ -169,6 +173,8 @@ const PlaneBooking = () => {
                       className="point-heavy-icon"
                       alt=""
                       src="/rectangle-10.svg"
+                      width={0}
+                      height={0}
                     />
                     <div className="bullets-of-key">
                       Bullets of key value for user
