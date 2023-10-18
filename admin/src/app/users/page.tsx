@@ -84,9 +84,12 @@ const deleteUser = async (id:any) => {
       <DataGrid
         rows={rows}
         columns={columns}
-        onSelectionModelChange={(newSelection) => {
-          fetchUsers(newSelection.selectionModel[0]);
-        }}
+        // onSelectionModelChange={(newSelection:any) => {
+        //   fetchUsers(
+        //     newSelection.selectionModel[0]
+        //     )
+
+        // }}
         initialState={{
           pagination: {
             paginationModel: { page: 0, pageSize: 5 },

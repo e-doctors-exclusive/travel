@@ -17,6 +17,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 interface SideBarProps {
   clicked: boolean;
   setClicked: React.Dispatch<React.SetStateAction<boolean>>;
+  fetchUsers?:()=> Promise<void>
 }
 
 const SideBar: React.FC<SideBarProps> = ({ clicked, setClicked }) => {
