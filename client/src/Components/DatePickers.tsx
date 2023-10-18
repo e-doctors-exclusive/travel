@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import CalendarIcon from "../../public/Assets/icons/calendar.svg";
-// import DatePicker from "react-datepicker";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Image from "next/image";
 
@@ -78,7 +78,7 @@ const DatePickers: React.FC<DatePickersProps> = (props: DatePickersProps) => {
         </div>
       </div>
       <div className="Round_trip">
-      {/* {selectedOption === "roundTrip" ? (
+      {selectedOption === "roundTrip" ? (
           <>
             <DatePicker
             
@@ -101,7 +101,7 @@ const DatePickers: React.FC<DatePickersProps> = (props: DatePickersProps) => {
             dateFormat="MM/dd"
             className="custom-datepicker"
           />
-        )} */}
+        )}
       </div>
       <div className="One_way">
 
