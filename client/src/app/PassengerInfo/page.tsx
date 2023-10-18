@@ -2,13 +2,15 @@
 import Image from "next/image";
 import React, { useState, ChangeEvent } from "react";
 import BagIllustration from "../../../public/Assets/Illustration.png";
-// import logoIllustration from "../Assets/logoIllustration.png";
+import logoIllustration from "../../public/Assets/logoIllustration.png";
 import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
-import { fillForm } from "../../store/flights";
-import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { AppDispatch } from "../../store";
+import { RootState } from "../../store";
+import Link from 'next/link';
+import  {fillForm}  from "../../store/flights";
 interface FormData {
   firstName: string;
   middleName: string;
@@ -42,8 +44,8 @@ interface fightType{
   oneFlight:OneFlightData 
 }
 const PassengerInfo: React.FC = () => {
-  const dispatsh = useDispatch()
-  const router = useRouter()
+  const dispatsh:AppDispatch = useDispatch()
+  // const router = useRouter()
   const currentFlight:any= useSelector((state: RootState) => state.flights.currentFlight);
   const currentReservation:any= useSelector((state: RootState) => state.flights.currentReservation);
   const [formData, setFormData] = useState<FormData>({
@@ -67,6 +69,9 @@ const PassengerInfo: React.FC = () => {
       ...formData, 
       [name]: value, 
     });
+    
+    
+    
   };
 
   const handleCheckBox = (e: ChangeEvent<HTMLInputElement>) => {
@@ -75,17 +80,21 @@ const PassengerInfo: React.FC = () => {
       ...formData,
       [name]: checked, 
     });
+    // console.log(e.target.checked);
   };
 
   const [count, setCount] = useState(0);
 
   const handleIncrement = () => {
     setCount(count + 1);
+    
   };
 
   const handleDecrement = () => {
     if (count > 0) {
       setCount(count - 1);
+      // console.log(count);
+      
     }
   };
   
@@ -111,7 +120,7 @@ const PassengerInfo: React.FC = () => {
                   placeholder="First name*"
                   name="firstName"
                   defaultValue={currentReservation.firstName}
-                  value={formData.firstName}
+                  // value={formData.firstName}
                   onChange={handleInputChange}
                 />
                 <input
@@ -119,7 +128,7 @@ const PassengerInfo: React.FC = () => {
                   placeholder="Middle"
                   name="middleName"
                   defaultValue={currentReservation.middleName}
-                  value={formData.middleName}
+                  // value={formData.middleName}
                   onChange={handleInputChange}
                 />
                 <input
@@ -127,7 +136,7 @@ const PassengerInfo: React.FC = () => {
                   placeholder="Last name*"
                   name="lastName"
                   defaultValue={currentReservation.lastName}
-                  value={formData.lastName}
+                  // value={formData.lastName}
                   onChange={handleInputChange}
                 />
                 <input
@@ -135,7 +144,7 @@ const PassengerInfo: React.FC = () => {
                   placeholder="Suffix"
                   name="suffix"
                   defaultValue={currentReservation.suffix}
-                  value={formData.suffix}
+                  // value={formData.suffix}
                   onChange={handleInputChange}
                 />
                 <input
@@ -144,7 +153,7 @@ const PassengerInfo: React.FC = () => {
                   placeholder="Date of birth"
                   name="date"
                   defaultValue={currentReservation.date}
-                  value={formData.date}
+                  // value={formData.date}
                   onChange={handleInputChange}
                 />
               </div>
@@ -155,7 +164,7 @@ const PassengerInfo: React.FC = () => {
                 placeholder="Email address*"
                 name="email"
                 defaultValue={currentReservation.email}
-                value={formData.email}
+                // value={formData.email}
                 onChange={handleInputChange}
               />
               <input
@@ -163,7 +172,7 @@ const PassengerInfo: React.FC = () => {
                 placeholder="Phone number*"
                 name="phoneNumber"
                 defaultValue={currentReservation.phoneNumber}
-                value={formData.phoneNumber}
+                // value={formData.phoneNumber}
                 onChange={handleInputChange}
               />
               <input
@@ -171,7 +180,7 @@ const PassengerInfo: React.FC = () => {
                 placeholder="Redress number"
                 name="redressNumber"
                 defaultValue={currentReservation.redressNumber}
-                value={formData.redressNumber}
+                // value={formData.redressNumber}
                 onChange={handleInputChange}
               />
               <input
@@ -179,7 +188,7 @@ const PassengerInfo: React.FC = () => {
                 placeholder="Known traveller number*"
                 name="knownTravelerNumber"
                 defaultValue={currentReservation.knownTravelerNumber}
-                value={formData.knownTravelerNumber}
+                // value={formData.knownTravelerNumber}
                 onChange={handleInputChange}
               />
             </div>
@@ -253,8 +262,12 @@ const PassengerInfo: React.FC = () => {
               </div>
             </div>
             <div className="choice-btns">
-              <button onClick={()=>{router.push("/Payment")}} >Save and close</button>
-              <button onClick={()=>{dispatsh(fillForm(formData)) ;router.push("/planebooking")}} id="larger">Select seats</button>
+              <Link href="/Payment">
+              <button className="btnsave_and_clode">Save and close</button>
+              </Link>
+              <Link href="/planebooking">
+              <button onClick={()=>{dispatsh(fillForm(formData)) }} id="larger">Select seats</button>
+              </Link>
             </div>
           </div>
           <div className="trips">
@@ -269,7 +282,6 @@ const PassengerInfo: React.FC = () => {
                     </div>
                   </div>
                   <div className="time">
-                    <p>{}</p>
                     <p>{currentFlight.departureTime} - {currentFlight.arrivalTime}</p>
                     <p className="ref">{currentFlight.destFrom} - {currentFlight.destTo}</p>
                   </div>
@@ -299,13 +311,3 @@ const PassengerInfo: React.FC = () => {
 
 export default PassengerInfo;
 
-// const PassengerInfo = () => {
-
-//   return (
-//     <div className="container">
-
-//     </div>
-//   );
-// }
-
-// export default PassengerInfo;

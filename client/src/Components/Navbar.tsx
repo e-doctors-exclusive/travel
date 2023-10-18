@@ -19,7 +19,7 @@ const router = useRouter()
   const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
   const dispatch = useDispatch();
   const  user:any  = useSelector(selectUser);
-  console.log("imheh",user);
+  // console.log("imheh",user);
   
   const loggedIn = useSelector(selectLoggedIn)
   const [form, setForm] = useState({
