@@ -11,7 +11,8 @@ getAllFlights : async (req, res) => {
 },
 
 addFlight : async (req, res) => {
-    try {
+  try {
+      console.log(req.body);
       const flight = await prisma.flights.create({data:req.body})
       res.json(flight)
     } catch (error) {
