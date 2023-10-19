@@ -150,7 +150,7 @@ const Navbar = () => {
         </button>}
       </div>
 
-      <SignUp isOpen={isSignUpModalOpen} onClose={closeSignUpModal}>
+      <SignUp  isOpen={isSignUpModalOpen} onClose={closeSignUpModal}>
         <form className="main_signUp_container">
           <div className="signUp_header">
             <div className="signUp_desc">

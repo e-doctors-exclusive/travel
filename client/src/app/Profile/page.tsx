@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { setLogState } from "@/store/tokenSlicer";
-import Chat from "../../Components/Chat"
+import ChatRoom from "../../Components/ChatRoom"
 const ProfileUser = () => {
   const user = useSelector((state: any) => state.token);
   const [form, setForm] = useState({
@@ -210,7 +210,7 @@ const ProfileUser = () => {
             )}
             {element === "userChat" && (
               <div className="chat">
-                <Chat />
+                <ChatRoom />
               </div>
             )}
             {element === "userCheckout" && (

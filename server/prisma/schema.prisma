@@ -15,6 +15,12 @@ model admins {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
+model messages {
+  id        Int      @id @default(autoincrement())
+  content   String   @db.VarChar(255)
+  sender    String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+}
 
 model brands {
   id          Int       @id @default(autoincrement())
