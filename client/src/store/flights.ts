@@ -34,7 +34,7 @@ export const fetchFlights = createAsyncThunk(
 );
 
 export const fetchAllFlights = createAsyncThunk("/flights/getAll", async () => {
-  const res = await axios.get("http://localhost:1128/flights/getAll");
+  const res = await axios.get("http://localhost:1337/flights/getAll");
 console.log(res.data,"thiiiiiiis from store");
 
   return res.data;

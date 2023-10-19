@@ -8,8 +8,8 @@ module.exports = {
       "app_secret": process.env.FLOUCI_SECRET,
       "accept_card":"true",
       "amount":req.body.amount,
-      "success_link": "http://localhost:1337/success",
-      "fail_link": "http://localhost:1337/fail",
+      "success_link": "http://localhost:3000/Success",
+      "fail_link": "http://localhost:3000/fail",
       "session_timeout_secs": 1200,
       "developer_tracking_id": "6c67718c-5ebd-4531-aa8f-e123ddee5290"
     }

@@ -58,7 +58,7 @@ const router = useRouter()
   let a = allFlight.map((e: objTypeAll) => e.destFrom);
   let b = allFlight.map((e: objTypeAll) => e.destTo);
   let prices = allFlight.map((e: objTypeAll) => e.price);
-  let airlines = flights.map((e: objTypeAll) => e.brands.name);
+  let airlines = flights.map((e: objTypeAll) => e.brands?.name);
   let times = flights.map((e: objTypeAll) => e.dateTo);
   let flight = { origin: [...new Set(a)], destination: [...new Set(b)], price:[...new Set(prices)], airlines:[...new Set(airlines)],times:[...new Set(times)]};
 
