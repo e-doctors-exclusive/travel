@@ -1,35 +1,62 @@
 /* Styles for the modal container */
+/* Styles for the modal container */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: hidden; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.4); /* Overlay background */
-  }
+  visibility: hidden; /* Hidden by default */
+  opacity: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Overlay background */
   
-  /* Styles for the open modal */
-  .modal.open {
-    display: block;
-  }
-  
-  /* Styles for the modal content */
-  .modal-content {
-    position: relative;
-    transform: translate(190%, 50%);
-    background-color: #fff; /* Background color */ /* 15% from the top and centered horizontally */
-    padding: 20px;
-    border: 1px solid #888;
-    width:500; /* Set width of the modal content */
-    max-width: 400px;
-    height: 500px; /* Maximum width for smaller screens */
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-  }
+  /* Add transition property here */
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+}
+
+/* Styles for the open modal */
+.modal.open {
+  visibility: visible;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Remove transition delay when modal is visible */
+  transition-delay: 0s;
+}
+
+.modal.open .modal-content {
+    opacity:1;
+    transform:scale(1);
+    transition: all .2s ease-in-out;
+}
+
+/* Styles for the modal content */
+.modal-content {
+
+    position:relative;
+    max-width:90%;
+    background-color:#fff; /* Background color */ /*15% from the top and centered horizontally*/
+    padding:20px;
+    border:1px solid #888;
+    width:500px; /* Set width of the modal content */
+    max-width:400px;
+    height:500px; /* Maximum width for smaller screens */
+    border-radius:8px;
+    box-shadow:0px 4px 8px rgba(0,0,0,.2);
+    text-align:center;
+
+    opacity:0;
+    transform:scale(.7);
+}
+
   
   /* Styles for the modal title */
   .modal-content h2 {
@@ -66,7 +93,13 @@
     height: 2.4rem;
     font-size: 16px;
   }
-  
+  button{
+    cursor: pointer
+  }
+  .signInbtn:hover{
+    background-color: #439eff;
+
+  }
   /* Styles for the close button */
   .signInbtn .close {
     background-color: #ccc;
