@@ -40,13 +40,13 @@ const router = useRouter()
     dateFrom: Date;
     dateTo: Date;
     price: number;
-    brand:any
+    brands:any
   }
 
   const dispatch: AppDispatch = useDispatch();
 
-  const flights = useSelector((state: RootState) => state.flights.Flights);
-
+  const flights = useSelector((state: RootState) => state.flights.allFlights);
+  console.log(flights,"this is flights")
   const allFlight: objTypeAll[] = useSelector(
     (state: RootState) => state.flights.allFlights
   );
@@ -58,7 +58,7 @@ const router = useRouter()
   let a = allFlight.map((e: objTypeAll) => e.destFrom);
   let b = allFlight.map((e: objTypeAll) => e.destTo);
   let prices = allFlight.map((e: objTypeAll) => e.price);
-  let airlines = flights.map((e: objTypeAll) => e.brand.name);
+  let airlines = flights.map((e: objTypeAll) => e.brands?.name);
   let times = flights.map((e: objTypeAll) => e.dateTo);
   let flight = { origin: [...new Set(a)], destination: [...new Set(b)], price:[...new Set(prices)], airlines:[...new Set(airlines)],times:[...new Set(times)]};
 
@@ -67,7 +67,7 @@ const router = useRouter()
     Seats: any[];
     Users: any[];
     arrivalTime: string;
-    brand: any;
+    brands: any;
     brandId: any;
     createdAt: string;
     dateFrom: string;
@@ -86,7 +86,7 @@ const router = useRouter()
   <Navbar/>
       <div className="flighFinder_main_container">
         <div className="flighFinder_container">
-        {/* <div className="landing-inputs"  id="flightfinder-search">
+        <div className="landing-inputs"  id="flightfinder-search">
             <div className="landing-input">
               <i className="fa-solid fa-plane-departure"></i>
               <select
@@ -169,7 +169,7 @@ const router = useRouter()
               </button>
             </div>
             
-            </div> */}
+            </div>
             <div className="filter">
                <div className="oneselect">
                 <select name="" id="">
@@ -235,11 +235,11 @@ const router = useRouter()
             </div>
             <div className="flighs_finded_pricing">
               {
-                currentFlight.brand? <div className="aller">
+                currentFlight.brands? <div className="aller">
                 <div className="aller_container">
-                  <Image src={currentFlight.brand.image} alt=""  width={0} height={0} />
+                  <Image src={currentFlight.brands.image} alt=""  width={0} height={0} />
                   <div className="img_title">
-                    <p>{currentFlight.brand.name}</p>
+                    <p>{currentFlight.brands.name}</p>
                     <p className="ref">FIG4312</p>
                   </div>
                 </div>

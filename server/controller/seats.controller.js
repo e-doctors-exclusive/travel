@@ -35,7 +35,7 @@ module.exports = {
       const numberOfSeats = parseInt(req.body.numberOfSeats);
       const initialSeats = seatsGenerater(numberOfSeats, flightId);
       console.log(initialSeats);
-      const result = await prisma.seats.create({data:initialSeats});
+      const result = await prisma.seats.createMany({data:initialSeats});
       res.json(result);
     } catch (error) {
       throw error;

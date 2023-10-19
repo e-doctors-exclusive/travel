@@ -3,7 +3,12 @@ const prisma = new PrismaClient();
 module.exports = {
 getAllFlights : async (req, res) => {
   try {
-      const getAll = await prisma.flights.findMany() 
+      const getAll = await prisma.flights.findMany({
+        include : {
+          brands : true,
+          seats : true
+        }
+      }) 
       res.status(200).send(getAll)
   } catch (error) {
       throw new Error(error)
@@ -31,11 +36,11 @@ addFlight : async (req, res) => {
 getFlights : async (req, res) => {
     try {
         const getAll = await prisma.flights.findMany(({ 
-           include:{all:true},
-            where: { destFrom: {OR:req.params.destFrom},
-            destTo: {OR:req.params.destTo}  }, 
-            dateFrom: {OR:req.params.dateFrom}}
-            )) 
+          //  include:{all:true},
+            where: { destFrom: req.params.destFrom,
+            destTo: req.params.destTo  , 
+            dateFrom: req.params.dateFro}
+             } )) 
         res.status(200).send(getAll)
     } catch (error) {
         throw new Error(error)

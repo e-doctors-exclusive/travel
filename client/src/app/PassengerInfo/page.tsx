@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import BagIllustration from "../../../public/Assets/Illustration.png";
 import logoIllustration from "../../public/Assets/logoIllustration.png";
 import Navbar from "../../Components/Navbar";
@@ -11,6 +11,9 @@ import { AppDispatch } from "../../store";
 import { RootState } from "../../store";
 import Link from 'next/link';
 import  {fillForm}  from "../../store/flights";
+import {selectLink} from "../../store/tokenSlicer"
+import {paymentUser} from "../../store/tokenSlicer"
+import  {useRouter}  from "next/navigation";
 interface FormData {
   firstName: string;
   middleName: string;
@@ -43,7 +46,11 @@ interface OneFlightData {
 interface fightType{
   oneFlight:OneFlightData 
 }
+
+
 const PassengerInfo: React.FC = () => {
+  const router = useRouter()
+  const link = useSelector(selectLink)
   const dispatsh:AppDispatch = useDispatch()
   // const router = useRouter()
   const currentFlight:any= useSelector((state: RootState) => state.flights.currentFlight);
@@ -73,7 +80,9 @@ const PassengerInfo: React.FC = () => {
     
     
   };
-
+useEffect(()=>{
+  dispatsh(paymentUser(currentFlight.price+121))
+},[])
   const handleCheckBox = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     setFormData({
@@ -262,10 +271,11 @@ const PassengerInfo: React.FC = () => {
               </div>
             </div>
             <div className="choice-btns">
-              <Link href="/Payment">
-              <button className="btnsave_and_clode">Save and close</button>
-              </Link>
-              <Link href="/planebooking">
+              <button className="btnsave_and_clode" onClick={()=>{router.push(link)
+              
+              
+              }} >Save and close</button>
+              <Link href="/PlaneBooking">
               <button onClick={()=>{dispatsh(fillForm(formData)) }} id="larger">Select seats</button>
               </Link>
             </div>

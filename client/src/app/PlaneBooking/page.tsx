@@ -33,7 +33,7 @@ const PlaneBooking = () => {
           <div className="plane_svg">
             <Image src={plane} alt="" width={6576.185} height={4697.275} />
             <div className="plane_seats">
-              {currentFlight.Seats?.map((oneSeat: any) => {
+              {currentFlight.seats?.map((oneSeat: any) => {
                 return (
                   <button
                     disabled={!oneSeat.availble}
