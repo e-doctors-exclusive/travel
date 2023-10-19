@@ -325,7 +325,8 @@
   cursor: pointer;
 }
 #flightfinder-search{
-  width: 79%;
+  /* width: 79%; */
+  height: 4rem;
 }
 .filter{
   display: flex;

@@ -11,6 +11,7 @@
 
 .landing-inputs {
   color: #6e7491;
+  position: relative;
   display: flex;
   background-color: red;
   border-radius: 4px;
@@ -22,7 +23,10 @@
     0px 2px 4px 0px rgba(7, 4, 146, 0.1);
  
 }
-
+.calendar-container-search-bar{
+  display: flex;
+  flex-direction: column;
+}
 .landing-forall {
   margin-top: 5%;
 }
@@ -269,14 +273,17 @@
 
 .calendar_check {
   padding-right: 6rem;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .date_picker_modal {
-  position: absolute;
+  position: relative;
   height: 14%;
   width: 37%;
-  top: 67%;
-  left: 37%;
+  margin-top: 1rem;
+  /* top: 69%; */
+  left: 25%;
   transition: 0.3s;
 }
 
