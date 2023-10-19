@@ -35,9 +35,10 @@ const Navbar = () => {
       await axios
         .post("http://localhost:1128/users/signup", form)
         .then((result) => {
+          closeSignUpModal()
           toast.success("Account created successfully", {
             position: "bottom-right",
-            autoClose: 5000,
+            // autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: false,
             pauseOnHover: false,

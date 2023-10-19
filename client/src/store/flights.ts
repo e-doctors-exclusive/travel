@@ -1,13 +1,15 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 interface flightType {
-  destFrom: string;
-  destTo: string;
-  dateFrom: Date;
-  dateTo: Date;
-  departureTime: Date;
-  arrivalTime: Date;
-  price: number;
+  destFrom?: string;
+  destTo?: string;
+  dateFrom?: Date;
+  dateTo?: Date;
+  departureTime?: Date;
+  arrivalTime?: Date;
+  price?: number;
+  departDate?:string;
+  arriveDate?:string
 }
 // interface objType{
 //     destFrom:string
