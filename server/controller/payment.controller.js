@@ -5,7 +5,7 @@ module.exports = {
     const url = "https://developers.flouci.com/api/generate_payment";
     const payload={
       "app_token": "5285e298-f673-4ce3-a6ad-c179b992948e",
-      "app_secret": "7ba905c7-ac45-40aa-9e9e-0a9387f28b68",
+      "app_secret": process.env.FLOUCI_SECRET,
       "accept_card":"true",
       "amount":req.body.amount,
       "success_link": "http://localhost:1337/success",

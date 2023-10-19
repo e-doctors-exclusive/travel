@@ -16,7 +16,7 @@ const initialState = {
 export const checkUser = createAsyncThunk("/checkUser", async (token:string | "") => {
   console.log("this is token",token);
   
-  const task = await axios.get("http://localhost:1128/users/getUser", {
+  const task = await axios.get("http://localhost:1337/users/getUser", {
     headers: { Authorization: `Bearer ${JSON.parse(token)}` }
 
   });
