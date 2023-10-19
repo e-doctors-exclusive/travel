@@ -3,7 +3,11 @@ const prisma = new PrismaClient();
 module.exports = {
 getAllFlights : async (req, res) => {
   try {
-      const getAll = await prisma.flights.findMany() 
+      const getAll = await prisma.flights.findMany({
+        include : {
+          brands : true
+        }
+      }) 
       res.status(200).send(getAll)
   } catch (error) {
       throw new Error(error)

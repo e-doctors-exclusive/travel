@@ -9,7 +9,7 @@ interface OneFlightData {
   Seats: any[];
   Users: any[];
   arrivalTime: string;
-  brand: null;
+  brands: null;
   brandId: null;
   createdAt: string;
   dateFrom: string;
@@ -46,10 +46,10 @@ const FlightData: React.FC <propsType>= (props:any) => {
   return (
     <div className="flight-data" onClick={()=>{dispatch(selected(props.oneFlight));}}>
       <div className="logo-sec">
-        <Image id="airline_logo" src={props.oneFlight.brand.image} alt="" />
+        <Image id="airline_logo" src={props.oneFlight.brands.image} width={27} height={27} alt="" />
         <div className="logo-sec-desc">
           <p>{`${hours}:${minutes}m`}</p>
-          <p>{props.oneFlight.brand.name}</p>
+          <p>{props.oneFlight.brands.name}</p>
         </div>
       </div>
       <div>
