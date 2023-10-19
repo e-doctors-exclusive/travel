@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors')
 require ('dotenv').config()
 const app = express();
-const port = 1128; // You can choose any available port
+const port = 1337; // You can choose any available port
 app.use(express.json());
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
