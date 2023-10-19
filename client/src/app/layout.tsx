@@ -17,7 +17,7 @@ import "../styles/FlightFinder.css";
 import "../styles/Footer.css";
 import "../styles/SignIn.css";
 import "../styles/header.css"
-
+import "../styles/chat.css"
 import { Provider } from "react-redux";
 import { ReduxProvider } from "@/store/provide";
 import { ToastContainer } from "react-toastify";

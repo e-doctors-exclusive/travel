@@ -29,19 +29,47 @@ app.use(express.json());
 app.use(cors())
 // Define a route
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+  cors: {
+    origin: "http://localhost:1128",  // replace with the port your client-side app is running on
+    methods: ["GET", "POST"]
+  }
+});
 io.on('connection', (socket) => {
-  console.log('A user connected');
+  console.log(`User connected ${socket.id}`);
   
-  socket.on('message', (data) => {
+  socket.on('message', async (data) => {
+    // Save the message to the database
+    // You need to create a 'messages' model in your Prisma schema
+    await prisma.message.create({
+      data: {
+        content: data,
+        // Add other fields as necessary
+      },
+    });
+
     // Broadcast the received message to all connected clients (admin and user)
     io.emit('message', data);
   });
 
+  // socket.on('get message history', async () => {
+  //   // Retrieve message history from the database
+  //   // You need to create a 'messages' model in your Prisma schema
+  //   const pastMessages = await prisma.message.findMany({
+  //     orderBy: {
+  //       createdAt: 'asc',
+  //     },
+  //     // Add other query options as necessary
+  //   });
+
+  //   socket.emit('message history', pastMessages);
+  // });
+
   socket.on('disconnect', () => {
-    console.log('A user disconnected');
+    console.log(`User disconnected ${socket.id}`);
   });
 });
+
 app.use("/users", userRoutes)
 app.use("/admin", adminRoutes)
 app.use("/reservation",ReservationRoutes)
@@ -50,7 +78,8 @@ app.use("/brands", brandsRoutes )
 app.use("/flights",flightsRoutes)
 app.use("/seats", seatsRoutes)
 // app.use("/payment",PaymentRouter)
+
 // Start the server
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

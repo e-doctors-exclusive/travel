@@ -102,7 +102,21 @@
   height: 747px;
   width: 63%;
 }
-
+svg{
+  cursor: pointer;
+}
+span{
+  cursor: pointer;
+}
+img{
+  cursor: pointer;
+}
+select{
+  cursor: pointer;
+}
+#exit{
+  cursor: pointer;
+}
 .flighs_finded_data > p {
   color: var(--grey-600, #6e7491);
   font-family: Nunito Sans;
