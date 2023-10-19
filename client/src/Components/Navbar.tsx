@@ -33,7 +33,7 @@ const Navbar = () => {
     // conso  le.log(form);
     if (checks.c1) {
       await axios
-        .post("http://localhost:1128/users/signup", form)
+        .post("http://localhost:1337/users/signup", form)
         .then((result) => {
           toast.success("Account created successfully", {
             position: "bottom-right",
@@ -97,7 +97,7 @@ const Navbar = () => {
       console.log(email);
 
       await axios
-        .post("http://localhost:1128/users/login", { email, password })
+        .post("http://localhost:1337/users/login", { email, password })
         .then((res) => {
           dispatch(setLogState(true))
           localStorage.setItem("token", res.data.user.token)
