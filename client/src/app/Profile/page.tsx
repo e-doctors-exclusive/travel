@@ -9,9 +9,9 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { setLogState } from "@/store/tokenSlicer";
-
+import Chat from "../../Components/Chat"
 const ProfileUser = () => {
-  const  user  = useSelector((state: any) => state.token);
+  const user = useSelector((state: any) => state.token);
   const [form, setForm] = useState({
     name: user.name,
     email: user.email,
@@ -39,7 +39,7 @@ const ProfileUser = () => {
 
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/dh8ogvcuy/image/upload",
+        "https://cors-anywhere.herokuapp.com/https://api.cloudinary.com/dh8ogvcuy/image/upload",
         formData
       );
       setForm({ ...form, image: response.data.secure_url });
@@ -51,14 +51,14 @@ const ProfileUser = () => {
   const handleUpdate = async (obj: Object) => {
     try {
       console.log(user);
-      
+
       const response = await axios.put(
         `http://localhost:1128/users/update/${user.token.id}`,
         obj
       );
       toast.success("Update Successfully");
       console.log("");
-      
+
     } catch (error) {
       console.error(error);
     }
@@ -210,7 +210,7 @@ const ProfileUser = () => {
             )}
             {element === "userChat" && (
               <div className="chat">
-                <h1>chat</h1>
+                <Chat />
               </div>
             )}
             {element === "userCheckout" && (
