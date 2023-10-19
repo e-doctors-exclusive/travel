@@ -86,7 +86,7 @@ const router = useRouter()
   <Navbar/>
       <div className="flighFinder_main_container">
         <div className="flighFinder_container">
-        <div className="landing-inputs"  id="flightfinder-search">
+        {/* <div className="landing-inputs"  id="flightfinder-search">
             <div className="landing-input">
               <i className="fa-solid fa-plane-departure"></i>
               <select
@@ -127,7 +127,7 @@ const router = useRouter()
                   width={0}
                   height={0}
                 />
-                <p>Depart - </p>
+                <p>Depart-</p>
                 <p>Return</p>
               </div>
               <div className="date_picker_modal" id={modalClass}>
@@ -169,7 +169,7 @@ const router = useRouter()
               </button>
             </div>
             
-            </div>
+            </div> */}
             <div className="filter">
                <div className="oneselect">
                 <select name="" id="">

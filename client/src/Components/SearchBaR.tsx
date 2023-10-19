@@ -45,6 +45,7 @@ const router = useRouter()
     dateFrom: Date;
     dateTo: Date;
     price: number;
+    
   }
 
   const dispatch: AppDispatch = useDispatch();
@@ -66,6 +67,7 @@ const router = useRouter()
   console.log(flight.origin)
 
   return (
+    <div className="calendar-container-search-bar">
           <div className="landing-inputs">
             <div className="landing-input">
              {planeLanding}
@@ -97,7 +99,7 @@ const router = useRouter()
               </select>
             </div>
 
-            <div className="landing-input calendar_check">
+            <div className="landing-input calendar_check" style={{width:"20rem"}}>
               <div className="date_data">
                 <Image
                   id="dateIcon"
@@ -105,16 +107,10 @@ const router = useRouter()
                   alt=""
                   onClick={handleOpenDateModal}
                 />
-                <p>Depart - </p>
+                <p>Depart</p>
                 <p>Return</p>
               </div>
-              <div className="date_picker_modal" id={modalClass}>
-                <DatePickers
-                  handleOpenDateModal={handleOpenDateModal}
-                  setDepartDate={setDepartDate}
-                  setArriveDate={setArriveDate}
-                />
-              </div>
+       
             </div>
             <div className="landing-input">
               <i className="fa-solid fa-user"></i>
@@ -146,6 +142,14 @@ const router = useRouter()
                 search
               </button>
             </div>
+            </div>
+            <div className="date_picker_modal" id={modalClass}>
+                <DatePickers
+                  handleOpenDateModal={handleOpenDateModal}
+                  setDepartDate={setDepartDate}
+                  setArriveDate={setArriveDate}
+                />
+              </div>
             </div>
   );
 }
