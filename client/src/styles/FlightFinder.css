@@ -330,9 +330,6 @@ select{
   line-height: normal;
 }
 
-/* * {
-  outline: 1px red solid;
-} */
 
 .flight-data:hover{
   opacity: 0.7;
