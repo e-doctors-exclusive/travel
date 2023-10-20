@@ -10,10 +10,11 @@
 }
 
 .landing-inputs {
-  color: #6e7491;
-  position: relative;
   display: flex;
-  background-color: red;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  color: #6e7491;
   border-radius: 4px;
   border: 1px solid var(--grey-200, #cbd4e6);
   background: #fff;
@@ -21,8 +22,20 @@
   box-shadow: 0px 12px 24px 0px rgba(27, 59, 119, 0.05),
     0px 24px 60px 0px rgba(6, 47, 125, 0.05),
     0px 2px 4px 0px rgba(7, 4, 146, 0.1);
- 
 }
+
+.landing-inputs::after {
+    content: '';
+    /* position: absolute; */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -1px; /* Adjust as needed */
+    width: calc(100% - 40px); /* Adjust as needed */
+    height: 2px; /* Adjust as needed */
+    background-color: var(--grey-200, #cbd4e6); /* Adjust as needed */
+}
+
+
 .calendar-container-search-bar{
   display: flex;
   flex-direction: column;
@@ -155,6 +168,8 @@
 .landing-cards {
   margin-top: 50px;
   display: flex;
+  flex-direction: row;
+  gap: 1rem;
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
@@ -209,7 +224,7 @@
   text-align: center;
 }
 .one-rate {
-  width: 410px;
+  width: auto;
   display: flex;
 }
 .one-rate img {
@@ -218,10 +233,7 @@
   border-radius: 48px;
   margin-right: 10px;
 }
-.rate-info {
-  display: flex;
-  flex-direction: column;
-}
+
 .nameuser {
   font-size: 20px;
 }
@@ -252,9 +264,32 @@
   font-weight: 400;
   line-height: normal;
 }
-
+.rate-info:hover p {
+  border: 1px solid #605DEC; 
+  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+  background-color: #ffffff;
+  color: #383838; /* Add a contrasting text color for better readability */
+  padding: 10px; /* Add some padding to give the text some room */
+  transition: background-color 0.3s ease; 
+  /* Add a smooth transition effect when the background color changes */
+}
+.one-rate:hover{
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  border: 1px ridge #605DEC; 
+  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+  background-color: #ffffff;
+  color: #383838; /* Add a contrasting text color for better readability */
+  padding: 10px; /* Add some padding to give the text some room */
+  transition: background-color 0.3s ease; 
+  /* Add a smooth transition effect when the background color changes */
+}
 .rating-section {
   display: flex;
+  width: auto;
+  flex-direction: column;
+  gap: 2rem;
   justify-content: space-around;
   align-items: center;
   margin-top: 50px;
@@ -273,6 +308,7 @@
 
 .calendar_check {
   padding-right: 6rem;
+  width: 16rem !important ;
   /* display: flex;
   flex-direction: column; */
 }
@@ -291,7 +327,6 @@
   border-radius: 25px;
   transition: 0.4s;
   cursor: pointer;
-  z-index: 0;
 }
 
 #dateIcon:hover {

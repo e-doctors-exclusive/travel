@@ -53,9 +53,9 @@
 // db.Brands = Brands
 // db.CreditCard = CreditCard
 
-//   connection
-//     .sync({force: true , alter : true })
-//     .then(() => console.log("tables created"))
-//     .catch((error) => {throw error;});
+//   // connection
+//   //   .sync({force: true , alter : true })
+//   //   .then(() => console.log("tables created"))
+//   //   .catch((error) => {throw error;});
 
 // module.exports = db
