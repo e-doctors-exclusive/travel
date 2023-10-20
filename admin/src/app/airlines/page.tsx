@@ -13,7 +13,7 @@ function Airlines() {
   const [brand, setBrand] = useState([]);
 
   const fetch = () => {
-    axios.get("http://localhost:1128/brands/getAll").then((res) => {
+    axios.get("http://localhost:1337/brands/getAll").then((res) => {
       console.log(res);
       setBrand(res.data);
     });
@@ -26,7 +26,7 @@ function Airlines() {
 
 
  const handleDelete = (id:any)=>{
-  axios.delete(`http://localhost:1128/brands/${id}`)
+  axios.delete(`http://localhost:1337/brands/${id}`)
   .then((res) => {
       console.log("brand deleted successfully");
       fetch();
