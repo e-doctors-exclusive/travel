@@ -109,7 +109,7 @@ const Navbar = () => {
         .catch((e) => console.log(e));
     } else {
       await axios
-        .post("http://localhost:1128/users/login", {
+        .post("http://localhost:1337/users/login", {
           phone: email,
           password,
         })
