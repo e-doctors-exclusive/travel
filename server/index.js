@@ -6,7 +6,6 @@ const port = 1337; // You can choose any available port
 app.use(express.json());
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-
 // require("./database/index.js")
 
 require('dotenv').config()

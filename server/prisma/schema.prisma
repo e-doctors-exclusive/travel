@@ -123,11 +123,13 @@ model user_fligths {
   @@id([UserId, FlightId])
 }
 
+
 model users {
   id        Int      @id @default(autoincrement())
   name      String?  @db.VarChar(255)
   email     String?  @unique(map: "email") @db.VarChar(255)
   password  String?  @db.VarChar(255)
+  status    Boolean?  @default(true)
   phone     Int?     @unique(map: "phone")
   adress    String?  @db.VarChar(255)
   city      String?  @db.VarChar(255)
