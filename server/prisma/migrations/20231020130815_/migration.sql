@@ -12,6 +12,16 @@ CREATE TABLE `admins` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
+CREATE TABLE `messages` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `content` VARCHAR(255) NOT NULL,
+    `sender` VARCHAR(255) NOT NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
 CREATE TABLE `brands` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
@@ -58,13 +68,11 @@ CREATE TABLE `flights` (
 -- CreateTable
 CREATE TABLE `payments` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `token` VARCHAR(255) NOT NULL,
     `price` INTEGER NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `ReservationId` INTEGER NULL,
+    `usersId` INTEGER NULL,
 
-    INDEX `ReservationId`(`ReservationId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -139,7 +147,7 @@ CREATE TABLE `users` (
 ALTER TABLE `flights` ADD CONSTRAINT `flights_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `brands`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `payments` ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`ReservationId`) REFERENCES `reservations`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `payments` ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`usersId`) REFERENCES `users`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `reservations` ADD CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`FlightId`) REFERENCES `flights`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

@@ -53,7 +53,7 @@ const ProfileUser = () => {
       console.log(user);
 
       const response = await axios.put(
-        `http://localhost:1128/users/update/${user.token.id}`,
+        `http://localhost:1337/users/update/${user.token.id}`,
         obj
       );
       toast.success("Update Successfully");
@@ -67,7 +67,7 @@ const ProfileUser = () => {
   const takeReservation = async (id: number) => {
     try {
       const response = await axios.get(
-        `http://localhost:1128/reservation/getFor/${id}`
+        `http://localhost:1337/reservation/getFor/${id}`
       );
       setReservation(response.data);
     } catch (error) {

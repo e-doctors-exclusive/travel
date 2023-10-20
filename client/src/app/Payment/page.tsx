@@ -20,7 +20,7 @@ const Payment = () => {
 
   const takeAseat = async (id:number) => {
     try {
-      const res = await axios.put(`http://localhost:1128/seats/update/${id}`, {
+      const res = await axios.put(`http://localhost:1337/seats/update/${id}`, {
         availble: false,
       });
       return res.data;
@@ -31,7 +31,7 @@ const Payment = () => {
 
   const addReservation = async (obj:object) => {
     try {
-      const res = await axios.post(`http://localhost:1128/reservation/add`, obj);
+      const res = await axios.post(`http://localhost:1337/reservation/add`, obj);
     } catch (error) {
       throw error;
     }

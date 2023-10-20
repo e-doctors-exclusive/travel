@@ -25,7 +25,7 @@ function LandingPage() {
 
 
   const handleLogin = (body:any) => {
-    axios.post('http://localhost:1128/admin/signin', body )
+    axios.post('http://localhost:1337/admin/signin', body )
       .then((res) => {
         console.log(res.data);
         route.push("/home")

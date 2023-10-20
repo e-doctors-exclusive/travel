@@ -109,7 +109,7 @@ const Navbar = () => {
         .catch((e) => console.log(e));
     } else {
       await axios
-        .post("http://localhost:1128/users/login", {
+        .post("http://localhost:1337/users/login", {
           phone: email,
           password,
         })
@@ -123,7 +123,7 @@ const Navbar = () => {
   
   useEffect(() => {
     const token = localStorage.getItem("token");
-    dispatch(checkUser(JSON.stringify(token)));
+    dispatch(checkUser());
     console.log(token);
 
     loggedIn ? (dispatch(setLogState(true)), setState(true)) : dispatch(setLogState(false)), setState(false);

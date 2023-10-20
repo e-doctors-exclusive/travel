@@ -1,9 +1,26 @@
 "use client"
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../styles/Success.css'
 import { useRouter } from 'next/navigation'
+import {savePaymentHistory,checkUser,selectUser,selectPrice} from "@/store/tokenSlicer"
+import { AppDispatch } from "../../store";
+import { useSelector } from 'react-redux'
+import { useDispatch } from "react-redux";
+
 const page = () => {
+  const dispatsh:AppDispatch = useDispatch()
+  const price:number = Number(localStorage.getItem("price"))
+  const userId = localStorage.getItem("id")
   const router = useRouter()
+  useEffect(()=>{
+    dispatsh(checkUser())
+  },[])
+  
+  const handleClickPayment = ()=>{
+
+    dispatsh(savePaymentHistory({price,userId}))
+    router.push("/")
+  }
   return (
 
       <div className='container-success'>
@@ -16,7 +33,7 @@ const page = () => {
           <p className='you-will'> You will be redirected to the home page shortly or <br/> click here to return to home page </p>
         </div>
         <div className='button-success'>
-          <button className='btn-success' onClick={()=>{router.push("/")}} >Home</button>
+          <button className='btn-success' onClick={()=>handleClickPayment()} >Home</button>
         </div>
       </div>
 
