@@ -37,15 +37,18 @@ export default function Users() {
       headerName: 'Delete', 
       width: 100,
       renderCell: (params:any) => (
-        <Button
-          variant="outlined" color="error"
-          style={{ marginLeft: '20px' }}
-          onClick={() => {deleteUser(params.row.id)
-    
-          }}
-        >
-          Delete
-        </Button>
+<Button
+      variant="outlined" color="error"
+      style={{ marginLeft: '20px' }}
+      onClick={(event) => {
+        event.stopPropagation(); // This line stops event propagation
+        deleteUser(params.row.id);
+        console.log(params.row.id);
+        
+      }}
+    >
+      Delete
+    </Button>
       ),
     }
   ];
@@ -61,7 +64,7 @@ export default function Users() {
 
 const deleteUser = async (id:any) => {
   console.log(id)
-  axios.delete(`http://127.0.0.1:1128/users/delete/${id}`)
+  axios.delete(`http://127.0.0.1:1128/users/${id}`)
   .then(() => {
     fetchUsers();
   })
@@ -80,13 +83,16 @@ const deleteUser = async (id:any) => {
     <div style={{ height: 400, width: '100%',display: 'flex',
           flexWrap: 'wrap',
           flex: 1,
-          marginLeft: clicked ? '250px' : '70px' }}>
+          marginLeft: '250px' }}>
       <DataGrid
         rows={rows}
         columns={columns}
-        onSelectionModelChange={(newSelection) => {
-          fetchUsers(newSelection.selectionModel[0]);
-        }}
+        // onSelectionModelChange={(newSelection:any) => {
+        //   fetchUsers(
+        //     newSelection.selectionModel[0]
+        //     )
+
+        // }}
         initialState={{
           pagination: {
             paginationModel: { page: 0, pageSize: 5 },

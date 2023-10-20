@@ -13,7 +13,7 @@ module.exports.signup = async (req, res) => {
         name,
         email: email || null,
         password: hashedPassword,
-        phone: phone || null,
+        phone: phone || null
       },
     })
     res.status(201).json({ message: 'User created successfully', result });
@@ -90,7 +90,19 @@ module.exports.update = async (req, res) => {
   }
 };
 
-
+module.exports.updateStatusUser = async (req, res) => {
+  try {
+    const updateStatus = await prisma.users.update({ where: { id: parseInt(req.params.id) },
+    data: {
+      status: req.status,
+    }},
+     
+    );
+    res.json(updateStatus);
+  } catch (e) {
+    res.json({ message: "error updating", e });
+  }
+};
 
 module.exports.deleted = async (req, res) => {
   try {
@@ -120,5 +132,19 @@ module.exports.getOne = async (req, res) => {
     }
   } else {
     res.status(401).json({ message: "Not authorized" });
+  }
+};
+
+module.exports.accessStatus= async (req, res) => {
+  try {
+    const user = await prisma.users.update({ where: { id: parseInt(req.params.id) },
+    data:{
+      status:false
+    }}
+     
+    );
+    res.json(user);
+  } catch (e) {
+    res.status(404).json({ message: "error updating", e });
   }
 };
