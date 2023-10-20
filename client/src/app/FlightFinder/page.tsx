@@ -14,6 +14,7 @@ import { AppDispatch, RootState } from "../../store"
 import { fetchAllFlights, fetchFlights,selected} from "../../store/flights";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import BarChart from "../Chat/BarChart/page";
 const FlightFinder: React.FC = () => {
   const currentFlight:any= useSelector((state: RootState) => state.flights.currentFlight);
 
@@ -58,7 +59,7 @@ const router = useRouter()
   let a = allFlight.map((e: objTypeAll) => e.destFrom);
   let b = allFlight.map((e: objTypeAll) => e.destTo);
   let prices = allFlight.map((e: objTypeAll) => e.price);
-  let airlines = flights.map((e: objTypeAll) => e.brands.name);
+  let airlines = flights.map((e: objTypeAll) => e.brands?.name);
   let times = flights.map((e: objTypeAll) => e.dateTo);
   let flight = { origin: [...new Set(a)], destination: [...new Set(b)], price:[...new Set(prices)], airlines:[...new Set(airlines)],times:[...new Set(times)]};
 
@@ -233,8 +234,9 @@ const router = useRouter()
               {/* <button className="show_flights">Show all flights</button> */}
               <div className="trip_direction_map"></div>
             </div>
-            <div className="flighs_finded_pricing">
-              {
+            <div className="w-1/2 h-[300px] bg-gray-700 rounded">
+              <BarChart/>
+              {/* {
                 currentFlight.brands? <div className="aller">
                 <div className="aller_container">
                   <Image src={currentFlight.brands.image} alt=""  width={0} height={0} />
@@ -254,7 +256,7 @@ const router = useRouter()
               </div>
                
               :null
-              }
+              } */}
            
             </div>
           </div>
