@@ -6,7 +6,6 @@ const port = 1128; // You can choose any available port
 app.use(express.json());
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-
 // require("./database/index.js")
 
 require('dotenv').config()
@@ -42,7 +41,7 @@ io.on('connection', (socket) => {
     console.log('A user disconnected');
   });
 });
-app.use("/users", userRoutes)
+app.use("/users",userRoutes)
 app.use("/admin", adminRoutes)
 app.use("/reservation",ReservationRoutes)
 app.use("/payment",PaymentRouter)

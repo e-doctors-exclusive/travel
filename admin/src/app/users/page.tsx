@@ -83,7 +83,7 @@ const deleteUser = async (id:any) => {
     <div style={{ height: 400, width: '100%',display: 'flex',
           flexWrap: 'wrap',
           flex: 1,
-          marginLeft: clicked ? '250px' : '70px' }}>
+          marginLeft: '250px' }}>
       <DataGrid
         rows={rows}
         columns={columns}

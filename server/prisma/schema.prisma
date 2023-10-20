@@ -122,7 +122,7 @@ model users {
   name      String?  @db.VarChar(255)
   email     String?  @unique(map: "email") @db.VarChar(255)
   password  String?  @db.VarChar(255)
-  status    Boolean @default(true)
+  status    Boolean?  @default(true)
   phone     Int?     @unique(map: "phone")
   adress    String?  @db.VarChar(255)
   city      String?  @db.VarChar(255)

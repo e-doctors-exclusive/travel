@@ -44,7 +44,7 @@ function Airlines() {
           display: "flex",
           flexWrap: "wrap",
           flex: 1,
-          marginLeft: clicked ? "250px" : "70px",
+          marginLeft:"250px" ,
         }}
       >
         {brand.map((brand:any) => (
