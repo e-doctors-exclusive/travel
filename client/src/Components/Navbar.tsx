@@ -123,7 +123,7 @@ const Navbar = () => {
   
   useEffect(() => {
     const token = localStorage.getItem("token");
-    dispatch(checkUser(JSON.stringify(token)));
+    dispatch(checkUser());
     console.log(token);
 
     loggedIn ? (dispatch(setLogState(true)), setState(true)) : dispatch(setLogState(false)), setState(false);
