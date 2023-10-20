@@ -12,7 +12,7 @@ import { RootState } from "../../store";
 import Link from 'next/link';
 import  {fillForm}  from "../../store/flights";
 import {selectLink} from "../../store/tokenSlicer"
-import {paymentUser} from "../../store/tokenSlicer"
+import {paymentUser,checkUser,selectUser} from "../../store/tokenSlicer"
 import  {useRouter}  from "next/navigation";
 interface FormData {
   firstName: string;
@@ -50,6 +50,7 @@ interface fightType{
 
 const PassengerInfo: React.FC = () => {
   const router = useRouter()
+  const userData:any = useSelector(selectUser)
   const link = useSelector(selectLink)
   const dispatsh:AppDispatch = useDispatch()
   // const router = useRouter()
@@ -81,6 +82,7 @@ const PassengerInfo: React.FC = () => {
     
   };
 useEffect(()=>{
+  dispatsh(checkUser())
   dispatsh(paymentUser(currentFlight.price+121))
 },[])
   const handleCheckBox = (e: ChangeEvent<HTMLInputElement>) => {
@@ -271,9 +273,12 @@ useEffect(()=>{
               </div>
             </div>
             <div className="choice-btns">
-              <button className="btnsave_and_clode" onClick={()=>{router.push(link)
-              
-              
+              <button className="btnsave_and_clode" onClick={()=>{
+                (localStorage.setItem("price",currentFlight.price+121))
+                localStorage.setItem("id",userData.id)
+                console.log(userData.id);
+                
+                router.push(link)
               }} >Save and close</button>
               <Link href="/PlaneBooking">
               <button onClick={()=>{dispatsh(fillForm(formData)) }} id="larger">Select seats</button>
