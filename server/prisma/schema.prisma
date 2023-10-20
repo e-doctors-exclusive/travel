@@ -28,6 +28,7 @@ model brands {
   email       String    @db.VarChar(255)
   description String    @db.VarChar(255)
   image       String    @db.VarChar(255)
+  rating        Int
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @default(now())
   flights     flights[]

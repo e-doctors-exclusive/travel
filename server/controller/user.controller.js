@@ -90,7 +90,19 @@ module.exports.update = async (req, res) => {
   }
 };
 
-
+module.exports.updateStatusUser = async (req, res) => {
+  try {
+    const updateStatus = await prisma.users.update({ where: { id: parseInt(req.params.id) },
+    data: {
+      status: req.status,
+    }},
+     
+    );
+    res.json(updateStatus);
+  } catch (e) {
+    res.json({ message: "error updating", e });
+  }
+};
 
 module.exports.deleted = async (req, res) => {
   try {
