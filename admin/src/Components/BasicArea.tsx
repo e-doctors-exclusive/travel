@@ -2,16 +2,8 @@ import React,{useState} from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 import axios from 'axios';
 
-export default function BasicArea() {
-  const [money,setMoney]=useState([])
-  const fetchPayment = async ()=>{
-      try {
-        const payment = await axios.get('')
-        setMoney(payment.data)
-      } catch (error) {
-        throw error
-      }
-  }
+export default function BasicArea({money}:any) {
+
 
   return (
     <div style={{marginTop:"20px"}}>
