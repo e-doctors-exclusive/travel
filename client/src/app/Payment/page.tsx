@@ -13,8 +13,8 @@ import Footer from "@/Components/Footer";
 const Payment = () => {
   const router = useRouter();
   const [can, setCan] = useState(true);
-  const user = useSelector((state: any) => state.user);
-  const userid = user.user.id;
+  const user = useSelector((state: any) => state.token);
+  const userid = user.token.id;
   const currentFlight = useSelector((state:any) => state.flights.currentFlight);
   const currentReservation = useSelector((state:any) => state.flights.currentReservation);
 
@@ -108,7 +108,7 @@ const Payment = () => {
                 >
                   Back to seat select
                 </button>
-                {user.user.id ? (
+                {user.token.id ? (
                   <button
                     id="goout"
                     onClick={() => {

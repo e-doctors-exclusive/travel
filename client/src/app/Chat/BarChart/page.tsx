@@ -32,8 +32,17 @@ const  BarChart = () => {
         name: "Five",
         high: 7000,
         
-    }
-    
+    },
+    {
+        name: "Jun",
+        high: 8000,
+        
+    },
+    {
+        name: "Jul",
+        high: 7400,
+       
+    },
   ];
     interface objTypeAll {
         destFrom: string;
