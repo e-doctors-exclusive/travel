@@ -12,6 +12,7 @@ import { setLogState } from "@/store/tokenSlicer";
 import ChatRoom from "../../Components/ChatRoom"
 const ProfileUser = () => {
   const user = useSelector((state: any) => state.token);
+  const [checkoutData,setCHekouData]=useState([])
   const [form, setForm] = useState({
     name: user.name,
     email: user.email,
@@ -64,6 +65,24 @@ const ProfileUser = () => {
     }
   };
 
+
+
+
+
+const fetchAllCheckout = async ()=>{
+  const id = localStorage.getItem("id")
+
+  try {
+    const response = await axios.get(`http://localhost:1337/payment/getAllPaymentById/${id}`)
+    console.log(response.data);
+    setCHekouData(response.data)
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
+
+
   const takeReservation = async (id: number) => {
     try {
       const response = await axios.get(
@@ -76,7 +95,11 @@ const ProfileUser = () => {
   };
   useEffect(() => {
     takeReservation(user.id);
+  fetchAllCheckout()
+
   }, []);
+  console.log("imhere",checkoutData);
+  
   return (
     <>
       <Navbar />
@@ -215,9 +238,17 @@ const ProfileUser = () => {
             )}
             {element === "userCheckout" && (
               <div className="checkoutt">
-                {userReservations.map((r) => {
+
+                  {checkoutData.map((r:any)=>{
+                    console.log(r);
+                    return  <div className="one-checkout-user">
+                    <p style={{color:"white"}} > <span className="pragraphs-checkout" >Price :</span> {r.price} $</p>
+                    <p style={{color:"white"}} > <span className="pragraphs-checkout">Created At :</span> {r.createdAt}</p>
+                    </div>
+                  })}
+                {/* {userReservations.map((r) => {
                   return (
-                    <div className="oneChekout">
+                    <div className="oneChekout"> */}
                       {/* <div className="flight-data">
                         <div className="logo-sec">
                           <Image
@@ -240,9 +271,9 @@ const ProfileUser = () => {
                           <p>round trip</p>
                         </div>
                       </div> */}
-                    </div>
+                    {/* </div>
                   );
-                })}
+                })} */}
               </div>
             )}
           </div>
