@@ -1,16 +1,19 @@
-import * as React from 'react';
+import React,{useState} from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
+import axios from 'axios';
 
-export default function BasicArea() {
+export default function BasicArea({moneys}:any) {
+
+
   return (
     <div style={{marginTop:"20px"}}>
-        <h1 style={{textAlign:"center"}}>Monthly profits</h1>
+        <h1 style={{textAlign:"center"}}>Profits</h1>
     <LineChart
-      xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+      xAxis={[{ data: [1, 2, 3, 5, 8, 12] }]}
       series={[
         {
-          data: [2, 5.5, 2, 8.5, 1.5, 5],
-          area: true,
+          data: [200, 550, 200, 850, 1500, 1000],
+          // area: true,
         },
       ]}
       width={500}

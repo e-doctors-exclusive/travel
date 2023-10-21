@@ -21,7 +21,7 @@ const AddFlight = () => {
 
   const fetchBrands = async () => {
     try {
-      const response = await axios.get("http://localhost:1128/brands/getAll");
+      const response = await axios.get("http://localhost:1337/brands/getAll");
       setBrands(response.data);
     } catch (error) {
       console.error(error);
@@ -37,7 +37,7 @@ const AddFlight = () => {
     try {
       const formattedDepartureDate = new Date(departureDate);
       const formattedArrivalDate = new Date(arrivalDate);
-      const response = await axios.post("http://localhost:1128/flights/add", {
+      const response = await axios.post("http://localhost:1337/flights/add", {
         destFrom,
         destTo,
         dateFrom: formattedDepartureDate,
@@ -47,7 +47,7 @@ const AddFlight = () => {
         price:Number(price),
         brandId:Number(brand),
       });
-      const seats = await axios.post("http://localhost:1128/seats/addSeats", {
+      const seats = await axios.post("http://localhost:1337/seats/addSeats", {
         FlightId:response.data,
         numberOfSeats:numberOfSeats
       });
