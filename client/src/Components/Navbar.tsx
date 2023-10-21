@@ -14,11 +14,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLogState, selectUser, checkUser, selectLoggedIn, selectUserError } from "../store/tokenSlicer";
 import { toast } from "react-toastify";
 import { AppDispatch } from "@/store";
+import SignUpbrand from "./SignUpbrand";
 
 const Navbar = () => {
   const router = useRouter()
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
   const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
+  const [isSignUpModalOpen1, setSignUpModalOpen1] = useState(false);
   const dispatch: AppDispatch = useDispatch();
   const user = useSelector(selectUser);
   const loggedIn = useSelector(selectLoggedIn)
@@ -87,9 +89,15 @@ const Navbar = () => {
   const openSignUpModal = () => {
     setSignUpModalOpen(true);
   };
+  const openSignUpModal1 = () => {
+    setSignUpModalOpen1(true);
+  };
 
   const closeSignUpModal = () => {
     setSignUpModalOpen(false);
+  };
+  const closeSignUpModal1 = () => {
+    setSignUpModalOpen1(false);
   };
   console.log("this is error", err);
   const [state, setState] = useState<boolean>(false)
@@ -148,8 +156,78 @@ const Navbar = () => {
         {loggedIn ? null : <button className="Sign-up" onClick={openSignUpModal}>
           Sign up
         </button>}
+        {loggedIn ? null : <button className="Sign-up" onClick={openSignUpModal1}>
+          Sign up as a brand
+        </button>}
       </div>
-
+            <SignUpbrand isOpen={isSignUpModalOpen1} onClose={closeSignUpModal1}>
+            <form className="main_signUp_container">
+          <div className="signUp_header">
+            <div className="signUp_desc">
+              <p id="signUp_title">Sign up for Tripma</p>
+              {/* <p id="signUp">
+                Tripma is totally free to use. Sign up using your email address
+                or phone number below to get started.
+              </p> */}
+            </div>
+            <div className="labels">
+              <input
+                type="text"
+                placeholder="Email or phone number"
+                onChange={(e) => {
+                  setForm({ ...form, phomail: e.target.value });
+                }}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => {
+                  setForm({ ...form, password: e.target.value });
+                }}
+              />
+            </div>
+            <div className="term_conditions">
+              <div className="term_of_condition">
+                <input
+                  type="checkbox"
+                  onClick={() => {
+                    setChecks({ ...checks, c1: !checks.c1 });
+                  }}
+                />
+                <p>
+                  I agree to the <span>terms and conditions</span>
+                </p>
+              </div>
+              <div className="term_of_condition">
+                {/* <input
+                  type="checkbox"
+                  onClick={() => {
+                    setChecks({ ...checks, c2: !checks.c2 });
+                  }}
+                /> */}
+              </div>
+            </div>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                if (Number.isNaN(+form.phomail)) {
+                  handleCreate({
+                    email: form.phomail,
+                    password: form.password,
+                  });
+                } else {
+                  handleCreate({
+                    phone: parseInt(form.phomail),
+                    password: form.password,
+                  });
+                }
+              }}
+            >
+              Create account
+            </button>
+          </div>
+        </form>
+            </SignUpbrand>
       <SignUp  isOpen={isSignUpModalOpen} onClose={closeSignUpModal}>
         <form className="main_signUp_container">
           <div className="signUp_header">
