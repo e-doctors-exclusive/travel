@@ -137,13 +137,18 @@ module.exports.getOne = async (req, res) => {
 
 module.exports.accessStatus= async (req, res) => {
   try {
-    const user = await prisma.users.update({ where: { id: parseInt(req.params.id) },
-    data:{
-      status:false
-    }}
-     
-    );
-    res.json(user);
+      const user = await prisma.users.findUnique({
+        where: { id: parseInt(req.params.id) },
+      })
+      const newStatus = !user.status;
+      console.log(!user.status);
+      const updatedUser = await prisma.users.update({
+        where: { id: parseInt(req.params.id) },
+        data: {
+          status: newStatus,
+        },
+      })
+      res.json(updatedUser)
   } catch (e) {
     res.status(404).json({ message: "error updating", e });
   }

@@ -30,7 +30,7 @@ console.log(response.data.secure_url);
 
   const addBrands = (body:any) => {
     axios
-      .post("http://localhost:1128/brands/add", body)
+      .post("http://localhost:1337/brands/add", body)
       .then((res) => {
         console.log("Successfully added brands");
         setClicked(false);
