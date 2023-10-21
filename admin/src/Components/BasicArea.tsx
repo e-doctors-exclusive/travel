@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 import axios from 'axios';
 
-export default function BasicArea({money}:any) {
+export default function BasicArea({moneys}:any) {
 
 
   return (

@@ -8,9 +8,10 @@ import axios from 'axios';
 
 const Home = () => {
   const [clicked, setClicked] = useState(true);
-  const [money,setMoney]=useState([])
+  const [moneys,setMoney]=useState([])
   const [users,setUsers]= useState([])
   console.log('these are users',users.length);
+  console.log('this is money',moneys);
   
   useEffect(() => {
     fetchUsers();
@@ -19,7 +20,7 @@ const Home = () => {
 
   const fetchPayment = async ()=>{
     try {
-      const payment = await axios.get('')
+      const payment = await axios.get('http://127.0.0.1:1337/payment/getAllPayments')
       setMoney(payment.data)
     } catch (error) {
       throw error
@@ -54,7 +55,7 @@ const Home = () => {
       }}
     >
         <div style={{ display: 'flex' }}>
-          <BasicArea money={money}/>
+          <BasicArea money={moneys}/>
           <HorizontalBars users={users}/>
         </div>
       </div>
