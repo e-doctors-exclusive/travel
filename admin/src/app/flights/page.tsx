@@ -23,7 +23,7 @@ export default function Flights() {
   useEffect(() => {
     const fetchFlights = async () => {
       try {
-        const response = await axios.get('http://localhost:1128/flights/getAll');
+        const response = await axios.get('http://localhost:1337/flights/getAll');
         const flights = response.data.map((flight:any) => (
           console.log(flight.departureTime),
           {

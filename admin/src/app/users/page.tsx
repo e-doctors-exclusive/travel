@@ -55,7 +55,7 @@ export default function Users() {
   
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:1128/users/getAll');
+      const response = await axios.get('http://127.0.0.1:1337/users/getAll');
       setRows(response.data);
     } catch (error) {
       console.error(error);
@@ -64,7 +64,7 @@ export default function Users() {
 
 const deleteUser = async (id:any) => {
   console.log(id)
-  axios.delete(`http://127.0.0.1:1128/users/${id}`)
+  axios.delete(`http://127.0.0.1:1337/users/${id}`)
   .then(() => {
     fetchUsers();
   })
