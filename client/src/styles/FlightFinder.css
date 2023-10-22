@@ -136,14 +136,7 @@ select{
   line-height: normal;
 }
 
-.bg-gray-700 {
-  display: flex;
-  justify-content: center;
-  padding-top: 12px;
-  border: 1px solid var(--grey-200, #cbd4e6);
-  height: 747px;
-  width: 33%;
-}
+
 
 .flight_data_container {
   border-radius: 12px;
@@ -376,3 +369,21 @@ outline: none;
   background-color: #605dec;
   border-radius: 4px;
 }
+.g-gray-700{
+  height: 60%;
+  width: 100%;
+}
+.aller_sans_retour{
+  display: flex;
+  flex-direction: column;
+}
+.flighs_finded_pricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 12px;
+  border: 1px solid var(--grey-200, #cbd4e6);
+  height: 740px;
+  width: 33%;
+}
+

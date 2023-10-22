@@ -8,20 +8,9 @@ interface flightType {
   departureTime?: Date;
   arrivalTime?: Date;
   price?: number;
-  departDate?:string;
-  arriveDate?:string
+  departDate?: string;
+  arriveDate?: string;
 }
-// interface objType{
-//     destFrom:string
-//     destTo:string
-// }
-
-// interface objTypeAll{
-//     destFrom:string
-//     destTo:string
-//     departDate:string
-//     arriveDate:string
-// }
 
 export const fetchFlights = createAsyncThunk(
   "/flights/destFrom/destTo/dateFrom",
@@ -35,7 +24,7 @@ export const fetchFlights = createAsyncThunk(
 
 export const fetchAllFlights = createAsyncThunk("/flights/getAll", async () => {
   const res = await axios.get("http://localhost:1337/flights/getAll");
-console.log(res.data,"thiiiiiiis from store");
+  console.log(res.data, "thiiiiiiis from store");
 
   return res.data;
 });
@@ -62,13 +51,13 @@ const FlightSlice = createSlice({
     loading: false,
   },
   reducers: {
-  selected:(state,action)=>{
-      state.currentFlight = action.payload
+    selected: (state, action) => {
+      state.currentFlight = action.payload;
+    },
+    fillForm: (state, action) => {
+      state.currentReservation = action.payload;
+    },
   },
-  fillForm:(state,action)=>{
-      state.currentReservation = action.payload
-  }
-},
   extraReducers(builder) {
     builder
 
@@ -80,5 +69,5 @@ const FlightSlice = createSlice({
       });
   },
 });
-export const {fillForm,selected} = FlightSlice.actions
+export const { fillForm, selected } = FlightSlice.actions;
 export default FlightSlice.reducer;

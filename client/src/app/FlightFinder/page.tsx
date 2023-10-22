@@ -1,5 +1,5 @@
-"use client"
-import React, { useEffect ,useState} from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import ArrowDownIcon from "../../../public/Assets/icons/chevron down.svg";
 import DatePickers from "../../Components/DatePickers";
 import DepartIcon from "../../../public/Assets/icons/departure.svg";
@@ -10,21 +10,21 @@ import FlightData from "../../Components/FlightData";
 import Navbar from "../../Components/Navbar";
 import SearchBar from "../../Components/SearchBaR";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store"
-import { fetchAllFlights, fetchFlights,selected} from "../../store/flights";
+import { AppDispatch, RootState } from "../../store";
+import { fetchAllFlights, fetchFlights, selected } from "../../store/flights";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import BarChart from "../Chat/BarChart/page";
 const FlightFinder: React.FC = () => {
-  const currentFlight:any= useSelector((state: RootState) => state.flights.currentFlight);
-
+  const currentFlight: any = useSelector(
+    (state: RootState) => state.flights.currentFlight
+  );
 
   const [modalVisible, setModalVisible] = useState(false);
   const [dateModalVisible, setDateModalVisible] = useState(false);
   const [departDate, setDepartDate] = React.useState<Date | null>(null);
   const [arriveDate, setArriveDate] = React.useState<Date | null>(null);
-const router = useRouter()
-
+  const router = useRouter();
 
   const handleOpenDateModal = () => {
     setDateModalVisible(!dateModalVisible);
@@ -41,13 +41,13 @@ const router = useRouter()
     dateFrom: Date;
     dateTo: Date;
     price: number;
-    brands:any
+    brands: any;
   }
 
   const dispatch: AppDispatch = useDispatch();
 
   const flights = useSelector((state: RootState) => state.flights.allFlights);
-  console.log(flights,"this is flights")
+  console.log(flights, "this is flights");
   const allFlight: objTypeAll[] = useSelector(
     (state: RootState) => state.flights.allFlights
   );
@@ -61,9 +61,15 @@ const router = useRouter()
   let prices = allFlight.map((e: objTypeAll) => e.price);
   let airlines = flights.map((e: objTypeAll) => e.brands?.name);
   let times = flights.map((e: objTypeAll) => e.dateTo);
-  let flight = { origin: [...new Set(a)], destination: [...new Set(b)], price:[...new Set(prices)], airlines:[...new Set(airlines)],times:[...new Set(times)]};
+  let flight = {
+    origin: [...new Set(a)],
+    destination: [...new Set(b)],
+    price: [...new Set(prices)],
+    airlines: [...new Set(airlines)],
+    times: [...new Set(times)],
+  };
 
-  interface flightDatas{
+  interface flightDatas {
     Reservations: any[];
     Seats: any[];
     Users: any[];
@@ -79,15 +85,14 @@ const router = useRouter()
     id: number;
     price: number;
     updatedAt: string;
-  };
+  }
 
-  
   return (
     <>
-  <Navbar/>
+      <Navbar />
       <div className="flighFinder_main_container">
         <div className="flighFinder_container">
-        <div className="landing-inputs"  id="flightfinder-search">
+          <div className="landing-inputs" id="flightfinder-search">
             <div className="landing-input">
               <i className="fa-solid fa-plane-departure"></i>
               <select
@@ -97,8 +102,10 @@ const router = useRouter()
                 placeholder="where are you going"
               >
                 <option>where are you going</option>
-                {flight.origin.map((e,key) => (
-                  <option value={e} key={key}>{e}</option>
+                {flight.origin.map((e, key) => (
+                  <option value={e} key={key}>
+                    {e}
+                  </option>
                 ))}
               </select>
             </div>
@@ -149,115 +156,116 @@ const router = useRouter()
                 className="landing-boutton"
                 onClick={() => {
                   dispatch(selected({}));
-               
-                    dispatch(
-                      fetchFlights({
-                        destFrom,
-                        destTo,
-                        departDate:
-                          departDate
-                            ?.toLocaleDateString()
-                            .replace(/\//g, "-") ?? "",
-                        arriveDate:
-                          arriveDate
-                            ?.toLocaleDateString()
-                            .replace(/\//g, "-") ?? "",
-                      })
-                    )
+
+                  dispatch(
+                    fetchFlights({
+                      destFrom,
+                      destTo,
+                      departDate:
+                        departDate?.toLocaleDateString().replace(/\//g, "-") ??
+                        "",
+                      arriveDate:
+                        arriveDate?.toLocaleDateString().replace(/\//g, "-") ??
+                        "",
+                    })
+                  );
                 }}
               >
                 search
               </button>
             </div>
-            
-            </div>
-            <div className="filter">
-               <div className="oneselect">
-                <select name="" id="">
+          </div>
+          <div className="filter">
+            <div className="oneselect">
+              <select name="" id="">
                 <option>Price</option>
-                  {
-                    flight.price.map((e)=>{
-                      return <option>{e}</option>
-                    })
-                  }
-                </select>
-               </div> 
-               <div className="oneselect">
-               <select name="" id="">
-                <option>Duration</option>
-                  {
-                    flight.airlines.map((e)=>{
-                      return <option>{e}</option>
-                    })
-                  }
-                </select>
-               </div>
-               <div className="oneselect">
-               <select name="" id="">
-                <option>Times</option>
-                  {
-                    flight.times.map((e)=>{
-                      return <option>{e.toString().slice(0,10)}</option>
-                    })
-                  }
-                </select>
-               </div>
-               <div className="oneselect">
-               <select name="" id="">
-                <option>Seat class</option>
-                <option>Business class  </option>
-                <option>Economy</option>
-                </select>
-               </div>
-               <div className="oneselect">
-               <select name="" id="">
-                <option>Stop</option>
-                  {
-                    
-                  }
-                </select>
-               </div>
+                {flight.price.map((e) => {
+                  return <option>{e}</option>;
+                })}
+              </select>
             </div>
+            <div className="oneselect">
+              <select name="" id="">
+                <option>Duration</option>
+                {flight.airlines.map((e) => {
+                  return <option>{e}</option>;
+                })}
+              </select>
+            </div>
+            <div className="oneselect">
+              <select name="" id="">
+                <option>Times</option>
+                {flight.times.map((e) => {
+                  return <option>{e.toString().slice(0, 10)}</option>;
+                })}
+              </select>
+            </div>
+            <div className="oneselect">
+              <select name="" id="">
+                <option>Seat class</option>
+                <option>Business class </option>
+                <option>Economy</option>
+              </select>
+            </div>
+            <div className="oneselect">
+              <select name="" id="">
+                <option>Stop</option>
+                {}
+              </select>
+            </div>
+          </div>
           <div className="flighFinded">
             <div className="flighs_finded_data">
               <p>
                 Choose a <span>departing</span> flight
               </p>
               <div className="flight_data_container">
-                {/* data li bech tmapi aliha */
-                flights.map((oneFlight: flightDatas)=>{
-                  return <FlightData oneFlight={oneFlight} />
-                })
-                }
-                {/* data li bech tmapi aliha */}
+                {flights.map((oneFlight: flightDatas) => {
+                  return <FlightData oneFlight={oneFlight} />;
+                })}
               </div>
-              {/* <button className="show_flights">Show all flights</button> */}
+
               <div className="trip_direction_map"></div>
             </div>
-            <div className="w-1/2 h-[300px] bg-gray-700 rounded">
-              <BarChart/>
-              {/* {
-                currentFlight.brands? <div className="aller">
-                <div className="aller_container">
-                  <Image src={currentFlight.brands.image} alt=""  width={0} height={0} />
-                  <div className="img_title">
-                    <p>{currentFlight.brands.name}</p>
-                    <p className="ref">FIG4312</p>
+            <div className="flighs_finded_pricing">
+              <div>
+                {currentFlight.brands ? (
+                  <div className="aller">
+                    <div className="aller_container">
+                      <Image
+                        src={currentFlight.brands.image}
+                        alt=""
+                        width={0}
+                        height={0}
+                      />
+                      <div className="img_title">
+                        <p>{currentFlight.brands.name}</p>
+                        <p className="ref">FIG4312</p>
+                      </div>
+                    </div>
+                    <div className="time">
+                      <p>{}</p>
+                      <p>
+                        {currentFlight.departureTime} -{" "}
+                        {currentFlight.arrivalTime}
+                      </p>
+                      <p className="ref">
+                        {currentFlight.destFrom} - {currentFlight.destTo}
+                      </p>
+                      <p>total price : {currentFlight.price}</p>
+                      <button
+                        className="fillform"
+                        onClick={() => {
+                          router.push("/PassengerInfo");
+                        }}
+                      >
+                        fill your form
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div className="time">
-                  <p>{}</p>
-                  <p>{currentFlight.departureTime} - {currentFlight.arrivalTime}</p>
-                  <p className="ref">{currentFlight.destFrom} - {currentFlight.destTo}</p>
-                  <p>total price : {currentFlight.price}</p>
-                  <button className="fillform" onClick={()=>{router.push("/PassengerInfo")}}>fill your form</button>
-                </div>
-              
+                ) : null}
               </div>
-               
-              :null
-              } */}
-           
+              {currentFlight.brands ? <BarChart /> : null}
             </div>
           </div>
         </div>
@@ -265,7 +273,6 @@ const router = useRouter()
           <div></div>
           <div></div>
         </div>
-        
       </div>
       <div className="section-one">
         <div className="land-container">
@@ -298,7 +305,6 @@ const router = useRouter()
                 alt=""
                 width={410}
                 height={0}
-
               />
               <div className="card-info">
                 <div className="smalltitle">

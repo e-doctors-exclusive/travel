@@ -3,8 +3,10 @@ import { selected } from "../store/flights";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import {useRouter} from "next/navigation"
+import { fetch } from "../store/ratingSlice";
 import Image from "next/image";
 interface OneFlightData {
+  
   Reservations: any[];
   Seats: any[];
   Users: any[];
@@ -21,9 +23,12 @@ interface OneFlightData {
   price: number;
   updatedAt: string;
 }
+
+
 interface propsType{
   oneFlight:OneFlightData 
 }
+
 const FlightData: React.FC <propsType>= (props:any) => {
   const dispatch: AppDispatch = useDispatch();
   const router = useRouter()
@@ -43,8 +48,13 @@ const FlightData: React.FC <propsType>= (props:any) => {
   const hours = Math.floor(timeDiff / 3600);
   const minutes = Math.floor((timeDiff % 3600) / 60);
 
+  
+
+
   return (
-    <div className="flight-data" onClick={()=>{dispatch(selected(props.oneFlight));}}>
+    <div className="flight-data" onClick={()=>{
+      dispatch(fetch(props.oneFlight.id))
+      dispatch(selected(props.oneFlight))}}>
       <div className="logo-sec">
         <Image id="airline_logo" src={props.oneFlight.brands?.image} width={27} height={27} alt="" />
         <div className="logo-sec-desc">
