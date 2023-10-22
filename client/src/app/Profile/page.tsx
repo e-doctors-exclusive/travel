@@ -215,10 +215,10 @@ const ProfileUser = () => {
             )}
             {element === "userCheckout" && (
               <div className="checkoutt">
-                {userReservations.map((r) => {
+                {userReservations.map((r:any) => {
                   return (
                     <div className="oneChekout">
-                      {/* <div className="flight-data">
+                      <div className="flight-data">
                         <div className="logo-sec">
                           <Image
                             id="airline_logo"
@@ -239,7 +239,7 @@ const ProfileUser = () => {
                           <p>${r.Flight.price}</p>
                           <p>round trip</p>
                         </div>
-                      </div> */}
+                      </div>
                     </div>
                   );
                 })}

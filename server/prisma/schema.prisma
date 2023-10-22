@@ -29,7 +29,7 @@ model brands {
   email       String    @db.VarChar(255)
   description String    @db.VarChar(255)
   image       String    @db.VarChar(255)
-  rating        Int
+  rating      Int       @default(0)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @default(now())
   flights     flights[]
@@ -65,30 +65,30 @@ model flights {
 }
 
 model payments {
-  id            Int           @id @default(autoincrement())
-  price         Int
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @default(now())
-  users         users?        @relation(fields: [usersId], references: [id], map: "users_ibfk_1")
-  usersId       Int?
+  id        Int      @id @default(autoincrement())
+  price     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  users     users?   @relation(fields: [usersId], references: [id], map: "users_ibfk_1")
+  usersId   Int?
 }
 
 model reservations {
-  id                                      Int        @id @default(autoincrement())
-  firstName                               String?    @db.VarChar(255)
-  lastName                                String?    @db.VarChar(255)
-  birthDate                               String?    @db.VarChar(255)
+  id                                      Int      @id @default(autoincrement())
+  firstName                               String?  @db.VarChar(255)
+  lastName                                String?  @db.VarChar(255)
+  birthDate                               String?  @db.VarChar(255)
   phone                                   Int?
   Ephone                                  Int?
-  email                                   String?    @db.VarChar(255)
+  email                                   String?  @db.VarChar(255)
   userId                                  Int?
-  createdAt                               DateTime   @default(now())
-  updatedAt                               DateTime   @default(now())
+  createdAt                               DateTime @default(now())
+  updatedAt                               DateTime @default(now())
   FlightId                                Int?
   SeatId                                  Int?
-  flights                                 flights?   @relation(fields: [FlightId], references: [id], map: "reservations_ibfk_1")
-  seats_reservations_SeatIdToseats        seats?     @relation("reservations_SeatIdToseats", fields: [SeatId], references: [id], map: "reservations_ibfk_2")
-  seats_seats_ReservationIdToreservations seats[]    @relation("seats_ReservationIdToreservations")
+  flights                                 flights? @relation(fields: [FlightId], references: [id], map: "reservations_ibfk_1")
+  seats_reservations_SeatIdToseats        seats?   @relation("reservations_SeatIdToseats", fields: [SeatId], references: [id], map: "reservations_ibfk_2")
+  seats_seats_ReservationIdToreservations seats[]  @relation("seats_ReservationIdToreservations")
 
   @@index([FlightId], map: "FlightId")
   @@index([SeatId], map: "SeatId")
@@ -120,18 +120,17 @@ model user_fligths {
   @@id([UserId, FlightId])
 }
 
-
 model users {
-  id        Int      @id @default(autoincrement())
-  name      String?  @db.VarChar(255)
-  email     String?  @unique(map: "email") @db.VarChar(255)
-  password  String?  @db.VarChar(255)
-  status    Boolean?  @default(true)
-  phone     Int?     @unique(map: "phone")
-  adress    String?  @db.VarChar(255)
-  city      String?  @db.VarChar(255)
-  state     String?  @db.VarChar(255)
-  country   String?  @db.VarChar(255)
+  id        Int        @id @default(autoincrement())
+  name      String?    @db.VarChar(255)
+  email     String?    @unique(map: "email") @db.VarChar(255)
+  password  String?    @db.VarChar(255)
+  status    Boolean?   @default(true)
+  phone     Int?       @unique(map: "phone")
+  adress    String?    @db.VarChar(255)
+  city      String?    @db.VarChar(255)
+  state     String?    @db.VarChar(255)
+  country   String?    @db.VarChar(255)
   zip       Int?
   image     String?    @default("https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=") @db.VarChar(255)
   createdAt DateTime   @default(now())

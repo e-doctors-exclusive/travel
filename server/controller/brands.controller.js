@@ -13,8 +13,17 @@ module.exports = {
     add: async (req, res) => {
         try {
             const result = await prisma.brands.create({
-                data: req.body
-            });
+                data: {
+                  name: req.body.name,
+                  email: req.body.email,
+                  description: req.body.description,
+                  image: req.body.image,
+                  rating: 0, // provide a value for rating here
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                },
+              });
+              
             res.status(201).json(result);
         } catch (error) {
             throw error;
