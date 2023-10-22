@@ -1,6 +1,6 @@
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-
+ // Add ,update, getAll, and delete methods 
 module.exports = {
     getAll : async (req,res)=> {
         try {
@@ -48,4 +48,7 @@ module.exports = {
             throw error;
         }
     }
-}
+  
+ 
+ 
+};

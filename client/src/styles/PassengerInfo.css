@@ -403,6 +403,7 @@ input:focus {
 
 .aller {
   display: flex;
+  flex-direction: row;
   width: 368px;
   padding: 8px;
   align-items: flex-start;

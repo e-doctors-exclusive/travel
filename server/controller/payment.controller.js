@@ -38,6 +38,7 @@ module.exports = {
       throw error;
     }
   },
+
   addUserPayment: async (req, res) => {
     try {
       const response = await prisma.payments.create({ data: {price:req.body.price,usersId:req.body.usersId} });
@@ -53,7 +54,21 @@ module.exports = {
         } catch (error) {
       throw error
     }
+  }, 
+  getAllPaymentById : async (req,res)=>{
+    try {
+     console.log(req.params.ide); 
+      const response  = await prisma.payments.findMany({
+        where : {
+          usersId:+ req.params.ide
+        }
+      })
+      res.status(200).send(response)
+    } catch (error) {
+      throw error
+    }
   }
+
 };
 
 // getAll: async (req, res) => {
