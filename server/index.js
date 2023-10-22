@@ -4,10 +4,11 @@ require ('dotenv').config()
 const app = express();
 const port = 1337; // You can choose any available port
 app.use(express.json());
+//import the prisma model
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-// require("./database/index.js")
+
 
 require('dotenv').config()
 const userRoutes = require("./router/user.routes.js")
@@ -18,6 +19,7 @@ const ReservationRoutes = require("./router/reservation.routes.js")
 const brandsRoutes = require("./router/brandes.routes.js")
 // const paymentRoutes = require("./router/payment.routes.js")
 const PaymentRouter = require("./router/payment.router.js")
+const RatingRouter = require("./router/rating.routes.js")
 
 
 app.use(cors())
@@ -33,6 +35,7 @@ app.use("/payment",PaymentRouter)
 app.use("/brands", brandsRoutes )
 app.use("/flights",flightsRoutes)
 app.use("/seats", seatsRoutes)
+app.use("/rating", RatingRouter)
 // app.use("/payment",PaymentRouter)
 
 // Start the server

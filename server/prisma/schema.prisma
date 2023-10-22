@@ -15,23 +15,12 @@ model admins {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
+
 model messages {
   id        Int      @id @default(autoincrement())
   content   String   @db.VarChar(255)
   sender    String   @db.VarChar(255)
   createdAt DateTime @default(now())
-}
-
-model brands {
-  id          Int       @id @default(autoincrement())
-  name        String    @db.VarChar(255)
-  email       String    @db.VarChar(255)
-  description String    @db.VarChar(255)
-  image       String    @db.VarChar(255)
-  rating        Int
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @default(now())
-  flights     flights[]
 }
 
 model creditcards {
@@ -42,6 +31,17 @@ model creditcards {
   cvv            String   @db.VarChar(255)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @default(now())
+}
+
+model brands {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  email       String    @db.VarChar(255)
+  description String    @db.VarChar(255)
+  image       String    @db.VarChar(255)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+  flights     flights[]
 }
 
 model flights {
@@ -59,8 +59,20 @@ model flights {
   brands        brands?        @relation(fields: [brandId], references: [id], map: "flights_ibfk_1")
   reservations  reservations[]
   seats         seats[]
+  rating        rating[]
 
   @@index([brandId], map: "brandId")
+}
+
+model rating {
+  id        Int      @id @default(autoincrement())
+  number    Int
+  flights   flights? @relation(fields: [flightId], references: [id], map: "seats_ifk_1")
+  flightId  Int?
+  users     users?   @relation(fields: [usersId], references: [id], map: "rating_ibfk_1")
+  usersId   Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model payments {
@@ -134,6 +146,7 @@ model users {
   state     String?  @db.VarChar(255)
   country   String?  @db.VarChar(255)
   zip       Int?
+  rating    rating[]
   image     String?  @default("https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=") @db.VarChar(255)
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())

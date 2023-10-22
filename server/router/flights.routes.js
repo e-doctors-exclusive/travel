@@ -14,6 +14,6 @@ router.get("/getAll/:destFrom/:destTo/:dateFrom", getFlights);
 router.get("/getAll", getAllFlights);
 router.get("/getOne/:idFind", findOneFlight);
 router.put("/update/:idUpdate", updateFlight);
-router.delete("/delete/:idDelete", deleteFlight);
+router.delete("/:id", deleteFlight);
 
 module.exports = router;
