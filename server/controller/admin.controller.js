@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-
+ // sign in method 
 module.exports.signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -39,20 +39,25 @@ module.exports.signIn = async (req, res) => {
     res.status(404).json({ message: "cannot login", e });
   }
 };
-
+ // sign up method 
 module.exports.createAdmin = async (req, res) => {
   try {
     const { email, password, name } = req.body;
     bcrypt
       .hash(password, 10)
       .then((hashedPassword) => {
-        prisma.admins.create({data:{
-          name: name,
-          email: email,
-          password: hashedPassword,
-        }})
+        prisma.admins
+          .create({
+            data: {
+              name: name,
+              email: email,
+              password: hashedPassword,
+            },
+          })
           .then((result) => {
-            res.status(201).send({ message: " admin created successfully", result });
+            res
+              .status(201)
+              .send({ message: " admin created successfully", result });
           })
           .catch((err) => {
             res.status(404).send({ message: "error creating admin", err });

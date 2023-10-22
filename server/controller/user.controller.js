@@ -1,7 +1,8 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+// sign up ,login getAll,update,updatestatus,delete,getOne methods 
 
 module.exports.signup = async (req, res) => {
   try {
@@ -15,11 +16,11 @@ module.exports.signup = async (req, res) => {
         password: hashedPassword,
         phone: phone || null
       },
-    })
-    res.status(201).json({ message: 'User created successfully', result });
+    });
+    res.status(201).json({ message: "User created successfully", result });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: 'Error creating user', error });
+    res.status(500).json({ message: "Error creating user", error });
   }
 };
 
@@ -68,7 +69,6 @@ module.exports.login = async (req, res) => {
   }
 };
 
-
 module.exports.getAll = async (req, res) => {
   try {
     const getAll = await prisma.users.findMany();
@@ -80,10 +80,10 @@ module.exports.getAll = async (req, res) => {
 
 module.exports.update = async (req, res) => {
   try {
-    const user = await prisma.users.update({ where: { id: parseInt(req.params.id) },
-    data: req.body}
-     
-    );
+    const user = await prisma.users.update({
+      where: { id: parseInt(req.params.id) },
+      data: req.body,
+    });
     res.json(user);
   } catch (e) {
     res.status(404).json({ message: "error updating", e });
@@ -92,12 +92,12 @@ module.exports.update = async (req, res) => {
 
 module.exports.updateStatusUser = async (req, res) => {
   try {
-    const updateStatus = await prisma.users.update({ where: { id: parseInt(req.params.id) },
-    data: {
-      status: req.status,
-    }},
-     
-    );
+    const updateStatus = await prisma.users.update({
+      where: { id: parseInt(req.params.id) },
+      data: {
+        status: req.status,
+      },
+    });
     res.json(updateStatus);
   } catch (e) {
     res.json({ message: "error updating", e });
@@ -106,7 +106,9 @@ module.exports.updateStatusUser = async (req, res) => {
 
 module.exports.deleted = async (req, res) => {
   try {
-    const user = await prisma.users.delete({ where: { id:parseInt( req.params.id) } });
+    const user = await prisma.users.delete({
+      where: { id: parseInt(req.params.id) },
+    });
     res.json(user);
   } catch (error) {
     res.status(404).json({ message: "error deleting", error });
@@ -122,8 +124,9 @@ module.exports.getOne = async (req, res) => {
       console.log("hi decoded", decoded);
       const currentuser = await prisma.users.findUnique({
         where: {
-          id: decoded.userId}
-        });
+          id: decoded.userId,
+        },
+      });
 
       res.json(currentuser);
     } catch (error) {

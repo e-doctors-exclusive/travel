@@ -1,6 +1,6 @@
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-
+// Add ,update,getById, getAll, and delete methods
 module.exports = {
   getAll: async (req, res) => {
     try {
@@ -12,11 +12,10 @@ module.exports = {
   },
   add: async (req, res) => {
     try {
-      await prisma. reservations.create({data:req.body});
+      await prisma.reservations.create({ data: req.body });
       res.json({
         status: "success",
         message: "Reservation added successfully!!!",
-       
       });
     } catch (error) {
       throw error;
@@ -27,40 +26,39 @@ module.exports = {
     try {
       await prisma.reservations.update({
         where: { id: parseInt(req.params.id) },
-        data: req.body
-    });
+        data: req.body,
+      });
       res.json({
         status: "success",
         message: "Reservation updated successfully!!!",
-       
       });
     } catch (error) {
-      throw(error);
+      throw error;
     }
   },
 
   deleteById: async (req, res, next) => {
     try {
-      await prisma.reservations.delete({ where: { id: parseInt(req.params.id )} });
+      await prisma.reservations.delete({
+        where: { id: parseInt(req.params.id) },
+      });
       res.json({
         status: "success",
         message: "Reservation deleted successfully!!!",
-       
       });
     } catch (error) {
-      throw(error);
+      throw error;
     }
   },
   getById: async (req, res) => {
     try {
       const all = await prisma.reservations.findMany({
-        include:{all:true },
-        where: { id: parseInt(req.params.id )} 
-        
+        include: { all: true },
+        where: { id: parseInt(req.params.id) },
       });
       res.status(200).json(all);
     } catch (error) {
       throw error;
     }
-  }
-}
+  },
+};

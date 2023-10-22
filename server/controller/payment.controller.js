@@ -38,6 +38,7 @@ module.exports = {
       throw error;
     }
   },
+
   addUserPayment: async (req, res) => {
     try {
       const response = await prisma.payments.create({ data: {price:req.body.price,usersId:req.body.usersId} });
@@ -67,6 +68,7 @@ module.exports = {
       throw error
     }
   }
+
 };
 
 // getAll: async (req, res) => {

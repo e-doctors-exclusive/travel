@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-
+ // Add, getAll methods 
 module.exports = {
   getAll: async (req, res) => {
     try {
@@ -36,5 +36,5 @@ module.exports = {
       res.status(500).json({ message: "Error adding credit card", error });
     }
   },
-  // Add update, getOne, and delete methods if needed
+
 };

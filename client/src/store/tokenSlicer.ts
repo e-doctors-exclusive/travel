@@ -8,7 +8,9 @@ interface init {
   err: any;
   loggedIn: boolean;
   link: string;
+
   price: number;
+
 }
 
 const initialState = {
@@ -16,6 +18,7 @@ const initialState = {
   err: {},
   loggedIn: false,
   link: "",
+
   price: 0,
 };
 
@@ -38,9 +41,12 @@ export const paymentUser = createAsyncThunk(
       amount: amount,
     });
 
+
+
     return response.data.result.link;
   }
 );
+
 export const savePaymentHistory = createAsyncThunk(
   "/savePaymentHistory",
   async ({price,userId}:any) => {
@@ -55,6 +61,7 @@ export const savePaymentHistory = createAsyncThunk(
   }
 );
 
+
 export const tokenSlicer = createSlice({
   name: "token",
   initialState,
@@ -62,9 +69,11 @@ export const tokenSlicer = createSlice({
     setLogState: (state, action: PayloadAction<boolean>) => {
       state.loggedIn = action.payload;
     },
+
     setPrice: (state, action: PayloadAction<number>) => {
       state.price = action.payload;
     },
+
   },
   extraReducers(builder) {
     builder.addCase(checkUser.fulfilled, (state, action) => {
