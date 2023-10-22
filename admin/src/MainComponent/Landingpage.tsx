@@ -25,7 +25,7 @@ function LandingPage() {
 
 
   const handleLogin = (body:any) => {
-    axios.post('http://localhost:1128/admin/signin', body )
+    axios.post('http://localhost:1337/admin/signin', body )
       .then((res) => {
         console.log(res.data);
         route.push("/home")
@@ -56,7 +56,11 @@ function LandingPage() {
                    
                    
             <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Email address' id='formControlLg' type='email' size="lg" onChange={((e)=>{ setEmail(e.target.value)})}/>
-            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Password' id='formControlLg' type='password' size="lg" onChange={((e)=>{setPassword(e.target.value)})}/>
+            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Password' id='formControlLg' type='password' size="lg" onChange={((e)=>{setPassword(e.target.value)})} onKeyDown={(event)=>{
+              if(event.keyCode==13){
+                handleLogin({email,password})
+              }
+            }}/>
 
             <MDBBtn id='logg' className="mb-4 px-5 mx-5 w-100" color='info' size='lg' onClick={(()=>{handleLogin( {email,password})})}>Login</MDBBtn>
             <p style={{color:"red", fontSize:"20px", display:"flex", justifyContent:"center"}}>{alert}</p>

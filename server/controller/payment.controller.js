@@ -1,4 +1,6 @@
 const axios = require("axios");
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 // const { Payments } = require("../database/index.js");
 module.exports = {
   makePayment: async (req, res) => {
@@ -9,7 +11,7 @@ module.exports = {
       accept_card: "true",
       amount: req.body.amount,
       success_link: "http://localhost:3000/Success",
-      fail_link: "http://localhost:3000/fail",
+      fail_link: "http://localhost:3000/Fail",
       session_timeout_secs: 1200,
       developer_tracking_id: "6c67718c-5ebd-4531-aa8f-e123ddee5290",
     };
@@ -36,6 +38,37 @@ module.exports = {
       throw error;
     }
   },
+
+  addUserPayment: async (req, res) => {
+    try {
+      const response = await prisma.payments.create({ data: {price:req.body.price,usersId:req.body.usersId} });
+      res.json(response);
+    } catch (error) {
+      throw error;
+    }
+  },
+  getAllPayment : async(req,res)=>{
+    try {
+      const response = await prisma.payments.findMany()
+      res.status(200).send(response)
+        } catch (error) {
+      throw error
+    }
+  }, 
+  getAllPaymentById : async (req,res)=>{
+    try {
+     console.log(req.params.ide); 
+      const response  = await prisma.payments.findMany({
+        where : {
+          usersId:+ req.params.ide
+        }
+      })
+      res.status(200).send(response)
+    } catch (error) {
+      throw error
+    }
+  }
+
 };
 
 // getAll: async (req, res) => {

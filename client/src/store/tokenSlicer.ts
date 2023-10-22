@@ -8,6 +8,9 @@ interface init {
   err: any;
   loggedIn: boolean;
   link: string;
+
+  price: number;
+
 }
 
 const initialState = {
@@ -15,18 +18,20 @@ const initialState = {
   err: {},
   loggedIn: false,
   link: "",
-};
-export const checkUser = createAsyncThunk(
-  "/checkUser",
-  async (token: string | "") => {
-    console.log("this is token", token);
 
-    const task = await axios.get("http://localhost:1337/users/getUser", {
-      headers: { Authorization: `Bearer ${JSON.parse(token)}` },
-    });
-    return task.data;
-  }
-);
+  price: 0,
+};
+
+export const checkUser = createAsyncThunk("/checkUser", async () => {
+  const token = localStorage.getItem("token") || "";
+
+  const task = await axios.get("http://localhost:1337/users/getUser", {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  console.log(task.data);
+
+  return task.data;
+});
 
 export const paymentUser = createAsyncThunk(
   "/payment",
@@ -35,11 +40,27 @@ export const paymentUser = createAsyncThunk(
     const response = await axios.post(`http://localhost:1337/payment/payment`, {
       amount: amount,
     });
-    console.log("jiji ya asal", response.data.result.link);
+
+
 
     return response.data.result.link;
   }
 );
+
+export const savePaymentHistory = createAsyncThunk(
+  "/savePaymentHistory",
+  async ({price,userId}:any) => {
+    console.log(userId);
+    
+    const body = {price,usersId:+userId}
+    const response = await axios.post(
+      "http://localhost:1337/payment/addUserPayment",
+       body 
+    );
+    return response.data;
+  }
+);
+
 
 export const tokenSlicer = createSlice({
   name: "token",
@@ -48,6 +69,11 @@ export const tokenSlicer = createSlice({
     setLogState: (state, action: PayloadAction<boolean>) => {
       state.loggedIn = action.payload;
     },
+
+    setPrice: (state, action: PayloadAction<number>) => {
+      state.price = action.payload;
+    },
+
   },
   extraReducers(builder) {
     builder.addCase(checkUser.fulfilled, (state, action) => {
@@ -61,8 +87,9 @@ export const tokenSlicer = createSlice({
       });
   },
 });
-export const { setLogState } = tokenSlicer.actions; // Removed checkUser from here
+export const { setLogState, setPrice } = tokenSlicer.actions; // Removed checkUser from here
 export const selectUser = (state: RootState) => state.token.token;
+export const selectPrice = (state: RootState) => state.token.price;
 export const selectUserError = (state: RootState) => state.token.err;
 export const selectLoggedIn = (state: RootState) => state.token.loggedIn;
 export const selectLink = (state: RootState) => state.token.link;

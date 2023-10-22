@@ -16,10 +16,13 @@ module.exports = {
     }
   },
 
-  addFlight: async (req, res) => {
-    try {
-      const flight = await prisma.flights.create({ data: req.body });
-      res.json(flight);
+
+addFlight : async (req, res) => {
+  try {
+      console.log(req.body);
+      const flight = await prisma.flights.create({data:req.body})
+      res.json(flight)
+
     } catch (error) {
       throw error;
     }

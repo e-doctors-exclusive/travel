@@ -14,7 +14,7 @@ module.exports.signup = async (req, res) => {
         name,
         email: email || null,
         password: hashedPassword,
-        phone: phone || null,
+        phone: phone || null
       },
     });
     res.status(201).json({ message: "User created successfully", result });
@@ -135,5 +135,24 @@ module.exports.getOne = async (req, res) => {
     }
   } else {
     res.status(401).json({ message: "Not authorized" });
+  }
+};
+
+module.exports.accessStatus= async (req, res) => {
+  try {
+      const user = await prisma.users.findUnique({
+        where: { id: parseInt(req.params.id) },
+      })
+      const newStatus = !user.status;
+      console.log(!user.status);
+      const updatedUser = await prisma.users.update({
+        where: { id: parseInt(req.params.id) },
+        data: {
+          status: newStatus,
+        },
+      })
+      res.json(updatedUser)
+  } catch (e) {
+    res.status(404).json({ message: "error updating", e });
   }
 };

@@ -30,7 +30,7 @@ model creditcards {
   expirationDate String   @db.VarChar(255)
   cvv            String   @db.VarChar(255)
   createdAt      DateTime @default(now())
-  updatedAt      DateTime @default(now())
+  updatedAt      DateTime @defaulrat(now())
 }
 
 model brands {
@@ -77,14 +77,11 @@ model rating {
 
 model payments {
   id            Int           @id @default(autoincrement())
-  token         String        @db.VarChar(255)
   price         Int
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @default(now())
-  ReservationId Int?
-  reservations  reservations? @relation(fields: [ReservationId], references: [id], map: "payments_ibfk_1")
-
-  @@index([ReservationId], map: "ReservationId")
+  users         users?        @relation(fields: [usersId], references: [id], map: "users_ibfk_1")
+  usersId       Int?
 }
 
 model reservations {
@@ -100,7 +97,6 @@ model reservations {
   updatedAt                               DateTime   @default(now())
   FlightId                                Int?
   SeatId                                  Int?
-  payments                                payments[]
   flights                                 flights?   @relation(fields: [FlightId], references: [id], map: "reservations_ibfk_1")
   seats_reservations_SeatIdToseats        seats?     @relation("reservations_SeatIdToseats", fields: [SeatId], references: [id], map: "reservations_ibfk_2")
   seats_seats_ReservationIdToreservations seats[]    @relation("seats_ReservationIdToreservations")
@@ -135,21 +131,28 @@ model user_fligths {
   @@id([UserId, FlightId])
 }
 
+
 model users {
   id        Int      @id @default(autoincrement())
   name      String?  @db.VarChar(255)
   email     String?  @unique(map: "email") @db.VarChar(255)
   password  String?  @db.VarChar(255)
+  status    Boolean?  @default(true)
   phone     Int?     @unique(map: "phone")
   adress    String?  @db.VarChar(255)
   city      String?  @db.VarChar(255)
   state     String?  @db.VarChar(255)
   country   String?  @db.VarChar(255)
   zip       Int?
+
   rating    rating[]
-  image     String?  @default("https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=") @db.VarChar(255)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+ 
+
+  image     String?    @default("https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=") @db.VarChar(255)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
+  payments  payments[]
+
 }
 
 enum seats_type {
