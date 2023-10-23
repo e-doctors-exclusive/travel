@@ -3,6 +3,7 @@
 import React from 'react';
 import LandingPage from '../MainComponent/LandingPage'
 import Navbar from '../Components/Navbar'
+import dynamic from "next/dynamic";
 
 function HomePage() {
   return (
@@ -12,4 +13,5 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+
+export default dynamic (() => Promise.resolve(HomePage), {ssr: false})

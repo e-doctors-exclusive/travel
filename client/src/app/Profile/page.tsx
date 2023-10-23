@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { setLogState } from "@/store/tokenSlicer";
+import { selectUser, setLogState, setUser } from "@/store/tokenSlicer";
 import ChatRoom from "../../Components/ChatRoom"
 const ProfileUser = () => {
   const user = useSelector((state: any) => state.token);
@@ -143,6 +143,7 @@ const fetchAllCheckout = async ()=>{
             <button id="logout" onClick={() => {
               localStorage.removeItem("token")
               dispatch(setLogState(false))
+              dispatch(setUser({}))
               router.push("/")
               toast.info("Goodbye!");
             }}>Logout</button>

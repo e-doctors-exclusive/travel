@@ -18,6 +18,8 @@ import { AppDispatch } from "@/store";
 import SignUpbrand from "./SignUpbrand";
 import SignIn from "./SignInCustom";
 import SignInBrandModal from "./SignInBrand";
+import dynamic from "next/dynamic";
+
 const Navbar = () => {
   const router = useRouter()
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
@@ -172,6 +174,27 @@ const Navbar = () => {
       }
     }
   };
+  const handleSignInBrand = async (email: string) => {
+    if ((!email.includes("@") || !email.includes(".com"))) {
+      setEmailAlert(true)
+    } else {
+      setEmailAlert(false)
+    }
+    if (email?.includes("@") && email?.includes(".com")  && email?.length > 6) {
+      
+        await axios
+          .post("http://localhost:1337/brand/login", { email })
+          .then((res) => {
+            dispatch(setLogState(true))
+            localStorage.setItem("token", res.data.user.token)
+            toast.success(`Welcome ${res.data.user.dataValues.email || res.data.user.dataValues.phone}`, {
+              position: "top-center"
+            })
+          })
+          .catch((e) => console.log(e));
+      
+    }
+  };
   const handleSignUpBrand = async (email: string) => {
     if ((!email.includes("@") || !email.includes(".com"))) {
       console.log("wrong");
@@ -183,12 +206,8 @@ const Navbar = () => {
     if (email?.includes("@") && email?.includes(".com") && email?.length > 6) {
       await axios
         .post("http://localhost:1337/brands/add", { email })
-        .then((res) => {
-          dispatch(setLogState(true))
-          localStorage.setItem("token", res.data.user.token)
-          toast.success(`Welcome ${res.data.user.dataValues.email || res.data.user.dataValues.phone}`, {
-            position: "top-center"
-          })
+        .then(() => {
+          closeSignUpModal1()
         })
         .catch((e) => console.log(e))
     }
@@ -269,12 +288,12 @@ const Navbar = () => {
           </div>
           <button
             onClick={() => {
-              handleSignUpBrand(
+               handleSignUpBrand(
                 form.phomail
               );
             }}
           >
-            Create account
+            Create  account
           </button>
         </div>
         <div className="separation_line">
@@ -397,12 +416,13 @@ const Navbar = () => {
         onClose={closeBrandSignInModal}
         title="Brand Sign In"
         description="Please enter your email and password to sign in."
-        onSignIn={handleSignIn}
+        onSignIn={handleSignInBrand}
         emailAlert={emailAlert}
         passwordAlert={passwordAlert}
       />
     </div>
   );
 };
+export default dynamic (() => Promise.resolve(Navbar), {ssr: false})
 
-export default Navbar;
+// export default Navbar;
