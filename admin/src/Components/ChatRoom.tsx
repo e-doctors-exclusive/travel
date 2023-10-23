@@ -1,8 +1,8 @@
 "use client";
-import styles from "../../styles/ChatRoom.module.css";
+import styles from "../styles/ChatRoom.module.css";
 import { io } from "socket.io-client";
 import { useState } from "react";
-import ChatPage from "../../Components/Chat";
+import ChatPage from "./Chat";
 
 export default function Home() {
   const [showChat, setShowChat] = useState(false);

@@ -11,7 +11,6 @@ module.exports.signup = async (req, res) => {
 
     const result = await prisma.users.create({
       data: {
-        name,
         email: email || null,
         password: hashedPassword,
         phone: phone || null

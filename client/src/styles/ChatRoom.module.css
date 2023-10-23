@@ -1,6 +1,6 @@
 .main_div {
-    height: 100vh;
-    widows: 100vw;
+    height: auto;
+    width:  auto;
     display: flex;
     justify-content: center;
     align-items: center;

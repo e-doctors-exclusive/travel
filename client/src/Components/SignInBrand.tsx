@@ -1,3 +1,4 @@
+// SignInBrandModal.tsx
 import React, { useState } from "react";
 import { AppDispatch } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,7 +6,7 @@ import { setLogState, selectUser, checkUser, selectLoggedIn, selectUserError } f
 import { CSSProperties } from "react";
 import PulseLoader from "react-spinners/PulseLoader";
 
-interface SignInModalProps {
+interface SignInBrandModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
@@ -15,7 +16,7 @@ interface SignInModalProps {
   emailAlert: boolean
 }
 
-const SignInModal: React.FC<SignInModalProps> = ({
+const SignInBrandModal: React.FC<SignInBrandModalProps> = ({
   passwordAlert,
   emailAlert,
   isOpen,
@@ -109,4 +110,4 @@ const SignInModal: React.FC<SignInModalProps> = ({
   );
 };
 
-export default SignInModal;
+export default SignInBrandModal;

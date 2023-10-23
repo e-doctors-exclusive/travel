@@ -25,12 +25,14 @@ CREATE TABLE `messages` (
 CREATE TABLE `brands` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
-    `email` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(191) NOT NULL,
     `description` VARCHAR(255) NOT NULL,
     `image` VARCHAR(255) NOT NULL,
+    `rating` INTEGER NOT NULL DEFAULT 0,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
+    UNIQUE INDEX `brands_email_key`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -62,6 +64,18 @@ CREATE TABLE `flights` (
     `brandId` INTEGER NULL,
 
     INDEX `brandId`(`brandId`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `rating` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `number` INTEGER NOT NULL,
+    `flightId` INTEGER NULL,
+    `usersId` INTEGER NULL,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -125,9 +139,10 @@ CREATE TABLE `user_fligths` (
 -- CreateTable
 CREATE TABLE `users` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(255) NULL,
+    `name` VARCHAR(191) NULL DEFAULT '',
     `email` VARCHAR(255) NULL,
     `password` VARCHAR(255) NULL,
+    `status` BOOLEAN NULL DEFAULT true,
     `phone` INTEGER NULL,
     `adress` VARCHAR(255) NULL,
     `city` VARCHAR(255) NULL,
@@ -145,6 +160,12 @@ CREATE TABLE `users` (
 
 -- AddForeignKey
 ALTER TABLE `flights` ADD CONSTRAINT `flights_ibfk_1` FOREIGN KEY (`brandId`) REFERENCES `brands`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `rating` ADD CONSTRAINT `seats_ifk_1` FOREIGN KEY (`flightId`) REFERENCES `flights`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `rating` ADD CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`usersId`) REFERENCES `users`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `payments` ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`usersId`) REFERENCES `users`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

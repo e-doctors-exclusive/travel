@@ -22,7 +22,7 @@ module.exports.signIn = async (req, res) => {
               password: password,
             },
             "secret",
-            { expiresIn: "24h" }
+            { expiresIn: "48h" }
           );
           res.status(200).json({
             message: "login successful",

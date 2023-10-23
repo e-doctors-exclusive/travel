@@ -4,7 +4,7 @@
   background-size: contain;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content:center;
   align-items: center;
   background-attachment: fixed;
 }
@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  position: relative;
+  /* position: relative; */
   color: #6e7491;
   border-radius: 4px;
   border: 1px solid var(--grey-200, #cbd4e6);
@@ -22,18 +22,19 @@
   box-shadow: 0px 12px 24px 0px rgba(27, 59, 119, 0.05),
     0px 24px 60px 0px rgba(6, 47, 125, 0.05),
     0px 2px 4px 0px rgba(7, 4, 146, 0.1);
+    transition: visibility .3s linear, opacity .3s linear;
 }
 
 .landing-inputs::after {
     content: '';
-    /* position: absolute; */
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute;
+    left: calc(50% - (100% - 40px) / 2); /* Center the after element */
     bottom: -1px; /* Adjust as needed */
     width: calc(100% - 40px); /* Adjust as needed */
     height: 2px; /* Adjust as needed */
     background-color: var(--grey-200, #cbd4e6); /* Adjust as needed */
 }
+
 
 
 .calendar-container-search-bar{
@@ -264,27 +265,8 @@
   font-weight: 400;
   line-height: normal;
 }
-.rate-info:hover p {
-  border: 1px solid #605DEC; 
-  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
-  background-color: #ffffff;
-  color: #383838; /* Add a contrasting text color for better readability */
-  padding: 10px; /* Add some padding to give the text some room */
-  transition: background-color 0.3s ease; 
-  /* Add a smooth transition effect when the background color changes */
-}
-.one-rate:hover{
-  display: flex;
-  width: auto;
-  flex-direction: column;
-  border: 1px ridge #605DEC; 
-  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
-  background-color: #ffffff;
-  color: #383838; /* Add a contrasting text color for better readability */
-  padding: 10px; /* Add some padding to give the text some room */
-  transition: background-color 0.3s ease; 
-  /* Add a smooth transition effect when the background color changes */
-}
+
+
 .rating-section {
   display: flex;
   width: auto;
