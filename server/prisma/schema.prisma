@@ -23,15 +23,13 @@ model messages {
   createdAt DateTime @default(now())
 }
 
-
-
 model brands {
   id          Int       @id @default(autoincrement())
-  name        String    @db.VarChar(255)
-  email       String    @db.VarChar(255)
-  description String    @db.VarChar(255)
-  image       String    @db.VarChar(255)
-  rating      Int       @default(0)
+  name        String?    @db.VarChar(255)
+  email       String    @unique
+  description String?    @db.VarChar(255)
+  image       String?    @db.VarChar(255)
+  rating      Int?       @default(0)
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @default(now())
   flights     flights[]
@@ -46,9 +44,6 @@ model creditcards {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @default(now())
 }
-
-
-
 
 model flights {
   id            Int            @id @default(autoincrement())
@@ -138,26 +133,24 @@ model user_fligths {
 }
 
 model users {
-  id        Int        @id @default(autoincrement())
-  name      String?    @db.VarChar(255)
-  email     String?    @unique(map: "email") @db.VarChar(255)
-  password  String?    @db.VarChar(255)
-  status    Boolean?   @default(true)
-  phone     Int?       @unique(map: "phone")
-  adress    String?    @db.VarChar(255)
-  city      String?    @db.VarChar(255)
-  state     String?    @db.VarChar(255)
-  country   String?    @db.VarChar(255)
-  zip       Int?
+  id       Int      @id @default(autoincrement())
+  name     String?  @default("")
+  email    String?  @unique(map: "email") @db.VarChar(255)
+  password String?  @db.VarChar(255)
+  status   Boolean? @default(true)
+  phone    Int?     @unique(map: "phone")
+  adress   String?  @db.VarChar(255)
+  city     String?  @db.VarChar(255)
+  state    String?  @db.VarChar(255)
+  country  String?  @db.VarChar(255)
+  zip      Int?
 
-  rating    rating[]
- 
+  rating rating[]
 
   image     String?    @default("https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=") @db.VarChar(255)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @default(now())
   payments  payments[]
-
 }
 
 enum seats_type {

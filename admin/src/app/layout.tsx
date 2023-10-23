@@ -8,6 +8,7 @@ import '../styles/Add.css'
 import '../styles/addFlights.css'
 import '../styles/Airlines.css'
 import '../styles/Chat.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
@@ -25,6 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      
       <body className={inter.className}><ReduxProvider>{children}</ReduxProvider></body>
     </html>
   )
