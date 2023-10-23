@@ -5,6 +5,8 @@
   padding: 8px 24px;
   align-items: center;
   transition-duration: 0.5s;
+  gap: 1rem;
+
 }
 
 .navigo li {
@@ -52,6 +54,8 @@
 
 .nav_right {
   display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 
 #user-avatar{

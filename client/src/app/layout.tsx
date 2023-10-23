@@ -43,7 +43,7 @@ export default function RootLayout({
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           />
       </Head>
-      
+      <ToastContainer/>
       <body className={inter.className}>
         <ReduxProvider>{children}</ReduxProvider>
       </body>

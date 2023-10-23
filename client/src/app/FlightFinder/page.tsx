@@ -92,7 +92,7 @@ const FlightFinder: React.FC = () => {
       <Navbar />
       <div className="flighFinder_main_container">
         <div className="flighFinder_container">
-          <div className="landing-inputs" id="flightfinder-search">
+          {/* <div className="landing-inputs" id="flightfinder-search">
             <div className="landing-input">
               <i className="fa-solid fa-plane-departure"></i>
               <select
@@ -108,9 +108,9 @@ const FlightFinder: React.FC = () => {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
 
-            <div className="landing-input">
+            {/* <div className="landing-input">
               <i className="fa-solid fa-plane-arrival"></i>
               <select
                 onChange={(e) => setDestTo(e.target.value)}
@@ -123,9 +123,9 @@ const FlightFinder: React.FC = () => {
                   <option value={e}>{e}</option>
                 ))}
               </select>
-            </div>
+            </div> */}
 
-            <div className="landing-input calendar_check">
+            {/* <div className="landing-input calendar_check">
               <div className="date_data">
                 <Image
                   id="dateIcon"
@@ -174,7 +174,7 @@ const FlightFinder: React.FC = () => {
                 search
               </button>
             </div>
-          </div>
+          </div> */}
           <div className="filter">
             <div className="oneselect">
               <select name="" id="">
