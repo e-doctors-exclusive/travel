@@ -44,12 +44,9 @@ const SignInModal: React.FC<SignInModalProps> = ({
       onClose();
     }
   };
-
   const handleModalClick = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
-
-
   return (
     <div
       className={`modal ${isOpen ? "open" : ""}`}
@@ -82,8 +79,11 @@ const SignInModal: React.FC<SignInModalProps> = ({
               setIsLoading(true);
               dispatch(checkUser()).then(() => {
                 setIsLoading(false);
-                if (Object.keys(user).length !== 0) {
+                if (localStorage.getItem("token")) {
                   onClose();
+                   
+                  console.log(user);
+                  
                 } else {
                   setUserAlert(true);
                 }

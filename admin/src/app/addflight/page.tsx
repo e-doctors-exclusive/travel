@@ -32,7 +32,7 @@ const AddFlight = () => {
     fetchBrands();
   }, []);
 
-  const handleSubmit = async (event:any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
       const formattedDepartureDate = new Date(departureDate);
@@ -44,15 +44,17 @@ const AddFlight = () => {
         departureTime: departureTime,
         dateTo: formattedArrivalDate,
         arrivalTime: arrivalTime,
-        price:Number(price),
-        brandId:Number(brand),
+        price: Number(price),
+        brandId: Number(brand),
       });
-      const seats = await axios.post("http://localhost:1337/seats/addSeats", {
-        FlightId:response.data,
-        numberOfSeats:numberOfSeats
-      });
+      console.log(response.data)
+      const seats = await axios.post("http://localhost:1337/seats/addSeats",
+        {
+          FlightId: response.data.id,
+          numberOfSeats: numberOfSeats
+        });
+
       toast.success("Flight added successfully");
-      console.log(response.data);
     } catch (error) {
       toast.error("Error adding flight");
       console.error(error);
@@ -67,7 +69,7 @@ const AddFlight = () => {
           display: "flex",
           flexWrap: "wrap",
           flex: 1,
-          marginLeft:"250px" ,
+          marginLeft: "250px",
         }}
       >
         <div className="container">
@@ -140,7 +142,7 @@ const AddFlight = () => {
                 onChange={(event) => setBrand(event.target.value)}
               >
                 <option>Select a brand</option>
-                {brands.map((brand:any) => (
+                {brands.map((brand: any) => (
                   <option key={brand.id} value={brand.id}>
                     {brand.name}
                   </option>

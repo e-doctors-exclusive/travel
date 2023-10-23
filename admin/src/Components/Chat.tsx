@@ -67,11 +67,9 @@ const ChatPage = ({ socket, username, roomId }: any) => {
               </h3>
             </div>
           ))}
-        </div>
-        <div>
-          <form onSubmit={(e) => sendData(e)}>
+          <form className="theform" style={{display:"flex"}} onSubmit={(e) => sendData(e)}>
             <input
-              className={style.chat_input}
+              className="chat_input"
               type="text"
               value={currentMsg}
               placeholder="Type your message.."
@@ -80,6 +78,8 @@ const ChatPage = ({ socket, username, roomId }: any) => {
             <button className={style.chat_button}>Send</button>
           </form>
         </div>
+        
+        
       </div>
     </div>
   );

@@ -69,6 +69,9 @@ export const tokenSlicer = createSlice({
     setLogState: (state, action: PayloadAction<boolean>) => {
       state.loggedIn = action.payload;
     },
+    setUser: (state, action: PayloadAction<Object>) => {
+      state.token = action.payload;
+    },
 
     setPrice: (state, action: PayloadAction<number>) => {
       state.price = action.payload;
@@ -87,7 +90,7 @@ export const tokenSlicer = createSlice({
       });
   },
 });
-export const { setLogState, setPrice } = tokenSlicer.actions; // Removed checkUser from here
+export const { setLogState, setPrice,setUser } = tokenSlicer.actions; // Removed checkUser from here
 export const selectUser = (state: RootState) => state.token.token;
 export const selectPrice = (state: RootState) => state.token.price;
 export const selectUserError = (state: RootState) => state.token.err;

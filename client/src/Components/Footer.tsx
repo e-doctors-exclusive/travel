@@ -6,7 +6,7 @@ import Logo from "./Logo";
 import twitterIcon from "../../public/Assets/icons/twitter.svg"
 import instagramIcon from "../../public/Assets/icons/instagram.svg"
 import facebookIcon from "../../public/Assets/icons/facebook.svg"
-
+import dynamic from "next/dynamic";
 function Footer(): JSX.Element {
   return (
     <div className="footer-container">
@@ -65,4 +65,5 @@ function Footer(): JSX.Element {
   );
 }
 
-export default Footer;
+// export default Footer;
+export default dynamic (() => Promise.resolve(Footer), {ssr: false})

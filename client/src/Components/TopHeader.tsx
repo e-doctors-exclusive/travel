@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import dynamic from "next/dynamic";
 
 const TopHeader = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -15,4 +16,5 @@ const TopHeader = () => {
   );
 }
 
-export default TopHeader;
+// export default TopHeader;
+export default dynamic (() => Promise.resolve(TopHeader), {ssr: false})

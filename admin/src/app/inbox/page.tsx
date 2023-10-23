@@ -18,7 +18,7 @@ export default function Home() {
       console.log(userName, "userName", roomId, "roomId");
       socket.emit("join_room", roomId);
       setShowSpinner(true);
-// You can remove this setTimeout and add your own logic
+      // You can remove this setTimeout and add your own logic
       setTimeout(() => {
         setShowChat(true);
         setShowSpinner(false);
@@ -29,10 +29,10 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div style={{display:"flex",justifyContent:"center",height:"100%",alignItems:"center"}}>
       <div
         className={styles.main_div}
-        style={{ display: showChat ? "none" : "" }}
+        style={{ display: showChat ? "none" : ""  }}
       >
         <input
           className={styles.main_input}

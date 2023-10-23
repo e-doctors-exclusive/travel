@@ -11,7 +11,7 @@ interface SignInBrandModalProps {
   onClose: () => void;
   title: string;
   description: string;
-  onSignIn: (email: string, password: string) => void;
+  onSignIn: (email: string) => void;
   passwordAlert: boolean;
   emailAlert: boolean
 }
@@ -30,7 +30,6 @@ const SignInBrandModal: React.FC<SignInBrandModalProps> = ({
   const user = useSelector(selectUser);
   const [UserAlert, setUserAlert] = useState(false)
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   let [color, setColor] = useState("#ffffff");
   const override: CSSProperties = {
     display: "block",
@@ -38,7 +37,7 @@ const SignInBrandModal: React.FC<SignInBrandModalProps> = ({
     borderColor: "red",
   };
   const handleSignIn = () => {
-    onSignIn(email, password);
+    onSignIn(email);
   };
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -67,19 +66,13 @@ const SignInBrandModal: React.FC<SignInBrandModalProps> = ({
             onChange={(e) => setEmail(e.target.value)}
           />{emailAlert ? "“The email you entered is not in the correct format." : null}
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />{passwordAlert ? "Password must be at least 8 characters long." : null}
 
         </div>
         <button
           className="signInbtn"
           onClick={() => {
             handleSignIn();
-            if (email.includes("@") && email.includes(".com") && password.length >= 8) {
+            if (email.includes("@") && email.includes(".com")) {
               setIsLoading(true);
               dispatch(checkUser()).then(() => {
                 setIsLoading(false);
